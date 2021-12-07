@@ -1,12 +1,10 @@
-import "./App.css";
-import { BiAbacus } from "react-icons/bi";
+import { Routes } from "./Routes/Routes";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <BiAbacus color="white" />
-      </header>
-    </div>
+    <>
+      <Routes />
+    </>
   );
 }
 
