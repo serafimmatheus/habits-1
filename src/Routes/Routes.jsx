@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import Dashboard from "../Page/Dashboard";
 
 export const Routes = () => {
   return (
@@ -16,7 +17,7 @@ export const Routes = () => {
       </Route>
 
       <Route exact path="/dashboard">
-        //Dashboard
+        <Dashboard />
       </Route>
     </Switch>
   );
