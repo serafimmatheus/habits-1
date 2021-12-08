@@ -1,24 +1,18 @@
-import { Route, Switch } from "react-router-dom";
-import { Home } from "../Page/Home/index";
+import { Redirect, Route as ReactDomRoute } from "react-router-dom";
 
-export const Routes = () => {
+export const Route = ({ isPrivate = false, component: Component, ...rest }) => {
+  const token = false;
+
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-
-      <Route exact path="/login">
-        Login
-      </Route>
-
-      <Route exact path="/cadastro">
-        Register
-      </Route>
-
-      <Route exact path="/dashboard">
-        Dashboard
-      </Route>
-    </Switch>
+    <ReactDomRoute
+      {...rest}
+      render={() => {
+        return isPrivate === !!token ? (
+          <Component />
+        ) : (
+          <Redirect to={isPrivate ? "/login" : "/dashboard"} />
+        );
+      }}
+    />
   );
 };
