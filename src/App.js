@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { Route, Switch, useHistory } from "react-router-dom";
+
+import api from "./services/api";
+
+import Habits from "./Pages/Habits";
 
 function App() {
+  //Código criado para teste da feature Habits
+  const history = useHistory();
+
+  const testUser = {
+    username: "gabriel-kenzie",
+    password: "123456",
+  };
+
+  const loginTest = (user) => {
+    api
+      .post("/sessions/", user)
+      .then((response) => {
+        const { access } = response.data;
+        localStorage.setItem("@Habits:token", access);
+        history.push("/habits");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //Código criado para teste da feature Habits
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => loginTest(testUser)}>LOGIN</button>
+      <Switch>
+        <Route path="/habits" component={Habits} />
+      </Switch>
     </div>
   );
 }
