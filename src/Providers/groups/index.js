@@ -33,7 +33,7 @@ export const GroupsProvider = ({ children }) => {
 
   const editGroups = (id, data, token, reset, closeModal) => {
     api
-      .patch(`/groups/${id}/`, data, {
+      .patch(`groups/${id}/subscribe/`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
