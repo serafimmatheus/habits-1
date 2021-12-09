@@ -1,7 +1,7 @@
 import { Redirect, Route as ReactDomRoute } from "react-router-dom";
 
 export const Route = ({ isPrivate = false, component: Component, ...rest }) => {
-  const token = false;
+  const token = localStorage.getItem("@Habits:token");
 
   return (
     <ReactDomRoute
