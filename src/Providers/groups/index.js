@@ -63,7 +63,7 @@ export const GroupsProvider = ({ children }) => {
 
   const subscribeGroups = (id, token) => {
     api
-      .post(`/groups/${id}/subscribe`, {
+      .post(`/groups/${id}/subscribe/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

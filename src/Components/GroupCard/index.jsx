@@ -12,9 +12,15 @@ const GroupCard = ({ group }) => {
 
   const [modalEdit, setModalEdit] = useState(false);
 
+  const handleclickSubscribe = () => {
+    subscribeGroups(group.id, token);
+  };
+
   return (
     <GroupCardContainer>
       <h3>Nome do grupo: {group.name}</h3>
+      <h3>ID: {group.id}</h3>
+      <button onClick={() => handleclickSubscribe()}>Inscrever-se</button>
       <EditGroupsModal
         group_id={group.id}
         token={token}
