@@ -1,6 +1,7 @@
 import { Switch } from "react-router-dom";
 import { Home } from "../Page/Home/index";
 import { Login } from "../Page/Login/index";
+import { Dashboar } from "../Page/Dashboard/index";
 
 import { Route } from "./Routes";
 
@@ -13,7 +14,7 @@ export const Routes = () => {
 
       <Route exact path="/cadastro" component={"Cadastro"} />
 
-      <Route isPrivate exact path="/dashboard" component={"dashboard"} />
+      <Route isPrivate exact path="/dashboard" component={Dashboar} />
     </Switch>
   );
 };
