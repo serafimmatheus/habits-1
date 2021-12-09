@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 
 const Groups = () => {
   const { register, handleSubmit } = useForm({});
-  const { request, requestSub, groups, subscribe, setInput } =
+  const { requestSub, groups, setInput, addRequest, request } =
     useContext(GroupContext);
   const [inpt, setInpt] = useState("");
-  useEffect(() => {});
   const subValue = (data) => {
-    console.log(data);
+    addRequest(data.name, data.category, data.description);
   };
+  useEffect(() => {
+    request();
+  }, [request]);
   return (
     <div>
       <div>crie um grupo</div>
@@ -21,19 +23,14 @@ const Groups = () => {
         <button type="submit">Criar grupo</button>
       </form>
       <div>
-        <ul>
-          {groups.map((group) => (
-            <>
-              <li>
-                {group.name}
-                <button onClick={() => requestSub(group.id)}>
-                  {" "}
-                  Increver-se
-                </button>
-              </li>
-            </>
-          ))}
-        </ul>
+        {groups.map((group) => (
+          <ul key={group.id}>
+            <li>
+              {group.name}
+              <button onClick={() => requestSub(group.id)}> Increver-se</button>
+            </li>
+          </ul>
+        ))}
       </div>
       <input onChange={(e) => setInpt(e.target.value)} />
       <button onClick={() => setInput(inpt)}>clique</button>
