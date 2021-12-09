@@ -3,11 +3,13 @@ import { MdAddchart } from "react-icons/md";
 import { useContext } from "react";
 import CreateGoal from "../../Components/CreateGoal";
 import { GoalsContext } from "../../Providers/Goals";
+import SearchGoals from "../../Components/SearchGoals";
 
 const Goals = () => {
   const { handleOpenGoalModal } = useContext(GoalsContext);
   return (
     <Container component="main" maxWidth="xs">
+      <CreateGoal groupId="4" />
       <Box
         sx={{
           display: "flex",
@@ -21,7 +23,7 @@ const Goals = () => {
           <MdAddchart />
         </Fab>
       </Box>
-      <CreateGoal groupId="4" />
+      <SearchGoals />
     </Container>
   );
 };

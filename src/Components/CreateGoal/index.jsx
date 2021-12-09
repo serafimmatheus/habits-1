@@ -101,9 +101,9 @@ const CreateGoal = ({ groupId }) => {
           >
             <FormControlLabel value="Fácil" control={<Radio />} label="Fácil" />
             <FormControlLabel
-              value="Intermediário"
+              value="Normal"
               control={<Radio />}
-              label="Intermediário"
+              label="Normal"
             />
             <FormControlLabel
               value="Díficil"
