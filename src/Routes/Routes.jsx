@@ -1,22 +1,17 @@
 import { Route, Switch } from "react-router-dom";
+import Goals from "../Page/Goals";
 
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        //Home
-      </Route>
+      <Route exact path="/"></Route>
 
-      <Route exact path="/login">
-        //Login
-      </Route>
+      <Route exact path="/login"></Route>
 
-      <Route exact path="/register">
-        //Register
-      </Route>
+      <Route exact path="/register"></Route>
 
       <Route exact path="/dashboard">
-        //Dashboard
+        <Goals />
       </Route>
     </Switch>
   );
