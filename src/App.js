@@ -5,13 +5,14 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import api from "./services/api";
 
 import Habits from "./Pages/Habits";
+import Groups from "./Pages/Groups";
 
 function App() {
   //Código criado para teste da feature Habits
   const history = useHistory();
 
   const testUser = {
-    username: "gabriel-kenzie",
+    username: "testador-teste",
     password: "123456",
   };
 
@@ -31,8 +32,11 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => loginTest(testUser)}>LOGIN</button>
+      <button onClick={() => history.push("/habits")}>HABITS</button>
+      <button onClick={() => history.push("/groups")}>GROUPS</button>
       <Switch>
         <Route path="/habits" component={Habits} />
+        <Route path="/groups" component={Groups} />
       </Switch>
     </div>
   );

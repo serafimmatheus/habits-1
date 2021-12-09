@@ -2,8 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import jwt_decode from "jwt-decode";
-
 import { useContext } from "react";
 import { HabitsContext } from "../../Providers/habits";
 
