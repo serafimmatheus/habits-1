@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
         --white: #f9f9f9;
         --black: #0c0d0d;
         --red: #830000;
-        --coriander: #bdb491;
+        --coriander: #bdb496;
         --dark-goldenrod: #bd9700;
         --black-russian: #03031b;
         --log-cabin: #3c4135;
