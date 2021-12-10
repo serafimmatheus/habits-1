@@ -34,7 +34,7 @@ export const Login = () => {
     <div>
       {error?.message}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="Nome de Usuario" {...register("username")} />
+        <input placeholder="Nome de Usuário" {...register("username")} />
         {errors.username?.message}
         <input type="password" placeholder="Senha" {...register("password")} />
         {errors.password?.message}
