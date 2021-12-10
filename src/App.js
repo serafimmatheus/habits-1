@@ -1,11 +1,9 @@
 import { Routes } from "./Routes/index";
 
-function App() {
-  return (
-    <>
-      <Routes />
-    </>
-  );
-}
+const App = () => (
+  <>
+    <Routes />
+  </>
+);
 
 export default App;

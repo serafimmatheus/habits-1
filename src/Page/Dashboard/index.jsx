@@ -1,21 +1,10 @@
-import {
-  HeaderDashboard,
-  BoxHeaderDashboard,
-  Header,
-  NavBar,
-  Habitos,
-  BoxHabits,
-  Main,
-} from "./style";
+import { Habitos, BoxHabits, Main } from "./style";
 
-import { FiMenu, FiPlusSquare } from "react-icons/fi";
+import { FiPlusSquare } from "react-icons/fi";
 import { CardsHabits } from "../../Components/CardsHabits";
 import { HeaderDash } from "../../Components/HeaderDash";
 
-export const Dashboar = () => {
-  const token = localStorage.getItem("@Habits:token");
-
-  console.log(token);
+export const Dashboard = () => {
   return (
     <>
       <HeaderDash />

@@ -4,6 +4,17 @@ export const GlobalStyles = createGlobalStyle`
     *{
         box-sizing: border-box;
     }
+
+    :root {
+        --white: #f9f9f9;
+        --black: #0c0d0d;
+        --red: #830000;
+        --coriander: #bdb496;
+        --dark-goldenrod: #bd9700;
+        --black-russian: #03031b;
+        --log-cabin: #3c4135;
+        --winter-hazel: #d2c57c;
+    }
     
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -31,7 +42,11 @@ export const GlobalStyles = createGlobalStyle`
         display: block;
     }
     body {
+        font-family: 'Roboto Mono', monospace;
         line-height: 1;
+        color: var(--black-russian);
+        background-color: var(--coriander);
+
     }
     ol, ul {
         list-style: none;
@@ -48,4 +63,16 @@ export const GlobalStyles = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+
+    button {
+        cursor: pointer;
+    }
+
+    a {
+        text-decoration: none;
+    }
 `;
+
+// Tipografia do Projeto
+// font-family: 'PT Serif', serif;
+// font-family: 'Roboto Mono', monospace;

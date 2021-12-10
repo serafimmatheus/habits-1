@@ -14,7 +14,7 @@ export const Home = () => {
         </div>
 
         <div className="main-home__buttons">
-          <Button onClick={() => history.push("/cadastro")}>Cadastre-se</Button>
+          <Button onClick={() => history.push("/register")} whiteSchema>Cadastre-se</Button>
           <Button onClick={() => history.push("/login")}>Login</Button>
         </div>
 

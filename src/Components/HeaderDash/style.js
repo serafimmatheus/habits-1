@@ -4,6 +4,8 @@ export const Header = styled.header`
   @media screen and (min-width: 320px) {
     display: flex;
     flex-direction: row;
+
+    margin-bottom: 50px;
   }
 `;
 
@@ -34,7 +36,7 @@ export const HeaderDashboard = styled.section`
     width: calc(100% - 10px);
     height: 100px;
     border-radius: 10px;
-    background-color: #bdb491;
+    background-color: var(--log-cabin);
   }
 
   @media screen and (min-width: 768px) {
@@ -45,7 +47,7 @@ export const HeaderDashboard = styled.section`
     width: calc(100% - 70px);
     height: 100px;
     border-radius: 10px;
-    background-color: #bdb491;
+    background-color: var(--log-cabin);
   }
 
   @media screen and (min-width: 1024px) {
@@ -56,7 +58,7 @@ export const HeaderDashboard = styled.section`
     width: calc(100% - 120px);
     height: 100px;
     border-radius: 10px;
-    background-color: #bdb491;
+    background-color: var(--log-cabin);
   }
 `;
 

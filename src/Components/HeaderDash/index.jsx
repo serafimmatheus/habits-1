@@ -5,6 +5,10 @@ import { Button } from "../Button";
 
 export const HeaderDash = () => {
   const [isTrueMobile, setIsTrueModal] = useState(false);
+
+  let token = localStorage.getItem("@Habits:token");
+
+  console.log(token);
   return (
     <>
       <Header>
@@ -38,8 +42,9 @@ export const HeaderDash = () => {
                 <li>Grupos</li>
               </ul>
 
-              <div>
+              <div className="input">
                 <input placeholder="Pesquisar" />
+                <Button>Pesquisar</Button>
               </div>
             </nav>
             <h2>Usuário</h2>
