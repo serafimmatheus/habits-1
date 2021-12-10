@@ -14,21 +14,36 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 
-const CreateGoal = ({ groupId }) => {
-  const { addGoal, open, handleCloseGoalModal } = useContext(GoalsContext);
+const EditGoal = ({ groupId, goalId }) => {
+  const { editGoal, openEdit, handleCloseEditModal, itemEdit } =
+    useContext(GoalsContext);
 
   const schema = yup.object().shape({
-    title: yup.string().required("Campo obrigatório"),
+    title: yup.string(),
     // difficulty: yup.string().required("Campo obrigatório"),
     // achieved: yup.string().required("Campo obrigatório"),
     how_much_achieved: yup.string().required("Campo obrigatório"),
   });
 
   const [statusDifficulty, setStatusDifficulty] = useState("Fácil");
-  const [statusAchieved, setStatusAchieved] = useState("false");
+  const [statusAchieved, setStatusAchieved] = useState(false);
+  const [statusTitle, setStatusTitle] = useState("");
+  const [statusId, setStatusId] = useState(0);
+
+  useEffect(() => {
+    if (itemEdit.achieved === true) {
+      setStatusAchieved("true");
+    } else {
+      setStatusAchieved("false");
+    }
+
+    setStatusDifficulty(itemEdit.difficulty);
+    setStatusTitle(itemEdit.title);
+    setStatusId(itemEdit.id);
+  }, [itemEdit]);
 
   const handleChangeDifficulty = (event) => {
     setStatusDifficulty(event.target.value);
@@ -47,16 +62,23 @@ const CreateGoal = ({ groupId }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    data = {
-      ...data,
-      group: groupId,
-      difficulty: statusDifficulty,
+  const onSubmit = ({ title, how_much_achieved }) => {
+    if (title === "") {
+      title = statusTitle;
+    }
+
+    const data = {
+      id: statusId,
+      title: title,
       achieved: statusAchieved,
+      difficulty: statusDifficulty,
+      group: groupId,
+      how_much_achieved,
     };
-    addGoal(data, groupId);
+
+    editGoal(data, statusId, groupId);
     reset();
-    handleCloseGoalModal();
+    handleCloseEditModal();
   };
 
   const style = {
@@ -73,18 +95,23 @@ const CreateGoal = ({ groupId }) => {
   };
 
   return (
-    <Modal open={open} onClose={handleCloseGoalModal}>
+    <Modal
+      open={openEdit}
+      onClose={() => {
+        handleCloseEditModal();
+        reset();
+      }}
+    >
       <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={style}>
         <Typography component="h1" sx={{ fontSize: "18px", fontWeight: "700" }}>
-          ADICIONAR META
+          EDITAR META
         </Typography>
 
         <TextField
           margin="normal"
-          required
           fullWidth
           autoFocus
-          placeholder="Qual é sua meta?"
+          placeholder={statusTitle}
           type="text"
           {...register("title")}
           helperText={errors.title?.message}
@@ -116,9 +143,10 @@ const CreateGoal = ({ groupId }) => {
           <FormLabel component="legend">Progresso atual:</FormLabel>
 
           <Slider
+            key={`slider-${itemEdit.how_much_achieved}`}
             name="how_much_achieved"
             aria-label="how_much_achieved"
-            defaultValue={0}
+            defaultValue={itemEdit.how_much_achieved}
             valueLabelDisplay="auto"
             step={10}
             marks
@@ -154,4 +182,4 @@ const CreateGoal = ({ groupId }) => {
   );
 };
 
-export default CreateGoal;
+export default EditGoal;
