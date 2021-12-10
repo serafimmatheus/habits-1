@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import api from "../../Services";
 
-export const Login = () => {
+const Login = () => {
   const history = useHistory();
   const [error, setError] = useState({});
   const schema = yup.object().shape({
@@ -43,3 +43,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

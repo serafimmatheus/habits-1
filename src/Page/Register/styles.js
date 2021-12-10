@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import registerImage from "../../Assets/registerV.png"
+import registerImage from "../../Assets/registerV.png";
 
 export const Container = styled.div`
   height: 100vh;
@@ -11,7 +11,6 @@ export const Container = styled.div`
 export const Background = styled.div`
   @media (min-width: 1100px) {
     flex: 1;
-    /* border-right: 1px solid var(--black); */
     background: url(${registerImage}) no-repeat center, var(--log-cabin);
     background-size: contain;
     /* background-size: contain (acima) para diminuir conforme altura diminui */
