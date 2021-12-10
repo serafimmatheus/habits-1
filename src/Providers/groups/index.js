@@ -6,7 +6,9 @@ export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
-
+  const [useSub, setUseSub] = useState(false);
+  const [userId, setUserId] = useState();
+  const [userGroupId, setUserGroupId] = useState([]);
   const getUserGroups = (token) => {
     api
       .get("/groups/subscriptions/", {
@@ -27,7 +29,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroups(response.data.results);
-        console.log(response);
       });
   };
 
@@ -55,6 +56,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         getUserGroups(token);
+        setUserGroupId(response.data.users_on_group);
         reset();
       })
       .then(closeModal())
@@ -63,17 +65,20 @@ export const GroupsProvider = ({ children }) => {
 
   const subscribeGroups = (id, token) => {
     api
-      .post(`/groups/${id}/subscribe/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        `groups/${id}/subscribe/`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((response) => {
         getUserGroups(token);
+        setUserId(response.data.user.id);
       })
       .catch((err) => console.log(err));
   };
-
+  console.log(useSub);
   const unsubscribeGroups = (id, token) => {
     api
       .delete(`/groups/${id}/unsubscribe/`, {
@@ -81,10 +86,12 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => getUserGroups(token))
+      .then((response) => {
+        getUserGroups(token);
+        setUseSub(false);
+      })
       .catch((err) => console.log(err));
   };
-
   return (
     <GroupsContext.Provider
       value={{
@@ -95,6 +102,10 @@ export const GroupsProvider = ({ children }) => {
         createGroups,
         subscribeGroups,
         unsubscribeGroups,
+        useSub,
+        userId,
+        userGroupId,
+        setUseSub,
       }}
     >
       {children}
