@@ -5,8 +5,6 @@ export const MainHome = styled.main`
     width: 100%;
     height: 100vh;
 
-    background-color: #c9c9c9c9;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,8 +15,10 @@ export const MainHome = styled.main`
       justify-content: center;
       align-items: center;
       margin-left: -10%;
+
       h1 {
         font-size: 60px;
+        text-shadow: 0.1em 0.1em 0.2em var(--log-cabin);
       }
 
       h1:nth-child(2) {
@@ -33,13 +33,11 @@ export const MainHome = styled.main`
       justify-content: center;
 
       button {
-        width: 150px;
+        width: 27%;
         margin: 0 10px;
-        height: 40px;
+        height: 50px;
         &:hover {
-          background-color: #ccc;
-          border: none;
-          transition: 1s;
+          transition: 1s; 
         }
       }
     }
@@ -47,7 +45,8 @@ export const MainHome = styled.main`
     .main-home__span {
       display: flex;
       flex-direction: column;
-      width: 520px;
+      width: 670px;
+      line-height: 1.2;
       position: relative;
       left: 50%;
       transform: translateX(-50%);
@@ -55,7 +54,7 @@ export const MainHome = styled.main`
       em {
         position: absolute;
         right: 20px;
-        top: 30px;
+        top: 44px;
         font-style: italic;
       }
     }
