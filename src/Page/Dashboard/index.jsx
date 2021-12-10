@@ -10,6 +10,7 @@ import {
 
 import { FiMenu, FiPlusSquare } from "react-icons/fi";
 import { CardsHabits } from "../../Components/CardsHabits";
+import { HeaderDash } from "../../Components/HeaderDash";
 
 export const Dashboar = () => {
   const token = localStorage.getItem("@Habits:token");
@@ -17,18 +18,7 @@ export const Dashboar = () => {
   console.log(token);
   return (
     <>
-      <Header>
-        <NavBar></NavBar>
-        <HeaderDashboard>
-          <BoxHeaderDashboard>
-            <nav>
-              <FiMenu />
-            </nav>
-            <h2>dashboard</h2>
-          </BoxHeaderDashboard>
-        </HeaderDashboard>
-      </Header>
-
+      <HeaderDash />
       <Main>
         <div>
           <Habitos>
