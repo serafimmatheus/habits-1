@@ -37,7 +37,7 @@ const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
   return (
     <Modal open={modalCreateGroup}>
       <div>
-        <h3>ADICIONAR HÁBITO</h3>
+        <h3>ADICIONAR GRUPO</h3>
         <GroupsForm onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
@@ -54,7 +54,7 @@ const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
             placeholder="Categoria"
             {...register("category")}
           />
-          <button type="submit">Registrar novo hábito</button>
+          <button type="submit">Registrar novo grupo</button>
         </GroupsForm>
         <button onClick={() => closeModal()}>FECHAR</button>
       </div>

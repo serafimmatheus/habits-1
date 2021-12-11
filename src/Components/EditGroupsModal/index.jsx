@@ -8,7 +8,12 @@ import { GroupsContext } from "../../Providers/habits";
 import { Modal } from "@mui/material";
 import { GroupsForm } from "../../Styles/global";
 
-const EditGroupsModal = ({ group_id, token, setModalEdit, modalEdit }) => {
+const EditGroupsModal = ({
+  group_id,
+  token,
+  setModalEditGroup,
+  modalEditGroup,
+}) => {
   const { editGroups } = useContext(GroupsContext);
 
   const schema = yup.object().shape({
@@ -25,7 +30,7 @@ const EditGroupsModal = ({ group_id, token, setModalEdit, modalEdit }) => {
   });
 
   const closeModal = () => {
-    setModalEdit(false);
+    setModalEditGroup(false);
   };
 
   const onSubmit = (data) => {
@@ -33,9 +38,9 @@ const EditGroupsModal = ({ group_id, token, setModalEdit, modalEdit }) => {
   };
 
   return (
-    <Modal open={modalEdit}>
+    <Modal>
       <div>
-        <h3>Editar Hábito</h3>
+        <h3>Editar Grupo </h3>
         <GroupsForm onSubmit={handleSubmit(onSubmit)}>
           <h4>Novo nome:</h4>
           <input type="text" placeholder="Nome" {...register("name")} />

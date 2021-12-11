@@ -31,7 +31,15 @@ const Groups = () => {
       <h3>GROUPS</h3>
       <button onClick={() => handleClickCreate()}>Crie um novo grupo</button>
       <div>
-        <button onClick={() => handleClickSearch()}>Buscar grupos</button>
+        {searchInput === "" ? (
+          <button onClick={() => handleClickSearch()}>
+            Buscar por todos grupos
+          </button>
+        ) : (
+          <button onClick={() => handleClickSearch()}>
+            Buscar grupo específico
+          </button>
+        )}
         <input
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}

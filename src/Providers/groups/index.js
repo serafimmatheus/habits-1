@@ -29,6 +29,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroups(response.data.results);
+        console.log(response.data.results);
       });
   };
 
@@ -56,7 +57,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         getUserGroups(token);
-        setUserGroupId(response.data.users_on_group);
         reset();
       })
       .then(closeModal())
