@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-import api from "../../services/api";
+import api from "../../Services";
 
 export const HabitsContext = createContext([]);
 

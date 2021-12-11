@@ -14,8 +14,8 @@ const Groups = () => {
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    getUserGroups(token);
     setRendered(true);
+    getUserGroups(token);
   }, [token]);
 
   const handleClickCreate = () => {
