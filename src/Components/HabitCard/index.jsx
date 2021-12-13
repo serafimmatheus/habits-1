@@ -14,7 +14,7 @@ const HabitCard = ({ habit }) => {
 
   return (
     <HabitCardContainer>
-      <h3>Nome: {habit.title}</h3>
+      <h3>{habit.title}</h3>
       <h4>Dificuldade: {habit.difficulty}</h4>
       <h4>
         Finalizado? {habit.achieved ? <span>Sim</span> : <span>Não</span>}

@@ -5,6 +5,16 @@ import { HabitsContext } from "../../Providers/habits";
 import HabitList from "../../Components/HabitList";
 import AddHabitsModal from "../../Components/AddHabitsModal";
 
+import {
+  HabitPageContainer,
+  SectionTitle,
+  PageTitle,
+  ButtonAdd,
+  AddIcon,
+} from "../../Styles/global";
+
+import PlussIcon from "../../assets/img/plus-icon.png";
+
 const Habits = () => {
   const { habits, getHabits } = useContext(HabitsContext);
 
@@ -23,10 +33,14 @@ const Habits = () => {
 
   return (
     <div>
-      <h3>HABITS</h3>
-      <button onClick={() => handleClickAdd()}>Adcione um novo hábito</button>
-      <div>
-        <h3>Seus hábitos:</h3>
+      <PageTitle>HABITS (adicionar HEADER)</PageTitle>
+      <HabitPageContainer>
+        <SectionTitle>
+          Meus hábitos:
+          <ButtonAdd onClick={() => handleClickAdd()}>
+            <AddIcon src={PlussIcon} alt="Adicione um novo hábito" />
+          </ButtonAdd>
+        </SectionTitle>
         {rendered ? (
           habits.length > 0 ? (
             <HabitList />
@@ -34,7 +48,7 @@ const Habits = () => {
             <h2>Adicione Hábitos</h2>
           )
         ) : null}
-      </div>
+      </HabitPageContainer>
       <AddHabitsModal
         modalHabits={modalHabits}
         setModalHabits={setModalHabits}

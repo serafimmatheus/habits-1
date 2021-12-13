@@ -11,7 +11,7 @@ function App() {
   const history = useHistory();
 
   const testUser = {
-    username: "gabriel-kenzie",
+    username: "testador-teste",
     password: "123456",
   };
 

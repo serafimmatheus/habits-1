@@ -37,24 +37,22 @@ const EditHabitsModal = ({ habit_id, token, setModalEdit, modalEdit }) => {
 
   return (
     <Modal open={modalEdit}>
-      <div>
+      <HabitsForm onSubmit={handleSubmit(onSubmit)}>
         <h3>Editar Hábito</h3>
-        <HabitsForm onSubmit={handleSubmit(onSubmit)}>
-          <select {...register("achieved")}>
-            <option value="">Tarefa completada?</option>
-            <option value={false}>Não</option>
-            <option value={true}>Sim</option>
-          </select>
-          <h4>Progresso atual:</h4>
-          <input
-            type="number"
-            placeholder="Progresso"
-            {...register("how_much_achieved")}
-          />
-          <button type="submit">Editar</button>
-        </HabitsForm>
-        <button onClick={() => closeModal()}>FECHAR</button>
-      </div>
+        <select {...register("achieved")}>
+          <option value="">Tarefa completada?</option>
+          <option value={false}>Não</option>
+          <option value={true}>Sim</option>
+        </select>
+        <h4>Progresso atual:</h4>
+        <input
+          type="number"
+          placeholder="Progresso"
+          {...register("how_much_achieved")}
+        />
+        <button type="submit">Editar</button>
+        <button onClick={() => closeModal()}>Cancelar</button>
+      </HabitsForm>
     </Modal>
   );
 };
