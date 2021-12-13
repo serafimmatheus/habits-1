@@ -2,12 +2,13 @@ import { useState, useEffect, useContext } from "react";
 
 import { GroupsContext } from "../../Providers/groups";
 import { HeaderDash } from "../../Components/HeaderDash";
-
+import MyGroups from "../../Components/MyGroups";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
 
 const Groups = () => {
-  const { groups, getUserGroups, searchGroups } = useContext(GroupsContext);
+  const { groups, getUserGroups, searchGroups, grouT, setGroupT } =
+    useContext(GroupsContext);
 
   const [token] = useState(localStorage.getItem("@Habits:token"));
   const [rendered, setRendered] = useState(false);
@@ -16,7 +17,7 @@ const Groups = () => {
 
   useEffect(() => {
     setRendered(true);
-    getUserGroups(token);
+    getUserGroups();
   }, [token]);
 
   const handleClickCreate = () => {
@@ -34,6 +35,7 @@ const Groups = () => {
       <div>
         <h3>GROUPS</h3>
         <button onClick={() => handleClickCreate()}>Crie um novo grupo</button>
+        <button onClick={setGroupT(true)}>Mostrar meus grupos</button>
         <div>
           {searchInput === "" ? (
             <button onClick={() => handleClickSearch()}>
@@ -50,6 +52,7 @@ const Groups = () => {
             placeholder="Busca"
           />
         </div>
+        <div>{grouT === true ? <MyGroups /> : false}</div>
         <div>
           <h3>Seus grupos:</h3>
           {rendered ? (
