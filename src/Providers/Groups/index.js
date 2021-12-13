@@ -8,7 +8,7 @@ export const GroupsProvider = ({ children }) => {
 
   const token =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5NDg2MTMxLCJqdGkiOiI5ZWI0MjRhMjNhYWI0NTUwYmVhY2Y4ZGUxZjUyZGQ4ZiIsInVzZXJfaWQiOjk1fQ.ghNkwRw4jpobDI0FrB-CSDNG3R3_eYR2IC8CxcdhrLo";
-  const request = () => {
+  const groupsSearch = () => {
     api
       .get(`/groups/?search=${input}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -17,7 +17,7 @@ export const GroupsProvider = ({ children }) => {
         setGroups(response.data.results);
       });
   };
-  const requestSub = (groupId) => {
+  const subscribeGroups = (groupId) => {
     api
       .post(
         `groups/${groupId}/subscribe/`,
@@ -31,7 +31,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
-  const subscribe = () => {
+  const subscriptionsGroup = () => {
     api
       .get(
         "/groups/subscriptions/",
@@ -42,7 +42,7 @@ export const GroupsProvider = ({ children }) => {
       )
       .then((response) => console.log(response.data));
   };
-  const addRequest = (name, category, description) => {
+  const addGroups = (name, category, description) => {
     console.log(name);
     api
       .post(
@@ -64,10 +64,10 @@ export const GroupsProvider = ({ children }) => {
       value={{
         groups,
         setInput,
-        requestSub,
-        subscribe,
-        addRequest,
-        request,
+        groupsSearch,
+        subscribeGroups,
+        addGroups,
+        subscriptionsGroup,
       }}
     >
       {children}
