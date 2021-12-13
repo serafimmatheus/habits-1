@@ -5,29 +5,35 @@ export const GroupContext = createContext();
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [input, setInput] = useState("");
+  const [subGroups, setSubGroups] = useState([]);
 
   const token =
     "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5NDg2MTMxLCJqdGkiOiI5ZWI0MjRhMjNhYWI0NTUwYmVhY2Y4ZGUxZjUyZGQ4ZiIsInVzZXJfaWQiOjk1fQ.ghNkwRw4jpobDI0FrB-CSDNG3R3_eYR2IC8CxcdhrLo";
   const groupsSearch = () => {
     api
-      .get(`/groups/?search=${input}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .get(
+        `/groups/?search=${input}`,
+        { null: null },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((response) => {
         setGroups(response.data.results);
+        console.log(response.data.results);
       });
   };
   const subscribeGroups = (groupId) => {
     api
       .post(
         `groups/${groupId}/subscribe/`,
-        {},
+        { null: null },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
       })
       .catch((err) => console.log(err));
   };
@@ -40,8 +46,9 @@ export const GroupsProvider = ({ children }) => {
           headers: { Authorization: `Bearer: ${token}` },
         }
       )
-      .then((response) => console.log(response.data));
+      .then((response) => setSubGroups(response.data));
   };
+  console.log(subGroups);
   const addGroups = (name, category, description) => {
     console.log(name);
     api
@@ -56,7 +63,20 @@ export const GroupsProvider = ({ children }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
-      .then((response) => console.log(response));
+      .then((response) => console.log(response.data));
+  };
+  const unsubGroups = (id) => {
+    api
+      .delete(
+        `/groups/${id}/unsubscribe/`,
+        { null: null },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) =>
+        console.log(response.data).catch((err) => console.log(err))
+      );
   };
 
   return (
@@ -68,6 +88,8 @@ export const GroupsProvider = ({ children }) => {
         subscribeGroups,
         addGroups,
         subscriptionsGroup,
+        unsubGroups,
+        subGroups,
       }}
     >
       {children}
