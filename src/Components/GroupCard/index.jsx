@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import Groups from "../../Pages/Groups";
 import { GroupsContext } from "../../Providers/groups";
 
 import { GroupCardContainer } from "../../Styles/global";
