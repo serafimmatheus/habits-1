@@ -57,6 +57,9 @@ const CreateGoal = ({ groupId }) => {
     addGoal(data, groupId);
     reset();
     handleCloseGoalModal();
+    setStatusDifficulty("Fácil");
+    setStatusAchieved("false");
+    console.log(data);
   };
 
   const style = {

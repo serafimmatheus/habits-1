@@ -9,15 +9,26 @@ import {
 } from "react-icons/md";
 import EditGoal from "../EditGoal";
 
-const SearchGoals = () => {
+const SearchGoals = ({ groupId }) => {
   const { goals, searchGoals, removeGoal, handleOpenEditModal } =
     useContext(GoalsContext);
+
+  const ordem = (a, b) => {
+    if (a.id > b.id) {
+      return 1;
+    }
+    if (a.id < b.id) {
+      return -1;
+    }
+    return 0;
+  };
+
   return (
     <div>
-      <Button onClick={() => searchGoals(4)}>buscar metas</Button>
+      <Button onClick={() => searchGoals(groupId)}>buscar metas</Button>
 
       <ul>
-        {goals.map((item) => (
+        {goals.sort(ordem).map((item) => (
           <li key={item.id}>
             <h2>{item.title}</h2>
             <p>Dificuldade: {item.difficulty}</p>
@@ -35,13 +46,16 @@ const SearchGoals = () => {
               />
             </Box>
             {item.achieved ? <MdCheckCircleOutline /> : <MdDangerous />}
-            <IconButton size="small" onClick={() => removeGoal(item.id, 4)}>
+            <IconButton
+              size="small"
+              onClick={() => removeGoal(item.id, groupId)}
+            >
               <MdOutlineDelete />
             </IconButton>
             <IconButton size="small" onClick={() => handleOpenEditModal(item)}>
               <MdEditNote />
             </IconButton>
-            <EditGoal groupId="4" goalId={item.id} />
+            <EditGoal groupId={groupId} goalId={item.id} />
           </li>
         ))}
       </ul>

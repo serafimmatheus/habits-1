@@ -17,17 +17,15 @@ import * as yup from "yup";
 import { useContext, useEffect, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 
-const EditGoal = ({ groupId, goalId }) => {
+const EditGoal = ({ groupId }) => {
   const { editGoal, openEdit, handleCloseEditModal, itemEdit } =
     useContext(GoalsContext);
 
   const schema = yup.object().shape({
     title: yup.string(),
-    // difficulty: yup.string().required("Campo obrigatório"),
-    // achieved: yup.string().required("Campo obrigatório"),
-    how_much_achieved: yup.string().required("Campo obrigatório"),
   });
 
+  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState("Fácil");
   const [statusDifficulty, setStatusDifficulty] = useState("Fácil");
   const [statusAchieved, setStatusAchieved] = useState(false);
   const [statusTitle, setStatusTitle] = useState("");
@@ -39,7 +37,7 @@ const EditGoal = ({ groupId, goalId }) => {
     } else {
       setStatusAchieved("false");
     }
-
+    setStatusHowMuchAchieved(itemEdit.how_much_achieved);
     setStatusDifficulty(itemEdit.difficulty);
     setStatusTitle(itemEdit.title);
     setStatusId(itemEdit.id);
@@ -62,7 +60,7 @@ const EditGoal = ({ groupId, goalId }) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ({ title, how_much_achieved }) => {
+  const onSubmit = ({ title }) => {
     if (title === "") {
       title = statusTitle;
     }
@@ -73,7 +71,7 @@ const EditGoal = ({ groupId, goalId }) => {
       achieved: statusAchieved,
       difficulty: statusDifficulty,
       group: groupId,
-      how_much_achieved,
+      how_much_achieved: statusHowMuchAchieved,
     };
 
     editGoal(data, statusId, groupId);
@@ -152,7 +150,7 @@ const EditGoal = ({ groupId, goalId }) => {
             marks
             min={0}
             max={100}
-            {...register("how_much_achieved")}
+            onChangeCommitted={(e, value) => setStatusHowMuchAchieved(value)}
           />
         </Box>
         <Box>
@@ -175,7 +173,7 @@ const EditGoal = ({ groupId, goalId }) => {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
-          CRIAR
+          SALVAR
         </Button>
       </Box>
     </Modal>

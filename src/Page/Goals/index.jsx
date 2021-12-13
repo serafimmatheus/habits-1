@@ -5,11 +5,11 @@ import CreateGoal from "../../Components/CreateGoal";
 import { GoalsContext } from "../../Providers/Goals";
 import SearchGoals from "../../Components/SearchGoals";
 
-const Goals = () => {
+const Goals = ({ groupId }) => {
   const { handleOpenGoalModal } = useContext(GoalsContext);
   return (
     <Container component="main" maxWidth="xs">
-      <CreateGoal groupId="4" />
+      <CreateGoal groupId={groupId} />
       <Box
         sx={{
           display: "flex",
@@ -23,7 +23,7 @@ const Goals = () => {
           <MdAddchart />
         </Fab>
       </Box>
-      <SearchGoals />
+      <SearchGoals groupId={groupId} />
     </Container>
   );
 };
