@@ -35,6 +35,7 @@ const EditGroupsModal = ({
 
   const onSubmit = (data) => {
     editGroups(group_id, data, token, reset, closeModal);
+    modalEditGroup();
   };
 
   return (

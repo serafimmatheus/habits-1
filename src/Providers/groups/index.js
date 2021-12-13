@@ -6,8 +6,6 @@ export const GroupsContext = createContext([]);
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [useSub, setUseSub] = useState(false);
-  const [userId, setUserId] = useState();
-  const [userGroupId, setUserGroupId] = useState([]);
   const getUserGroups = (token) => {
     api
       .get("/groups/subscriptions/", {
@@ -28,7 +26,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         setGroups(response.data.results);
-        console.log(response.data.results);
       });
   };
 
@@ -65,26 +62,29 @@ export const GroupsProvider = ({ children }) => {
   const subscribeGroups = (id, token) => {
     api
       .post(
-        `groups/${id}/subscribe/`,
-        {},
+        `/groups/${id}/subscribe/`,
+        { null: null },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
       .then((response) => {
         getUserGroups(token);
-        setUserId(response.data.user.id);
       })
       .catch((err) => console.log(err));
   };
   console.log(useSub);
   const unsubscribeGroups = (id, token) => {
     api
-      .delete(`/groups/${id}/unsubscribe/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .delete(
+        `/groups/${id}/unsubscribe/`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         getUserGroups(token);
         setUseSub(false);

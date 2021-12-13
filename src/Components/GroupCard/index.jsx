@@ -6,10 +6,8 @@ import { GroupCardContainer } from "../../Styles/global";
 import EditGroupsModal from "../EditHabitsModal";
 
 const GroupCard = ({ group }) => {
-  const { subscribeGroups, unsubscribeGroups, userId, userGroupId } =
-    useContext(GroupsContext);
+  const { subscribeGroups, unsubscribeGroups } = useContext(GroupsContext);
   const token = localStorage.getItem("@Habits:token");
-  console.log(userId);
   const [modalEditGroup, setModalEditGroup] = useState(false);
 
   const handleclickSubscribe = () => {
