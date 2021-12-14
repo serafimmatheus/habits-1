@@ -12,7 +12,7 @@ import { useState } from "react";
 
 import { FiUser, FiLock } from "react-icons/fi";
 
-import { AnimationContainer, Container, Content } from "./style";
+import { AnimationContainer, Container, Content, Image, Spam } from "./style";
 
 import Input from "../../Components/Input/index";
 
@@ -59,11 +59,9 @@ function Login() {
     <Container>
       <Content>
         <AnimationContainer>
-          <h1>Login</h1>
-
-          {error?.message}
-
           <form onSubmit={handleSubmit(onSubmit)}>
+            <h1>Login</h1>
+            <Spam>{error?.message}</Spam>
             <Input
               register={register}
               name="username"
@@ -86,16 +84,13 @@ function Login() {
             <ButtonStyled type="submit">Logar</ButtonStyled>
 
             <p>
-              Ainda não possui conta? Faça seu
-              <Link to="/register">Cadastro.</Link>
+              Não possui conta?<Link to="/register"> Cadastre-se.</Link>
             </p>
           </form>
         </AnimationContainer>
       </Content>
 
-      <div>
-        <h2>Imagem</h2>
-      </div>
+      <Image />
     </Container>
   );
 }
