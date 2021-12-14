@@ -1,15 +1,17 @@
-import { Typography, Box, Fab, Container } from "@material-ui/core";
+import { Typography, Box, Fab, Container, Button } from "@material-ui/core";
 import { MdAddchart } from "react-icons/md";
 import { useContext } from "react";
 import CreateGoal from "../../Components/CreateGoal";
 import { GoalsContext } from "../../Providers/Goals";
 import SearchGoals from "../../Components/SearchGoals";
+import { useHistory } from "react-router";
 
-const Goals = ({ groupId }) => {
+const Goals = () => {
   const { handleOpenGoalModal } = useContext(GoalsContext);
+  const history = useHistory();
   return (
     <Container component="main" maxWidth="xs">
-      <CreateGoal groupId={groupId} />
+      <CreateGoal />
       <Box
         sx={{
           display: "flex",
@@ -23,7 +25,8 @@ const Goals = ({ groupId }) => {
           <MdAddchart />
         </Fab>
       </Box>
-      <SearchGoals groupId={groupId} />
+      <SearchGoals />
+      <Button onClick={() => history.push("/dashboard")}>Voltar</Button>
     </Container>
   );
 };

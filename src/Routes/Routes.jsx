@@ -10,7 +10,9 @@ export const Routes = () => {
 
       <Route exact path="/register"></Route>
 
-      <Route exact path="/dashboard">
+      <Route exact path="/dashboard"></Route>
+
+      <Route path="/dashboard/goal">
         <Goals groupId="362" />
       </Route>
     </Switch>

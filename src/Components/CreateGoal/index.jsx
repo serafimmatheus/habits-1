@@ -17,8 +17,9 @@ import * as yup from "yup";
 import { useContext, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 
-const CreateGoal = ({ groupId }) => {
-  const { addGoal, open, handleCloseGoalModal } = useContext(GoalsContext);
+const CreateGoal = () => {
+  const { addGoal, open, handleCloseGoalModal, groupId } =
+    useContext(GoalsContext);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -59,7 +60,6 @@ const CreateGoal = ({ groupId }) => {
     handleCloseGoalModal();
     setStatusDifficulty("Fácil");
     setStatusAchieved("false");
-    console.log(data);
   };
 
   const style = {

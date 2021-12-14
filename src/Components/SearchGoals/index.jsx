@@ -1,4 +1,4 @@
-import { Button, FormLabel, Box, IconButton, Slider } from "@material-ui/core";
+import { FormLabel, Box, IconButton, Slider } from "@material-ui/core";
 import { useContext } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 import {
@@ -9,8 +9,8 @@ import {
 } from "react-icons/md";
 import EditGoal from "../EditGoal";
 
-const SearchGoals = ({ groupId }) => {
-  const { goals, searchGoals, removeGoal, handleOpenEditModal } =
+const SearchGoals = () => {
+  const { goals, removeGoal, handleOpenEditModal, groupId } =
     useContext(GoalsContext);
 
   const ordem = (a, b) => {
@@ -25,8 +25,6 @@ const SearchGoals = ({ groupId }) => {
 
   return (
     <div>
-      <Button onClick={() => searchGoals(groupId)}>buscar metas</Button>
-
       <ul>
         {goals.sort(ordem).map((item) => (
           <li key={item.id}>

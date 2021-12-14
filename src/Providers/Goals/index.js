@@ -23,6 +23,7 @@ export const GoalsProvider = ({ children }) => {
 
   //Salvar as metas dentro de um state
   const [goals, setGoals] = useState([]);
+  const [groupId, setGroupId] = useState(0);
 
   const [itemEdit, setItemEdit] = useState({});
 
@@ -43,6 +44,7 @@ export const GoalsProvider = ({ children }) => {
       .get(`/goals/?group=${groupId}`)
       .then((response) => {
         setGoals(response.data.results);
+        setGroupId(groupId);
       })
       .catch((err) => console.log(err));
   };
@@ -84,6 +86,7 @@ export const GoalsProvider = ({ children }) => {
         handleOpenEditModal,
         handleCloseEditModal,
         itemEdit,
+        groupId,
       }}
     >
       {children}

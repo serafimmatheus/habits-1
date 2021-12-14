@@ -17,8 +17,8 @@ import * as yup from "yup";
 import { useContext, useEffect, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 
-const EditGoal = ({ groupId }) => {
-  const { editGoal, openEdit, handleCloseEditModal, itemEdit } =
+const EditGoal = () => {
+  const { editGoal, openEdit, handleCloseEditModal, itemEdit, groupId } =
     useContext(GoalsContext);
 
   const schema = yup.object().shape({
