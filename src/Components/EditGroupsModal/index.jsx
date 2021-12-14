@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useContext } from "react";
-import { GroupsContext } from "../../Providers/habits";
+import { GroupsContext } from "../../Providers/groups";
 
 import { Modal } from "@mui/material";
 import { GroupsForm } from "../../Styles/global";
@@ -38,7 +38,7 @@ const EditGroupsModal = ({
   };
 
   return (
-    <Modal>
+    <Modal open={modalEditGroup}>
       <div>
         <h3>Editar Grupo </h3>
         <GroupsForm onSubmit={handleSubmit(onSubmit)}>

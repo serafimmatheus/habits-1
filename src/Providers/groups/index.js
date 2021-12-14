@@ -21,6 +21,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
+  console.log(groups);
 
   const searchGroups = (input, token) => {
     api
@@ -81,11 +82,15 @@ export const GroupsProvider = ({ children }) => {
   console.log(useSub);
   const unsubscribeGroups = (id, token) => {
     api
-      .delete(`/groups/${id}/unsubscribe/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .delete(
+        `/groups/${id}/unsubscribe/`,
+        { null: null },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         getUserGroups(token);
         setUseSub(false);
