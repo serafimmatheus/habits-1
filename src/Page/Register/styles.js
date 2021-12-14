@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import registerImage from "../../Assets/registerV.png";
+import registerImage from "../../Assets/signupIII.png";
 
 export const Container = styled.div`
   height: 100vh;
@@ -59,14 +59,25 @@ export const AnimationContainer = styled.div`
       margin-top: 16px;
     }
 
-    /* adicionei a classe paragraph ao <p> abaixo */
     .paragraph {
       margin-top: 8px;
+
+      @media screen and (max-width: 400px) {
+        font-size: 0.8rem;
+      }
 
       a {
         font-weight: bold;
         color: var(--red);
       }
+    }
+
+    @media screen and (max-width: 410px) {
+      width: 320px;
+    }
+
+    @media screen and (max-width: 360px) {
+      width: 280px;
     }
   }
 `;

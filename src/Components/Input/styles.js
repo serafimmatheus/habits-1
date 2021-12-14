@@ -5,6 +5,11 @@ export const Container = styled.div`
 
   p {
     padding-bottom: 3px;
+    padding-left: 10px;
+
+    @media screen and (max-width: 400px) {
+      font-size: 0.9rem;
+    }
   }
 
   div {
@@ -44,11 +49,14 @@ export const InputContainer = styled.div`
     align-items: center;
     flex: 1;
     border: 0;
-    /* color: var(--log-cabin); */
     outline-color: var(--coriander);
     outline-offset: 0.1em;
     &::placeholder {
       color: var(--log-cabin);
+
+      @media screen and (max-width: 410px) {
+        font-size: 0.9rem;
+      }
     }
   }
 

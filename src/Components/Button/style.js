@@ -1,17 +1,5 @@
 import styled from "styled-components";
 
-// Matheus
-// export const ButtonStyled = styled.button`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   cursor: pointer;
-//   border: 2px solid green;
-//   border-radius: 8px;
-// `;
-
-// Figma Style
 export const ButtonStyled = styled.button`
     background-color: ${props => (props.whiteSchema ? "#f9f9f9" : "#03031b")};
     color: ${props => (props.whiteSchema ? "#03031b" : "#f9f9f9" )};
@@ -23,4 +11,13 @@ export const ButtonStyled = styled.button`
     margin-top: 16px;
     width: 300px;
     transition: 0.5s;
+
+    @media screen and (max-width: 410px) {
+      width: 270px;
+      font-size: 1.1rem;
+    }
+
+    @media screen and (max-width: 360px) {
+      width: 240px;
+    }
 `
