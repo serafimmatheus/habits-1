@@ -16,14 +16,6 @@ export const Dashboard = () => {
               <FiPlusSquare />
             </span>
           </Habitos>
-
-          <BoxHabits>
-            <CardsHabits />
-            <CardsHabits />
-            <CardsHabits />
-            <CardsHabits />
-            <CardsHabits />
-          </BoxHabits>
         </div>
       </Main>
     </>

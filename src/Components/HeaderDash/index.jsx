@@ -2,6 +2,7 @@ import { FiMenu } from "react-icons/fi";
 import { HeaderDashboard, BoxHeaderDashboard, NavBar, Header } from "./style";
 import { useState } from "react";
 import { Button } from "../Button";
+import { Link } from "react-router-dom";
 
 export const HeaderDash = () => {
   const [isTrueMobile, setIsTrueModal] = useState(false);
@@ -24,30 +25,41 @@ export const HeaderDash = () => {
               </div>
 
               <div className="modal">
+                <h2>Usuário</h2>
                 <ul>
-                  <li>Hábitos</li>
-                  <li>Grupos</li>
+                  <Link className="link" to="/dashboard">
+                    <li>Hábitos</li>
+                  </Link>
+
+                  <Link className="link" to="/dashboard/groups">
+                    <li>Grupos</li>
+                  </Link>
                 </ul>
 
                 <div className="input">
                   <input placeholder="Pesquisar" />
-                  <Button>Pesquisar</Button>
+                  <button>Pesquisar</button>
                 </div>
               </div>
             </nav>
 
             <nav className="desktop">
+              <h2>Usuário</h2>
               <ul>
-                <li>Hábitos</li>
-                <li>Grupos</li>
+                <Link className="link" to="/dashboard">
+                  <li>Hábitos</li>
+                </Link>
+
+                <Link className="link" to="/dashboard/groups">
+                  <li>Grupos</li>
+                </Link>
               </ul>
 
               <div className="input">
                 <input placeholder="Pesquisar" />
-                <Button>Pesquisar</Button>
+                <button>Pesquisar</button>
               </div>
             </nav>
-            <h2>Usuário</h2>
           </BoxHeaderDashboard>
         </HeaderDashboard>
       </Header>
