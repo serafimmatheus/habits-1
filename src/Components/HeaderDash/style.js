@@ -67,6 +67,7 @@ export const BoxHeaderDashboard = styled.div`
     width: 100%;
     height: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
@@ -102,7 +103,7 @@ export const BoxHeaderDashboard = styled.div`
           }
         }
 
-        .input {
+        div.input {
           position: relative;
           input {
             position: relative;
@@ -110,6 +111,8 @@ export const BoxHeaderDashboard = styled.div`
           button {
             top: 0;
             right: 0;
+            width: 100px;
+            height: 30px;
             position: absolute;
           }
         }
@@ -118,17 +121,11 @@ export const BoxHeaderDashboard = styled.div`
 
     .desktop {
       display: none;
-
-      ul {
-        position: absolute;
-        top: 60px;
-        left: 19%;
-      }
     }
   }
 
   @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
+    flex-direction: row;
 
     .mobile {
       display: none;
@@ -136,7 +133,10 @@ export const BoxHeaderDashboard = styled.div`
 
     .desktop {
       display: flex;
-      flex-direction: column-reverse;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
 
       ul {
         display: flex;
@@ -145,6 +145,16 @@ export const BoxHeaderDashboard = styled.div`
         li {
           margin: 0 10px;
         }
+      }
+    }
+
+    .link {
+      text-decoration: none;
+      color: black;
+
+      :hover {
+        color: white;
+        text-decoration: underline;
       }
     }
   }
