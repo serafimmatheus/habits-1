@@ -27,8 +27,9 @@ export const GoalsProvider = ({ children }) => {
 
   const [itemEdit, setItemEdit] = useState({});
 
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5ODU1NjU4LCJqdGkiOiJkODE2NzdhYzE5ZTE0ZGVmYThiZThlZmFiMGI5NGJlZCIsInVzZXJfaWQiOjk1fQ.ZkGR6-KcQUpbVnks3CnhqCLz6nSiMTbMObG24yQOx0M";
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Habits:token")) || ""
+  );
 
   const addGoal = (data, groupId) => {
     api
