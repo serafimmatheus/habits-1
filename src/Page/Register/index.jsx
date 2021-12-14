@@ -29,7 +29,7 @@ const Register = () => {
       .required("Campo obrigatório"),
     password: yup
       .string()
-      .min(8, "Mínimo de 8 caracteres")
+      .min(8, "Mínimo de 8 caracteres.")
       .matches(PASSWORD_REGEX, PASSWORD_INSTRUCTIONS)
       .required("Campo obrigatório"),
   });
@@ -88,7 +88,7 @@ const Register = () => {
               error={errors.password?.message}
             />
             <ButtonStyled type="submit">Enviar</ButtonStyled>
-            <p>
+            <p className="paragraph">
               Já possui conta? Faça <Link to="/login">login.</Link>
             </p>
           </form>

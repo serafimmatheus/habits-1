@@ -59,7 +59,8 @@ export const AnimationContainer = styled.div`
       margin-top: 16px;
     }
 
-    p {
+    /* adicionei a classe paragraph ao <p> abaixo */
+    .paragraph {
       margin-top: 8px;
 
       a {

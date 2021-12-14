@@ -5,13 +5,17 @@ const Input = ({ label, icon: Icon, register, name, error = "", ...rest }) => {
 
   return (
     <Container>
-      <div>
+      {/* <div>
         {label} {!!error && <span> - {error}</span>}
-      </div>
+      </div> */}
+      <p>{label}</p>
       <InputContainer isErrored={!!error}>
         {Icon && <Icon size={20} />}
         <input {...register(name)} {...rest} />
       </InputContainer>
+      <div>
+        {!!error && <span> {error}</span>}
+      </div>
     </Container>
   );
 };
