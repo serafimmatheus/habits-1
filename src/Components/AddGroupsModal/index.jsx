@@ -9,7 +9,7 @@ import { Modal } from "@mui/material";
 import { GroupsForm } from "../../Styles/global";
 
 const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
-  const { createGroups, editGroups } = useContext(GroupsContext);
+  const { createGroups } = useContext(GroupsContext);
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),

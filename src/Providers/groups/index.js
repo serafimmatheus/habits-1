@@ -5,23 +5,19 @@ export const GroupsContext = createContext([]);
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [useSub, setUseSub] = useState(false);
-  const [myGroups, setMyGroups] = useState([]);
-  const [grouT, setGroupT] = useState(true);
-  const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Habits:token")) || ""
+  );
 
-  const getUserGroups = () => {
+  const getUserGroups = (token) => {
     api
-      .get(
-        "/groups/subscriptions/",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .get("/groups/subscriptions/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
-        setMyGroups(response.data);
+        setGroups(response.data);
         console.log(response.data);
       })
       .catch((err) => {
@@ -43,15 +39,20 @@ export const GroupsProvider = ({ children }) => {
       });
   };
 
-  const editGroups = (id, data, token, reset, closeModal) => {
+  const editGroups = (id, name, category, description, reset, closeModal) => {
     api
-      .patch(`groups/${id}/subscribe/`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .patch(
+        `groups/${id}/`,
+        { category, name, description },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         getUserGroups(token);
+        console.log(response.data);
         reset();
       })
       .then(closeModal())
@@ -86,31 +87,28 @@ export const GroupsProvider = ({ children }) => {
       )
       .then((response) => {
         console.log(response);
+        getUserGroups(token);
       })
       .catch((err) => console.log(err));
   };
-  const unsubscribeGroups = (id, token) => {
+  const unsubscribeGroups = (id) => {
     api
-      .delete(
-        `/groups/${id}/unsubscribe/`,
-        { null: null },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .delete(`/groups/${id}/unsubscribe/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         getUserGroups(token);
         setUseSub(false);
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <GroupsContext.Provider
       value={{
         groups,
-        myGroups,
         getUserGroups,
         searchGroups,
         editGroups,
@@ -119,8 +117,6 @@ export const GroupsProvider = ({ children }) => {
         unsubscribeGroups,
         useSub,
         setUseSub,
-        grouT,
-        setGroupT,
       }}
     >
       {children}

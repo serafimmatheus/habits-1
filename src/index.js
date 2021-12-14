@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStyles } from "./Styles/GlobalStyles";
-import Providers from "./Providers";
+import Providers from "./Providers/index";
 
 ReactDOM.render(
   <React.StrictMode>
