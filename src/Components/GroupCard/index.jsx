@@ -1,4 +1,6 @@
 import { useContext, useState } from "react";
+import { useHistory } from "react-router";
+import { GoalsContext } from "../../Providers/Goals";
 import { GroupsContext } from "../../Providers/groups";
 
 import { Button, GroupCardContainer } from "../../Styles/global";
@@ -6,6 +8,9 @@ import { Button, GroupCardContainer } from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
 
 const GroupCard = ({ group }) => {
+  const { searchGoals } = useContext(GoalsContext);
+  const history = useHistory();
+
   const { subscribeGroups, unsubscribeGroups } = useContext(GroupsContext);
   const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
   const [modalEdit, setModalEdit] = useState(false);
@@ -31,6 +36,14 @@ const GroupCard = ({ group }) => {
       <Button onClick={() => setModalEdit(true)}>Editar grupo</Button>
       <Button onClick={() => unsubscribeGroups(group.id)}>
         Desinscrever-se
+      </Button>
+      <Button
+        onClick={() => {
+          searchGoals(group.id);
+          history.push("/dashboard/goal");
+        }}
+      >
+        Metas
       </Button>
       {modalEdit ? (
         <EditGroupsModal

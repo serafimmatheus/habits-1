@@ -1,19 +1,14 @@
-<<<<<<< HEAD
 import { HabitsProvider } from "./habits";
 import { GroupsProvider } from "./groups";
+import { GoalsProvider } from "./Goals";
 
 const Providers = ({ children }) => {
   return (
     <HabitsProvider>
-      <GroupsProvider>{children}</GroupsProvider>
+      <GroupsProvider>
+        <GoalsProvider>{children}</GoalsProvider>
+      </GroupsProvider>
     </HabitsProvider>
   );
-=======
-import { GoalsProvider } from "./Goals";
-
-const Providers = ({ children }) => {
-  return <GoalsProvider>{children}</GoalsProvider>;
->>>>>>> featGoals
 };
-
 export default Providers;

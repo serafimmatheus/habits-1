@@ -26,7 +26,7 @@ const Goals = () => {
         </Fab>
       </Box>
       <SearchGoals />
-      <Button onClick={() => history.push("/dashboard")}>Voltar</Button>
+      <Button onClick={() => history.push("/dashboard/groups")}>Voltar</Button>
     </Container>
   );
 };
