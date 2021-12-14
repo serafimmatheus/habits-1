@@ -1,7 +1,6 @@
 export const NAME_REGEX =
-  /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
-export const NAME_INSTRUCTIONS =
-  "Nome deve conter somente letras minúsculas e maiúsculas.";
+  /^[\w'\-,.][^\s^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+export const NAME_INSTRUCTIONS = `Mínimo 3 letras e/ou hífen; Sem espaço em branco; Somente letras e/ou hífen`;
 
 export const EMAIL_REGEX = /\S+@\S+\.\S+/;
 export const EMAIL_INSTRUCTIONS = "E-mail inválido. Ex: mcdaleste@yahoo.com.";
