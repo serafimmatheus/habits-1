@@ -4,6 +4,7 @@ import { HabitsContext } from "../../Providers/habits";
 
 import HabitList from "../../Components/HabitList";
 import AddHabitsModal from "../../Components/AddHabitsModal";
+import { HeaderDash } from "../../Components/HeaderDash";
 
 const Habits = () => {
   const { habits, getHabits } = useContext(HabitsContext);
@@ -29,7 +30,9 @@ const Habits = () => {
         <h3>Seus hábitos:</h3>
         {rendered ? (
           habits.length > 0 ? (
-            <HabitList />
+            <>
+              <HabitList />
+            </>
           ) : (
             <h2>Adicione Hábitos</h2>
           )
