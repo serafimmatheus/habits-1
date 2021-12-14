@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 
-import Providers from "./Providers/index";
+import { Providers } from "./Providers";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -8,14 +8,19 @@ export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [useSub, setUseSub] = useState(false);
   const [userId, setUserId] = useState();
+  const [groupsSubs, setGroupsSub] = useState([]);
   const [userGroupId, setUserGroupId] = useState([]);
   const getUserGroups = (token) => {
     api
-      .get("/groups/subscriptions/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(
+        "/groups/subscriptions/",
+        { null: null },
+        {
+          headers: {
+            Authorization: `Bearer: ${token}`,
+          },
+        }
+      )
       .then((response) => {
         setGroups(response.data);
       })
@@ -83,11 +88,11 @@ export const GroupsProvider = ({ children }) => {
   const unsubscribeGroups = (id, token) => {
     api
       .delete(
-        `/groups/${id}/unsubscribe/`,
-        { null: null },
+        `groups/${id}/unsubscribe/`,
+        {},
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer: ${token}`,
           },
         }
       )

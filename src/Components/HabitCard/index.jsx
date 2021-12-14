@@ -8,7 +8,7 @@ import EditHabitsModal from "../EditHabitsModal";
 const HabitCard = ({ habit }) => {
   const { deleteHabits } = useContext(HabitsContext);
 
-  const token = localStorage.getItem("@Habits:token");
+  const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
 
   const [modalEdit, setModalEdit] = useState(false);
 

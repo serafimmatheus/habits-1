@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import Groups from "../../Pages/Groups";
 import { GroupsContext } from "../../Providers/groups";
 
 import { GroupCardContainer } from "../../Styles/global";
@@ -9,7 +8,8 @@ import EditGroupsModal from "../EditHabitsModal";
 const GroupCard = ({ group }) => {
   const { subscribeGroups, unsubscribeGroups, userId, userGroupId } =
     useContext(GroupsContext);
-  const token = localStorage.getItem("@Habits:token");
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM5OTA5Mjc2LCJqdGkiOiIyNTA4ZmU1ZWUzNWM0YTcyOTAwYTdjNTk0NzAyZTgwNiIsInVzZXJfaWQiOjI3OX0.wf2z33cHX9ig__c_RwgTxN6enQZZQTPJRSaZwHTv1Ks";
   console.log(userId);
   const [modalEditGroup, setModalEditGroup] = useState(false);
 
@@ -28,6 +28,7 @@ const GroupCard = ({ group }) => {
       <p>
         <strong>Descrição :</strong> {group.description}
       </p>
+      <p>{group.id}</p>
 
       <button onClick={() => handleclickSubscribe()}>Inscrever-se</button>
       <button onClick={() => setModalEditGroup(true)}>Editar grupo</button>
