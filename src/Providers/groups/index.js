@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import api from "../../Services";
+import { toast } from "react-toastify";
 export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
@@ -53,11 +54,13 @@ export const GroupsProvider = ({ children }) => {
       )
       .then((response) => {
         getUserGroups(token);
+        toast.success("Grupo editado");
         console.log(response.data);
         reset();
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Você não é o criador do grupo!");
       });
   };
 
@@ -69,12 +72,16 @@ export const GroupsProvider = ({ children }) => {
         },
       })
       .then((response) => {
+        toast.success("Grupo criado com sucesso!");
         getUserGroups(token);
         localStorage.setItem("@GroupId", JSON.stringify(response.data.id));
         reset();
       })
       .then(closeModal())
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Erro ao criar grupo");
+        console.log(err);
+      });
   };
 
   const subscribeGroups = (id) => {
@@ -87,10 +94,14 @@ export const GroupsProvider = ({ children }) => {
         }
       )
       .then((response) => {
+        toast.success("Inscrição concluída!");
         console.log(response);
         getUserGroups(token);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Você já é inscrito!");
+        console.log(err);
+      });
   };
   const unsubscribeGroups = (id) => {
     api
@@ -100,10 +111,14 @@ export const GroupsProvider = ({ children }) => {
         },
       })
       .then((response) => {
+        toast.success("Desinscrição concluída!");
         getUserGroups(token);
         setUseSub(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Você não faz parte desse grupo!");
+        console.log(err);
+      });
   };
 
   return (

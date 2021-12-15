@@ -1,26 +1,19 @@
-import * as yup from "yup";
 import { useState } from "react";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
-import { Modal } from "antd";
-const EditGroupsModal = ({ group_id, setModalEdit, modalEdit }) => {
+import { Button } from "../../Styles/global";
+const EditGroupsModal = ({ id, setModalEdit }) => {
   const { editGroups } = useContext(GroupsContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
-    description: yup.string().required(),
-    category: yup.string().required(),
-  });
-
   const closeModal = () => {
     setModalEdit(false);
   };
 
-  const onSubmit = () => {
-    editGroups(group_id, name, category, description, closeModal);
+  const onSubmit = (id) => {
+    editGroups(id, name, category, description, closeModal);
   };
 
   return (
@@ -37,7 +30,8 @@ const EditGroupsModal = ({ group_id, setModalEdit, modalEdit }) => {
           placeholder="Descrição"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button onClick={onSubmit}>Editar</button>
+        <Button onClick={() => onSubmit(id)}>Editar</Button>
+        <Button onClick={() => closeModal()}>Fechar</Button>
       </div>
     </div>
   );

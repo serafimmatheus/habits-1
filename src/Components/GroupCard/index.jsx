@@ -1,14 +1,10 @@
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/groups";
 
-import { Button, GroupCardContainer } from "../../Styles/global";
-
-import EditGroupsModal from "../EditGroupsModal";
+import { Button, ButtonSubs, GroupCardContainer } from "../../Styles/global";
 
 const GroupCard = ({ group }) => {
-  const { subscribeGroups, unsubscribeGroups } = useContext(GroupsContext);
-  const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
-  const [modalEdit, setModalEdit] = useState(false);
+  const { subscribeGroups } = useContext(GroupsContext);
 
   const handleclickSubscribe = () => {
     subscribeGroups(group.id);
@@ -26,20 +22,11 @@ const GroupCard = ({ group }) => {
         <p>
           <strong>Descrição </strong> {group.description}
         </p>
-        <p>{group.id}</p>
         <div>
-          <Button onClick={() => handleclickSubscribe()}>Inscrever-se</Button>
+          <ButtonSubs onClick={() => handleclickSubscribe()}>
+            Inscrever-se
+          </ButtonSubs>
         </div>
-        {modalEdit ? (
-          <EditGroupsModal
-            group_id={group.id}
-            token={token}
-            setModalEdit={setModalEdit}
-            modalEdit={modalEdit}
-          />
-        ) : (
-          false
-        )}
       </GroupCardContainer>
     </>
   );

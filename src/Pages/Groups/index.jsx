@@ -2,20 +2,21 @@ import { useState, useEffect, useContext } from "react";
 
 import { GroupsContext } from "../../Providers/groups";
 import { HeaderDash } from "../../Components/HeaderDash";
-import MyGroups from "../../Components/MyGroups";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
 import {
   ContainerButton,
   Button,
   ButtonSearch,
-  GroupCardContainer,
+  InfoGroupCont,
 } from "../../Styles/global";
 import { BiAddToQueue } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
+import { MdOutlineSubscriptions } from "react-icons/md";
 import SubGroups from "../../Components/SubGroups";
 const Groups = () => {
-  const { groups, getUserGroups, searchGroups } = useContext(GroupsContext);
+  const { groups, getUserGroups, searchGroups, myGroups } =
+    useContext(GroupsContext);
 
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Habits:token")) || ""
@@ -48,41 +49,45 @@ const Groups = () => {
       <div>
         <h3>GROUPS</h3>
         <ContainerButton>
-          <Button onClick={() => subRequest()}>Grupos incritos</Button>{" "}
+          <Button onClick={() => subRequest()}>
+            <MdOutlineSubscriptions size={30} />
+            Grupos incritos
+          </Button>{" "}
           <Button onClick={() => handleClickCreate()}>
-            <BiAddToQueue color="white" />
-            Crie um novo grupo
+            <BiAddToQueue size={30} />
+            Criar Grupos
           </Button>
-          <ButtonSearch>
-            <input
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="Buscar Grupos"
-            ></input>
-
-            {searchInput === "" ? (
-              <Button onClick={() => handleClickSearch()}>
-                Buscar todos
-                <FiSearch />{" "}
-              </Button>
-            ) : (
-              <Button onClick={() => handleClickSearch()}>
-                Buscar específico
-              </Button>
-            )}
-          </ButtonSearch>
         </ContainerButton>
-        <div>
+        <ButtonSearch>
+          {searchInput === "" ? (
+            <Button onClick={() => handleClickSearch()}>
+              <FiSearch size={30} /> Buscar todos
+            </Button>
+          ) : (
+            <Button onClick={() => handleClickSearch()}>
+              <FiSearch size={30} />
+              Buscar específico
+            </Button>
+          )}
+          <input
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Digite para buscar"
+          ></input>
+        </ButtonSearch>
+        <InfoGroupCont>
           <h3>Seus grupos:</h3>
           {rendered ? (
             groups.length > 0 ? (
               <GroupList />
             ) : (
-              <h2>Adicione grupos!</h2>
+              <div>
+                <h1>Adicione grupo</h1>
+              </div>
             )
           ) : null}
-        </div>
-        <GroupCardContainer>{subRender && <SubGroups />}</GroupCardContainer>
+        </InfoGroupCont>
+        {subRender && <SubGroups />}
         <AddGroupsModal
           modalCreateGroup={modalCreateGroup}
           setModalCreateGroup={setModalCreateGroup}
