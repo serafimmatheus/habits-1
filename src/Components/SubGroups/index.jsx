@@ -3,7 +3,7 @@ import { GroupsContext } from "../../Providers/groups";
 import { Button, GroupCardContainerSub } from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
 const SubGroups = () => {
-  const { myGroups, unsubscribeGroups, editGroups } = useContext(GroupsContext);
+  const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
   const [modalEdit, setModalEdit] = useState(false);
   const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
 

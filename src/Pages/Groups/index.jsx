@@ -15,8 +15,7 @@ import { FiSearch } from "react-icons/fi";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import SubGroups from "../../Components/SubGroups";
 const Groups = () => {
-  const { groups, getUserGroups, searchGroups, myGroups } =
-    useContext(GroupsContext);
+  const { groups, getUserGroups, searchGroups } = useContext(GroupsContext);
 
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Habits:token")) || ""

@@ -51,9 +51,10 @@ export const GroupCardContainer = styled.li`
   margin: 10px;
   p {
     strong {
-      font-weigth: 200;
+      font-weigth: 700;
+      font-family: sans-serif;
     }
-    font-size: 25px;
+    font-size: 18px;
   }
   div {
     display: flex;
@@ -71,7 +72,7 @@ export const GroupCardContainerSub = styled.li`
     strong {
       font-weigth: 200;
     }
-    font-size: 25px;
+    font-size: 18px;
   }
   div {
     display: flex;
@@ -99,7 +100,7 @@ export const ButtonSearch = styled.div`
   justify-content: center;
   align-items: center;
   input {
-    height: 40px;
+    height: 64px;
     border: 1px solid #03031b;
     border-radius: 5px;
     outline: none;
@@ -116,6 +117,21 @@ export const ButtonSubs = styled.button`
   border: none;
   border-radius: 10px;
   padding: 15px 40px;
+  :hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #03031b;
+  }
+`;
+export const ButtonActives = styled.button`
+  font-family: PT Serif;
+  background: #03031b;
+  color: #ffffff;
+  transition: 0.3s;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
   :hover {
     cursor: pointer;
     background: #ffffff;
@@ -145,4 +161,8 @@ export const ContainerButton = styled.div`
 export const InfoGroupCont = styled.div`
   display: flex;
   justify-content: center;
+`;
+export const ContainerEdit = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
-import { Button } from "../../Styles/global";
+import { Button, ContainerEdit } from "../../Styles/global";
 const EditGroupsModal = ({ id, setModalEdit }) => {
   const { editGroups } = useContext(GroupsContext);
   const [name, setName] = useState("");
@@ -19,7 +19,7 @@ const EditGroupsModal = ({ id, setModalEdit }) => {
   return (
     <div>
       <h3>Editar Grupo </h3>
-      <div>
+      <ContainerEdit>
         <h4>Novo nome:</h4>
         <input placeholder="Nome" onChange={(e) => setName(e.target.value)} />
         <input
@@ -32,7 +32,7 @@ const EditGroupsModal = ({ id, setModalEdit }) => {
         />
         <Button onClick={() => onSubmit(id)}>Editar</Button>
         <Button onClick={() => closeModal()}>Fechar</Button>
-      </div>
+      </ContainerEdit>
     </div>
   );
 };
