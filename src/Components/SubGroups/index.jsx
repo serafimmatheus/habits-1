@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/groups";
-import { Button, GroupCardContainer } from "../../Styles/global";
+import { Button, GroupCardContainerSub } from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
 const SubGroups = () => {
   const { myGroups, unsubscribeGroups, editGroups } = useContext(GroupsContext);
@@ -8,7 +8,7 @@ const SubGroups = () => {
   const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
 
   return (
-    <GroupCardContainer>
+    <GroupCardContainerSub>
       {myGroups.map((group) =>
         group.length === 0 ? (
           <div>Sem inscrições de grupos</div>
@@ -37,7 +37,7 @@ const SubGroups = () => {
             />
           )
       )}
-    </GroupCardContainer>
+    </GroupCardContainerSub>
   );
 };
 export default SubGroups;

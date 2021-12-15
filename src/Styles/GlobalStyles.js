@@ -45,7 +45,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Roboto Mono', monospace;
         line-height: 1;
         color: var(--black-russian);
-        background-color: var(--coriander);
+        background-color: var(--white);
 
     }
     ol, ul {

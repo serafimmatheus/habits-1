@@ -44,32 +44,42 @@ export const GroupListContainer = styled.ul`
 
 export const GroupCardContainer = styled.li`
   padding: 10px;
-  display: flex;
-  width: 400px;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: green;
+  width: 300px;
   border: 1px solid transparent;
+  background-color: #bdb491;
   border-radius: 6px;
   margin: 10px;
-  div {
-    display: flex;
-  }
   p {
     strong {
-      font-family: "Roboto", sans-serif;
-      font-weight: 800;
-      margin: 10px 10px 0px 0;
-      color: #252542;
+      font-weigth: 200;
     }
-    color: white;
     font-size: 25px;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+  }
+`;
+export const GroupCardContainerSub = styled.li`
+  padding: 10px;
+  width: 300px;
+  border: 1px solid transparent;
+  background-color: #bdb491;
+  border-radius: 6px;
+  margin: 10px;
+  p {
+    strong {
+      font-weigth: 200;
+    }
+    font-size: 25px;
+  }
+  div {
+    display: flex;
+    justify-content: center;
   }
 `;
 export const Button = styled.button`
   font-family: PT Serif;
-  display: flex;
-  align-items: flex-start;
   background: #03031b;
   color: #ffffff;
   transition: 0.3s;
@@ -84,15 +94,25 @@ export const Button = styled.button`
     color: #03031b;
   }
 `;
+export const ButtonSearch = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    height: 40px;
+    border: 1px solid #03031b;
+    border-radius: 5px;
+    outline: none;
+    margin-left: 5px;
+  }
+`;
 export const ButtonSubs = styled.button`
   font-family: PT Serif;
-  display: flex;
-  align-items: flex-start;
   background: #03031b;
   color: #ffffff;
   transition: 0.3s;
   width: 180px;
-  margin-top: 10px;
+  margin: 10px;
   border: none;
   border-radius: 10px;
   padding: 15px 40px;
@@ -115,32 +135,12 @@ export const GroupsForm = styled.form`
   box-sizing: border-box;
   border-radius: 5px;
   padding: 40px 20px 26px;
-`;
+n`;
+
 export const ContainerButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 25px;
-  input {
-    margin: 10px;
-    height: 30px;
-    outline: none;
-    width: 150px;
-    border: transparent;
-    border-radius: 4px;
-  }
-`;
-export const ButtonSearch = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-left: 31px;
-  input {
-    margin: 10px 6px 10px 6px;
-    outline: none;
-    width: 180px;
-    border: transparent;
-    border-radius: 4px;
-  }
 `;
 export const InfoGroupCont = styled.div`
   display: flex;
