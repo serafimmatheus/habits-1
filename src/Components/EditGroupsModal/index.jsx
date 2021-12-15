@@ -1,11 +1,8 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
-
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
-
+import { Modal } from "antd";
 const EditGroupsModal = ({ group_id, setModalEdit, modalEdit }) => {
   const { editGroups } = useContext(GroupsContext);
   const [name, setName] = useState("");
@@ -18,21 +15,12 @@ const EditGroupsModal = ({ group_id, setModalEdit, modalEdit }) => {
     category: yup.string().required(),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
   const closeModal = () => {
     setModalEdit(false);
   };
 
   const onSubmit = () => {
-    editGroups(group_id, name, category, description, reset, closeModal);
+    editGroups(group_id, name, category, description, closeModal);
   };
 
   return (

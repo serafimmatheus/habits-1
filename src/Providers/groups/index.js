@@ -5,11 +5,12 @@ export const GroupsContext = createContext([]);
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [useSub, setUseSub] = useState(false);
+  const [myGroups, setMyGroups] = useState([]);
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Habits:token")) || ""
   );
 
-  const getUserGroups = (token) => {
+  const getUserGroups = () => {
     api
       .get("/groups/subscriptions/", {
         headers: {
@@ -17,7 +18,7 @@ export const GroupsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        setGroups(response.data);
+        setMyGroups(response.data);
         console.log(response.data);
       })
       .catch((err) => {
@@ -55,7 +56,6 @@ export const GroupsProvider = ({ children }) => {
         console.log(response.data);
         reset();
       })
-      .then(closeModal())
       .catch((err) => {
         console.log(err);
       });
@@ -70,6 +70,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         getUserGroups(token);
+        localStorage.setItem("@GroupId", JSON.stringify(response.data.id));
         reset();
       })
       .then(closeModal())
@@ -117,6 +118,7 @@ export const GroupsProvider = ({ children }) => {
         unsubscribeGroups,
         useSub,
         setUseSub,
+        myGroups,
       }}
     >
       {children}

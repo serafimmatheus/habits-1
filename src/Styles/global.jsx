@@ -32,25 +32,36 @@ export const HabitsForm = styled.form`
 `;
 
 export const GroupListContainer = styled.ul`
-  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
   list-style: none;
   padding: 20px;
-  background-color: black;
   border: transparent;
   border-radius: 3px;
 `;
 
 export const GroupCardContainer = styled.li`
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: green;
   border: 1px solid transparent;
   border-radius: 6px;
   margin: 10px;
+  div {
+    display: flex;
+  }
   p {
     strong {
-      font-weigth: 200;
+      font-family: "Roboto", sans-serif;
+      font-weight: 800;
+      color: #252542;
     }
+    color: white;
     font-size: 25px;
   }
 `;
@@ -83,4 +94,25 @@ export const GroupsForm = styled.form`
   box-sizing: border-box;
   border-radius: 5px;
   padding: 40px 20px 26px;
+`;
+export const ContainerButton = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 25px;
+  input {
+    margin: 10px;
+    height: 30px;
+    outline: none;
+    width: 150px;
+    border: transparent;
+    border-radius: 4px;
+  }
+`;
+export const ButtonSearch = styled.div`
+  display: flex;
+  button {
+    width: 150px;
+  }
 `;

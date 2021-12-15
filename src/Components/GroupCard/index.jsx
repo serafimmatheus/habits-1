@@ -15,34 +15,33 @@ const GroupCard = ({ group }) => {
   };
 
   return (
-    <GroupCardContainer>
-      <p>
-        <strong>Nome do grupo:</strong> {group.name}
-      </p>
-      <p>
-        <strong>Categoria :</strong> {group.category}
-      </p>
-      <p>
-        <strong>Descrição :</strong> {group.description}
-      </p>
-      <p>{group.id}</p>
-
-      <Button onClick={() => handleclickSubscribe()}>Inscrever-se</Button>
-      <Button onClick={() => setModalEdit(true)}>Editar grupo</Button>
-      <Button onClick={() => unsubscribeGroups(group.id)}>
-        Desinscrever-se
-      </Button>
-      {modalEdit ? (
-        <EditGroupsModal
-          group_id={group.id}
-          token={token}
-          setModalEdit={setModalEdit}
-          modalEditGroup={modalEdit}
-        />
-      ) : (
-        false
-      )}
-    </GroupCardContainer>
+    <>
+      <GroupCardContainer>
+        <p>
+          <strong>Nome do grupo </strong> {group.name}
+        </p>
+        <p>
+          <strong>Categoria </strong> {group.category}
+        </p>
+        <p>
+          <strong>Descrição </strong> {group.description}
+        </p>
+        <p>{group.id}</p>
+        <div>
+          <Button onClick={() => handleclickSubscribe()}>Inscrever-se</Button>
+        </div>
+        {modalEdit ? (
+          <EditGroupsModal
+            group_id={group.id}
+            token={token}
+            setModalEdit={setModalEdit}
+            modalEdit={modalEdit}
+          />
+        ) : (
+          false
+        )}
+      </GroupCardContainer>
+    </>
   );
 };
 
