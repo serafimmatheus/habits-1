@@ -25,7 +25,7 @@ const EditGoal = () => {
     title: yup.string(),
   });
 
-  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState("Fácil");
+  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState(0);
   const [statusDifficulty, setStatusDifficulty] = useState("Fácil");
   const [statusAchieved, setStatusAchieved] = useState(false);
   const [statusTitle, setStatusTitle] = useState("");
@@ -150,7 +150,7 @@ const EditGoal = () => {
             marks
             min={0}
             max={100}
-            onChangeCommitted={(e, value) => setStatusHowMuchAchieved(value)}
+            onChangeCommitted={(_, value) => setStatusHowMuchAchieved(value)}
           />
         </Box>
         <Box>

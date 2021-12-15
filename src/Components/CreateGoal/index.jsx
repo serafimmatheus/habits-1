@@ -25,9 +25,10 @@ const CreateGoal = () => {
     title: yup.string().required("Campo obrigatório"),
     // difficulty: yup.string().required("Campo obrigatório"),
     // achieved: yup.string().required("Campo obrigatório"),
-    how_much_achieved: yup.string().required("Campo obrigatório"),
+    // how_much_achieved: yup.string().required("Campo obrigatório"),
   });
 
+  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState(0);
   const [statusDifficulty, setStatusDifficulty] = useState("Fácil");
   const [statusAchieved, setStatusAchieved] = useState("false");
 
@@ -54,6 +55,7 @@ const CreateGoal = () => {
       group: groupId,
       difficulty: statusDifficulty,
       achieved: statusAchieved,
+      how_much_achieved: statusHowMuchAchieved,
     };
     addGoal(data, groupId);
     reset();
@@ -127,7 +129,7 @@ const CreateGoal = () => {
             marks
             min={0}
             max={100}
-            {...register("how_much_achieved")}
+            onChangeCommitted={(_, value) => setStatusHowMuchAchieved(value)}
           />
         </Box>
         <Box>
