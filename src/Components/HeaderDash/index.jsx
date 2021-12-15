@@ -1,12 +1,20 @@
 import { FiMenu } from "react-icons/fi";
 import { HeaderDashboard, BoxHeaderDashboard, Header } from "./style";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
+import { ImExit } from "react-icons/im";
 
 export const HeaderDash = () => {
   const [isTrueMobile, setIsTrueModal] = useState(false);
 
   let token = localStorage.getItem("@Habits:token");
+
+  const history = useHistory();
+
+  const handleExit = () => {
+    localStorage.clear();
+    history.push("/login");
+  };
 
   console.log(token);
   return (
@@ -33,6 +41,15 @@ export const HeaderDash = () => {
                   <Link className="link" to="/dashboard/groups">
                     <li>Grupos</li>
                   </Link>
+
+                  <Link className="link" onClick={() => handleExit()}>
+                    <li>
+                      <p>
+                        <ImExit />
+                      </p>
+                      <p>Sair</p>
+                    </li>
+                  </Link>
                 </ul>
               </div>
             </nav>
@@ -46,6 +63,15 @@ export const HeaderDash = () => {
 
                 <Link className="link" to="/dashboard/groups">
                   <li>Grupos</li>
+                </Link>
+
+                <Link className="link" onClick={() => handleExit()}>
+                  <li>
+                    <p>
+                      <ImExit />
+                    </p>
+                    <p>Sair</p>
+                  </li>
                 </Link>
               </ul>
             </nav>
