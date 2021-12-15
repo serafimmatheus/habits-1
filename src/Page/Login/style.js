@@ -8,6 +8,7 @@ export const Container = styled.div`
 `;
 export const Image = styled.div`
   @media (min-width: 1100px) {
+    width: 50%;
     flex: 1;
     /* border-right: 1px solid var(--black); */
     background: url(${registerImage}) no-repeat center, var(--log-cabin);
@@ -24,8 +25,8 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 700px;
+  width: 50%;
+  /* max-width: 700px; */
 `;
 
 const appearFromLeft = keyframes`
