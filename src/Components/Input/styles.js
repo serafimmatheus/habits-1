@@ -49,7 +49,7 @@ export const InputContainer = styled.div`
     align-items: center;
     flex: 1;
     border: 0;
-    outline-color: var(--coriander);
+    outline-color: transparent;
     outline-offset: 0.1em;
     &::placeholder {
       color: var(--log-cabin);

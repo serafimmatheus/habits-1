@@ -47,6 +47,7 @@ export const MainHome = styled.main`
       flex-direction: column;
       width: 670px;
       line-height: 1.2;
+      text-align: center;
       position: relative;
       left: 50%;
       transform: translateX(-50%);
