@@ -9,7 +9,7 @@ import { HeaderDash } from "../../Components/HeaderDash";
 const Habits = () => {
   const { habits, getHabits } = useContext(HabitsContext);
 
-  const [token] = useState(localStorage.getItem("@Habits:token"));
+  const [token] = useState(JSON.parse(localStorage.getItem("@Habits:token")));
   const [rendered, setRendered] = useState(false);
   const [modalHabits, setModalHabits] = useState(false);
 

@@ -81,6 +81,19 @@ export const BoxHeaderDashboard = styled.div`
             background-color: black;
             color: white;
           }
+
+          .link {
+            li {
+              display: flex;
+              align-items: center;
+
+              p {
+                display: flex;
+                align-items: center;
+                margin: 0 2px;
+              }
+            }
+          }
         }
       }
     }
@@ -110,6 +123,19 @@ export const BoxHeaderDashboard = styled.div`
 
         li {
           margin: 0 10px;
+        }
+
+        .link {
+          li {
+            display: flex;
+            align-items: center;
+
+            p {
+              display: flex;
+              align-items: center;
+              margin: 0 2px;
+            }
+          }
         }
       }
     }
