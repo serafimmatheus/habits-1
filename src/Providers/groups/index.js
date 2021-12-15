@@ -5,11 +5,13 @@ export const GroupsContext = createContext([]);
 export const GroupsProvider = ({ children }) => {
   const [groups, setGroups] = useState([]);
   const [useSub, setUseSub] = useState(false);
+  const [myGroups, setMyGroups] = useState([]);
+  const [grouT, setGroupT] = useState(true);
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Habits:token")) || ""
   );
 
-  const getUserGroups = (token) => {
+  const getUserGroups = () => {
     api
       .get("/groups/subscriptions/", {
         headers: {
@@ -25,7 +27,7 @@ export const GroupsProvider = ({ children }) => {
       });
   };
 
-  const searchGroups = (input, token) => {
+  const searchGroups = (input) => {
     api
       .get(
         `/groups/?search=${input}`,
@@ -91,7 +93,8 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((err) => console.log(err));
   };
-  const unsubscribeGroups = (id) => {
+
+  const unsubscribeGroups = (id, token) => {
     api
       .delete(`/groups/${id}/unsubscribe/`, {
         headers: {
@@ -101,6 +104,55 @@ export const GroupsProvider = ({ children }) => {
       .then((response) => {
         getUserGroups(token);
         setUseSub(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const addActivity = (data, reset, closeModal) => {
+    api
+      .post(`/activities/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        getUserGroups(token);
+        reset();
+      })
+      .then(closeModal())
+      .catch((err) => console.log(err));
+  };
+
+  const searchActivity = () => {};
+
+  const editActivity = (id, data, token, reset, closeModal) => {
+    api
+      .patch(`/activities/${id}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        getUserGroups(token);
+        reset();
+      })
+      .then(closeModal())
+      .catch((err) => console.log(err));
+  };
+
+  const removeActivity = (id, token) => {
+    api
+      .delete(
+        `/activities/${id}/`,
+        { null: null },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        getUserGroups(token);
       })
       .catch((err) => console.log(err));
   };
@@ -117,6 +169,12 @@ export const GroupsProvider = ({ children }) => {
         unsubscribeGroups,
         useSub,
         setUseSub,
+        grouT,
+        setGroupT,
+        addActivity,
+        searchActivity,
+        editActivity,
+        removeActivity,
       }}
     >
       {children}
