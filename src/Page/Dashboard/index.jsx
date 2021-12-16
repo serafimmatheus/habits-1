@@ -1,11 +1,12 @@
 import { Habitos, Main } from "./style";
-import { HeaderDash } from "../../Components/HeaderDash";
+
+import Header from "../../Components/Header";
 import Habits from "../../Pages/Habits";
 
 export const Dashboard = () => {
   return (
     <>
-      <HeaderDash />
+      <Header />
       <Main>
         <div>
           <Habitos>

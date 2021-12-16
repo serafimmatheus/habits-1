@@ -1,16 +1,16 @@
 import {
-  Modal,
-  Box,
-  TextField,
   Button,
-  Typography,
   FormControl,
-  FormLabel,
-  RadioGroup,
   FormControlLabel,
+  FormLabel,
+  Modal,
   Radio,
+  RadioGroup,
   Slider,
-} from "@material-ui/core";
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -171,6 +171,7 @@ const EditGoal = () => {
           type="submit"
           fullWidth
           variant="contained"
+          color="neutral"
           sx={{ mt: 3, mb: 2 }}
         >
           SALVAR
