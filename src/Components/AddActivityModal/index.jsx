@@ -26,7 +26,7 @@ const AddActivityModal = ({ modalAddAct, setModalAddAct, id }) => {
 
   const onSubmit = (data) => {
     data = { ...data, group: id };
-    addActivity(data, reset, closeModal);
+    addActivity(data, reset, closeModal, id);
   };
 
   return (

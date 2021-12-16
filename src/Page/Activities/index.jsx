@@ -23,10 +23,10 @@ const Activities = () => {
   };
 
   const params = useParams();
-  const groupId = params.group_id;
+  const group_id = params.group_id;
 
   useEffect(() => {
-    getActivities(groupId);
+    getActivities(group_id);
     setRendered(true); // eslint-disable-next-line
   }, [token]);
 
@@ -41,12 +41,12 @@ const Activities = () => {
       <AddActivityModal
         setModalAddAct={setModalAddAct}
         modalAddAct={modalAddAct}
-        id={groupId}
+        id={group_id}
       />
       {rendered && activities.length > 0 ? (
         <GroupListContainer>
           {activities.map((act, index) => (
-            <ActivityCard act={act} key={index} />
+            <ActivityCard act={act} key={index} group_id={group_id} />
           ))}
         </GroupListContainer>
       ) : null}
