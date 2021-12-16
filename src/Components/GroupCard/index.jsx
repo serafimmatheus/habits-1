@@ -1,21 +1,22 @@
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/groups";
 
-import { Button, GroupCardContainer } from "../../Styles/global";
+import { useHistory } from "react-router-dom";
 
-import AddActivityModal from "../AddActivityModal";
-import EditActivityModal from "../EditActivityModal";
+import { Button, GroupCardContainer } from "../../Styles/global";
 
 import EditGroupsModal from "../EditGroupsModal";
 
 const GroupCard = ({ group }) => {
-  const { subscribeGroups, unsubscribeGroups, removeActivity } =
-    useContext(GroupsContext);
+  const { subscribeGroups, unsubscribeGroups } = useContext(GroupsContext);
   const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
   const [modalEditGroup, setModalEditGroup] = useState(false);
 
-  const [modalAddAct, setModalAddAct] = useState(false);
-  const [modalEditAct, setModalEditAct] = useState(false);
+  const history = useHistory();
+
+  const goToActivities = () => {
+    history.push(`/dashboard/${group.id}/activities`);
+  };
 
   const handleclickSubscribe = () => {
     subscribeGroups(group.id);
@@ -33,36 +34,7 @@ const GroupCard = ({ group }) => {
         <strong>Descrição :</strong> {group.description}
       </p>
 
-      <p>
-        <strong>Atividades:</strong> {group.description}
-      </p>
-      <Button onClick={() => setModalAddAct(true)}>Adicionar atividade</Button>
-      <AddActivityModal
-        setModalAddAct={setModalAddAct}
-        modalAddAct={modalAddAct}
-        token={token}
-        id={group.id}
-      />
-      {group.activities.length > 0
-        ? group.activities.map((act) => (
-            <div>
-              <p>Atividade: {act.title}</p>
-              <p>Data: {act.realization_time}</p>
-              <Button onClick={() => setModalEditAct(true)}>
-                Editar atividade
-              </Button>
-              <Button onClick={() => removeActivity(act.id, token)}>
-                Remover atividade
-              </Button>
-              <EditActivityModal
-                setModalEditAct={setModalEditAct}
-                modalEditAct={modalEditAct}
-                token={token}
-                id={act.id}
-              />
-            </div>
-          ))
-        : null}
+      <Button onClick={() => goToActivities()}>Ver atividades</Button>
 
       <Button onClick={() => handleclickSubscribe()}>Inscrever-se</Button>
       <Button onClick={() => setModalEditGroup(true)}>Editar grupo</Button>

@@ -26,7 +26,7 @@ const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
 
   const onSubmit = (data) => {
     data = { ...data, group: id };
-    addActivity(data, token, reset, closeModal);
+    addActivity(data, reset, closeModal);
   };
 
   return (
@@ -40,7 +40,7 @@ const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
             {...register("title")}
           />
           <input
-            type="date"
+            type="datetime-local"
             placeholder="Data"
             {...register("realization_time")}
           />
