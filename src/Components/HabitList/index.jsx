@@ -5,11 +5,11 @@ import HabitCard from "../HabitCard";
 
 import { HabitListContainer } from "../../Styles/global";
 
-const HabitList = () => {
+const HabitList = ({ isAchieved }) => {
   const { habits } = useContext(HabitsContext);
 
   return (
-    <HabitListContainer>
+    <HabitListContainer isAchieved={isAchieved}>
       {habits.map((item, index) => (
         <HabitCard key={index} habit={item} />
       ))}

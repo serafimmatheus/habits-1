@@ -15,7 +15,7 @@ import {
 import Header from "../../Components/Header";
 
 const Habits = () => {
-  const { habits, getHabits } = useContext(HabitsContext);
+  const { habits, getHabits, isAchieved } = useContext(HabitsContext);
 
   const [token] = useState(JSON.parse(localStorage.getItem("@Habits:token")));
   const [rendered, setRendered] = useState(false);
@@ -45,7 +45,7 @@ const Habits = () => {
         </SectionTitle>
         {rendered ? (
           habits.length > 0 ? (
-            <HabitList />
+            <HabitList isAchieved={isAchieved} />
           ) : (
             <h2>Adicione Hábitos</h2>
           )

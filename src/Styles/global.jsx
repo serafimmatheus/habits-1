@@ -2,7 +2,11 @@ import styled from "styled-components";
 
 export const HabitPageContainer = styled.div`
   @media only screen and (min-width: 700px) {
-    margin: 0 0 0 78px;
+    margin: 50px 0 0 78px;
+    h3 {
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
 
@@ -12,13 +16,14 @@ export const HabitListContainer = styled.ul`
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 50px;
 `;
 
 export const HabitCardContainer = styled.li`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 250px;
   padding: 10px;
   background-color: #bdb491;
   border-radius: 8px;
@@ -41,7 +46,7 @@ export const HabitCardContainer = styled.li`
     transition: 0.3s;
     border: none;
     border-radius: 10px;
-    padding: 15px 40px;
+    padding: 8px;
   }
   button:hover {
     cursor: pointer;
