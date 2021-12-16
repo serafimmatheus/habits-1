@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 
 import { GroupsContext } from "../../Providers/groups";
-import { HeaderDash } from "../../Components/HeaderDash";
+import Header from "../../Components/Header";
 import MyGroups from "../../Components/MyGroups";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
@@ -31,7 +31,7 @@ const Groups = () => {
 
   return (
     <>
-      <HeaderDash />
+      <Header />
 
       <div>
         <h3>GROUPS</h3>

@@ -4,7 +4,6 @@ import { HabitsContext } from "../../Providers/habits";
 
 import HabitList from "../../Components/HabitList";
 import AddHabitsModal from "../../Components/AddHabitsModal";
-import { HeaderDash } from "../../Components/HeaderDash";
 
 const Habits = () => {
   const { habits, getHabits } = useContext(HabitsContext);
