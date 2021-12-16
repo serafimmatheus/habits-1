@@ -3,16 +3,20 @@ import { GroupsContext } from "../../Providers/groups";
 
 import GroupCard from "../GroupCard";
 
-import { GroupListContainer } from "../../Styles/global";
+import { GroupListContainer, Title } from "../../Styles/global";
 
 const GroupList = () => {
   const { groups } = useContext(GroupsContext);
   return (
-    <GroupListContainer>
-      {groups.map((item, index) => (
-        <GroupCard key={index} group={item} />
-      ))}
-    </GroupListContainer>
+    <>
+      <GroupListContainer>
+        {groups.map((item) => (
+          <div>
+            <GroupCard key={item.id} group={item} />
+          </div>
+        ))}
+      </GroupListContainer>
+    </>
   );
 };
 

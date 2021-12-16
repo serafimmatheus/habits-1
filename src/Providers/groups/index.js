@@ -10,7 +10,9 @@ export const GroupsProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [grouT, setGroupT] = useState(true);
   const [getUser, setGetUser] = useState("");
-  const [token] = useState(localStorage.getItem("@Habits:token") || "");
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Habits:token")) || ""
+  );
 
   const handleUser = (id) => {
     api.get(`/users/${id}/`).then((response) => {
@@ -67,7 +69,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Você não é o criador do grupo!");
       });
   };
 

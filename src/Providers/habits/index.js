@@ -7,7 +7,11 @@ export const HabitsContext = createContext([]);
 export const HabitsProvider = ({ children }) => {
   const [habits, setHabits] = useState([]);
 
-  const getHabits = (token) => {
+  const [isAchieved, setIsAchieved] = useState(false);
+
+  const [token] = useState(JSON.parse(localStorage.getItem("@Habits:token")));
+
+  const getHabits = () => {
     api
       .get("/habits/personal/", {
         headers: {
@@ -20,7 +24,7 @@ export const HabitsProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const addHabits = (data, token, reset, closeModal) => {
+  const addHabits = (data, reset, closeModal) => {
     api
       .post("/habits/", data, {
         headers: {
@@ -28,14 +32,15 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        getHabits(token);
+        setIsAchieved(response.data.achieved);
+        getHabits();
         reset();
       })
       .then(closeModal())
       .catch((err) => console.log(err));
   };
 
-  const editHabits = (id, data, token, reset, closeModal) => {
+  const editHabits = (id, data, reset, closeModal) => {
     api
       .patch(`/habits/${id}/`, data, {
         headers: {
@@ -43,27 +48,36 @@ export const HabitsProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        getHabits(token);
+        getHabits();
         reset();
       })
       .then(closeModal())
       .catch((err) => console.log(err));
   };
 
-  const deleteHabits = (id, token) => {
+  const deleteHabits = (id) => {
     api
       .delete(`/habits/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => getHabits(token))
+      .then((response) => {
+        getHabits();
+      })
       .catch((err) => console.log(err));
   };
 
   return (
     <HabitsContext.Provider
-      value={{ habits, getHabits, addHabits, deleteHabits, editHabits }}
+      value={{
+        habits,
+        getHabits,
+        addHabits,
+        deleteHabits,
+        editHabits,
+        isAchieved,
+      }}
     >
       {children}
     </HabitsContext.Provider>
