@@ -6,14 +6,14 @@ import { HabitCardContainer } from "../../Styles/global";
 import EditHabitsModal from "../EditHabitsModal";
 
 const HabitCard = ({ habit }) => {
-  const { deleteHabits } = useContext(HabitsContext);
+  const { deleteHabits, isAchieved } = useContext(HabitsContext);
 
   const token = localStorage.getItem("@Habits:token");
 
   const [modalEdit, setModalEdit] = useState(false);
 
   return (
-    <HabitCardContainer>
+    <HabitCardContainer isAchieved={isAchieved}>
       <h3>Nome: {habit.title}</h3>
       <h4>Dificuldade: {habit.difficulty}</h4>
       <h4>
