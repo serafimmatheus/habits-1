@@ -44,20 +44,20 @@ const GroupCard = ({ group }) => {
           <ContainerCardsG>
             <ContainerGroupCard>
               <h3>
-                <GoDiffRenamed color="red" /> Nome do grupo :
-                <span>{group.name}</span>
+                <GoDiffRenamed color="red" />
+                Nome do grupo: <span>{group.name}</span>
               </h3>
             </ContainerGroupCard>
             <ContainerGroupCard>
               <h3>
                 <MdOutlineCategory color="blue" />
-                Categoria :<span>{group.category}</span>
+                Categoria: <span>{group.category}</span>
               </h3>{" "}
             </ContainerGroupCard>{" "}
             <ContainerGroupCard>
               <h3>
-                <MdOutlineDescription color="yellow" overlinePosition={10} />{" "}
-                Descrição :<span> {group.description}</span>
+                <MdOutlineDescription color="green" overlinePosition={10} />
+                Descrição: <span> {group.description}</span>
               </h3>
             </ContainerGroupCard>{" "}
           </ContainerCardsG>

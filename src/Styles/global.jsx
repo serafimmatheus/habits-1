@@ -225,6 +225,8 @@ export const ContainerGroupCard = styled.div`
   font-size: 20px;
   margin: 0;
   h3 {
+    display: flex;
+    flex-wrap: wrap;
     color: #361313;
     font-family: "Roboto", sans-serif;
     span {

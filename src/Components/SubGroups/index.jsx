@@ -5,7 +5,6 @@ import { GiRabbit } from "react-icons/gi";
 import { GoDiffRenamed } from "react-icons/go";
 import { MdOutlineDescription } from "react-icons/md";
 import {
-  Button,
   ButtonSubs,
   ContainerCardsG,
   ContainerGroupCard,
@@ -17,7 +16,7 @@ import EditGroupsModal from "../EditGroupsModal";
 const SubGroups = () => {
   const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
   const [modalEdit, setModalEdit] = useState(false);
-  const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
+  const token = JSON.parse(localStorage.getItem("@Habits:token")) || "";
 
   return (
     <>
