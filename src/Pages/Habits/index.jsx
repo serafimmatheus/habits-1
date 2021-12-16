@@ -8,10 +8,11 @@ import AddHabitsModal from "../../Components/AddHabitsModal";
 import {
   HabitPageContainer,
   SectionTitle,
-  PageTitle,
   ButtonAdd,
   AddIcon,
 } from "../../Styles/global";
+
+import Header from "../../Components/Header";
 
 const Habits = () => {
   const { habits, getHabits } = useContext(HabitsContext);
@@ -31,7 +32,7 @@ const Habits = () => {
 
   return (
     <div>
-      <PageTitle>HABITS (adicionar HEADER)</PageTitle>
+      <Header />
       <HabitPageContainer>
         <SectionTitle>
           Meus hábitos:

@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 
 import { GroupsContext } from "../../Providers/groups";
 import Header from "../../Components/Header";
-import MyGroups from "../../Components/MyGroups";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
 import {

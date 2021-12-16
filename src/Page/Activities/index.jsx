@@ -6,7 +6,7 @@ import { ActivitiesContext } from "../../Providers/activities";
 
 import ActivityCard from "../../Components/ActivityCard";
 
-import { HeaderDash } from "../../Components/HeaderDash";
+import Header from "../../Components/Header";
 
 import { Button, GroupListContainer } from "../../Styles/global";
 
@@ -34,7 +34,7 @@ const Activities = () => {
 
   return (
     <>
-      <HeaderDash />
+      <Header />
       <h3>Atividades:</h3>
       <Button onClick={() => setModalAddAct(true)}>Adicionar atividade</Button>
       <Button onClick={() => goToGroups()}>Voltar</Button>
