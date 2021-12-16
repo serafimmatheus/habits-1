@@ -14,7 +14,6 @@ import { BiAddToQueue } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import SubGroups from "../../Components/SubGroups";
-import SubCardList from "../../Components/SubCardList";
 const Groups = () => {
   const { groups, getUserGroups, searchGroups } = useContext(GroupsContext);
 
@@ -84,7 +83,7 @@ const Groups = () => {
             {rendered ? groups.length > 0 ? <GroupList /> : false : null}
           </InfoGroupCont>
         </>
-        {subRender && <SubCardList />}
+        {subRender && <SubGroups />}
         <AddGroupsModal
           modalCreateGroup={modalCreateGroup}
           setModalCreateGroup={setModalCreateGroup}

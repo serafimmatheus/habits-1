@@ -13,43 +13,47 @@ import {
   GroupCardContainer,
   GroupListContainerS,
 } from "../../Styles/global";
-const SubGroups = (groups) => {
-  const { unsubscribeGroups } = useContext(GroupsContext);
+const SubGroups = () => {
+  const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
   return (
     <>
       <GroupListContainerS>
-        <>
-          <GroupCardContainer>
-            <ContainerRabbit>
-              <GiRabbit size={30} color="darkbronw" />
-            </ContainerRabbit>
-            <ContainerCardsG>
-              <ContainerGroupCard>
-                <h3>
-                  <GoDiffRenamed color="red" />
-                  Nome do grupo: <span>{groups.name}</span>
-                </h3>
-              </ContainerGroupCard>
-              <ContainerGroupCard>
-                <h3>
-                  <MdOutlineCategory color="blue" />
-                  Categoria: <span>{groups.category}</span>
-                </h3>{" "}
-              </ContainerGroupCard>{" "}
-              <ContainerGroupCard>
-                <h3>
-                  <MdOutlineDescription color="green" overlinePosition={10} />
-                  Descrição: <span> {groups.description}</span>
-                </h3>
-              </ContainerGroupCard>{" "}
-            </ContainerCardsG>
-            <ContainerEdit>
-              <ButtonSubs onClick={() => unsubscribeGroups(groups.id)}>
-                Desinscrever-se
-              </ButtonSubs>
-            </ContainerEdit>
-          </GroupCardContainer>
-        </>
+        {myGroups.map((group) =>
+          group.length === 0 ? (
+            <h1>Nada aqui </h1>
+          ) : (
+            <GroupCardContainer>
+              <ContainerRabbit>
+                <GiRabbit size={30} color="darkbronw" />
+              </ContainerRabbit>
+              <ContainerCardsG>
+                <ContainerGroupCard>
+                  <h3>
+                    <GoDiffRenamed color="red" />
+                    Nome do grupo: <span>{group.name}</span>
+                  </h3>
+                </ContainerGroupCard>
+                <ContainerGroupCard>
+                  <h3>
+                    <MdOutlineCategory color="blue" />
+                    Categoria: <span>{group.category}</span>
+                  </h3>{" "}
+                </ContainerGroupCard>{" "}
+                <ContainerGroupCard>
+                  <h3>
+                    <MdOutlineDescription color="green" overlinePosition={10} />
+                    Descrição: <span> {group.description}</span>
+                  </h3>
+                </ContainerGroupCard>{" "}
+              </ContainerCardsG>
+              <ContainerEdit>
+                <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
+                  Desinscrever-se
+                </ButtonSubs>
+              </ContainerEdit>
+            </GroupCardContainer>
+          )
+        )}
       </GroupListContainerS>
     </>
   );
