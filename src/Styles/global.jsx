@@ -40,6 +40,14 @@ export const GroupListContainer = styled.ul`
   padding: 20px;
   border: transparent;
   border-radius: 3px;
+  div {
+    display: flex;
+    background-color: #bdb491;
+    margin: 7px;
+    padding: 3px;
+    border: transparent;
+    border-radius: 5px;
+  }
 `;
 
 export const GroupCardContainer = styled.li`
@@ -49,7 +57,7 @@ export const GroupCardContainer = styled.li`
   padding: 10px;
   width: 300px;
   border: 1px solid transparent;
-  background-color: #bdb491;
+  background-color: white;
   border-radius: 6px;
   margin: 10px;
   align-items: end;
@@ -57,6 +65,8 @@ export const GroupCardContainer = styled.li`
   div {
     display: flex;
     justify-content: center;
+    background-color: white;
+
     button {
       margin: 20px 0 0 46px;
     }
@@ -66,7 +76,7 @@ export const GroupCardContainerSub = styled.li`
   padding: 10px;
   width: 300px;
   border: 1px solid transparent;
-  background-color: #bdb491;
+  background-color: white;
   border-radius: 6px;
   margin: 10px;
   div {
@@ -180,6 +190,19 @@ export const ContainerButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  input {
+    height: 34px;
+    border: 1px solid #03031b;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    outline: none;
+    margin-left: 5px;
+    :hover {
+      border-color: #19acdd;
+    }
 `;
 export const InfoGroupCont = styled.div`
   display: flex;

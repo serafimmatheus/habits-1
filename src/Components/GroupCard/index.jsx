@@ -56,7 +56,7 @@ const GroupCard = ({ group }) => {
             </ContainerGroupCard>{" "}
             <ContainerGroupCard>
               <h3>
-                <MdOutlineDescription color="white" overlinePosition={10} />{" "}
+                <MdOutlineDescription color="yellow" overlinePosition={10} />{" "}
                 Descrição :<span> {group.description}</span>
               </h3>
             </ContainerGroupCard>{" "}
@@ -68,17 +68,12 @@ const GroupCard = ({ group }) => {
           </div>
         </GroupCardContainer>
       </>
-      <GroupCardContainer>
-        <ButtonActives onClick={() => setModalAddAct(true)}>
+      {/* <GroupCardContainer> */}
+      {/* <ButtonActives onClick={() => setModalAddAct(true)}>
           <BiMessageSquareAdd size={20} />
-        </ButtonActives>
-        <AddActivityModal
-          setModalAddAct={setModalAddAct}
-          modalAddAct={modalAddAct}
-          token={token}
-          id={group.id}
-        />
-        {group.activities.length > 0
+        </ButtonActives> */}
+
+      {/* {group.activities.length > 0
           ? group.activities.map((act) => (
               <div>
                 <p>Atividade: {act.title}</p>
@@ -97,8 +92,8 @@ const GroupCard = ({ group }) => {
                 />
               </div>
             ))
-          : null}
-      </GroupCardContainer>
+          : null} */}
+      {/* </GroupCardContainer> */}
     </>
   );
 };

@@ -4,12 +4,7 @@ import { GroupsContext } from "../../Providers/groups";
 import { HeaderDash } from "../../Components/HeaderDash";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
-import {
-  ContainerButton,
-  Button,
-  ButtonSearch,
-  InfoGroupCont,
-} from "../../Styles/global";
+import { ContainerButton, Button, InfoGroupCont } from "../../Styles/global";
 import { BiAddToQueue } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { MdOutlineSubscriptions } from "react-icons/md";
@@ -58,8 +53,6 @@ const Groups = () => {
             <BiAddToQueue size={30} />
             Criar Grupos
           </Button>
-        </ContainerButton>
-        <ButtonSearch>
           {searchInput === "" ? (
             <Button onClick={() => handleClickSearch()}>
               <FiSearch size={30} /> Buscar todos
@@ -75,7 +68,7 @@ const Groups = () => {
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Digite para buscar um grupo "
           ></input>
-        </ButtonSearch>
+        </ContainerButton>
         <InfoGroupCont>
           {rendered ? groups.length > 0 ? <GroupList /> : false : null}
         </InfoGroupCont>

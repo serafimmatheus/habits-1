@@ -1,6 +1,18 @@
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/groups";
-import { Button, GroupCardContainerSub } from "../../Styles/global";
+import { MdOutlineCategory } from "react-icons/md";
+import { GiRabbit } from "react-icons/gi";
+import { GoDiffRenamed } from "react-icons/go";
+import { MdOutlineDescription } from "react-icons/md";
+import {
+  Button,
+  ButtonSubs,
+  ContainerCardsG,
+  ContainerGroupCard,
+  ContainerRabbit,
+  GroupCardContainer,
+  GroupListContainer,
+} from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
 const SubGroups = () => {
   const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
@@ -8,21 +20,49 @@ const SubGroups = () => {
   const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
 
   return (
-    <GroupCardContainerSub>
+    <>
       {myGroups.map((group) =>
         group.length === 0 ? (
-          <div>Sem inscrições de grupos</div>
+          true
         ) : (
-          <ul>
-            <li>{group.name}</li>
-            <li>{group.category}</li>
-            <li>{group.description}</li>
-            <li>{group.id}</li>
-            <Button onClick={() => setModalEdit(true)}>Editar grupo</Button>
-            <Button onClick={() => unsubscribeGroups(group.id)}>
-              Desinscrever-se
-            </Button>
-          </ul>
+          <GroupListContainer>
+            <GroupCardContainer>
+              <ContainerRabbit>
+                <GiRabbit size={30} color="darkbronw" />
+              </ContainerRabbit>
+              <ContainerCardsG>
+                <ContainerGroupCard>
+                  <h3>
+                    <GoDiffRenamed color="red" /> Nome do grupo :
+                    <span>{group.name}</span>
+                  </h3>
+                </ContainerGroupCard>
+                <ContainerGroupCard>
+                  <h3>
+                    <MdOutlineCategory color="blue" />
+                    Categoria :<span>{group.category}</span>
+                  </h3>{" "}
+                </ContainerGroupCard>{" "}
+                <ContainerGroupCard>
+                  <h3>
+                    <MdOutlineDescription
+                      color="yellow"
+                      overlinePosition={10}
+                    />{" "}
+                    Descrição :<span> {group.description}</span>
+                  </h3>
+                </ContainerGroupCard>{" "}
+              </ContainerCardsG>
+              <div>
+                <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
+                  Desinscrever-se
+                </ButtonSubs>
+                <ButtonSubs onClick={() => setModalEdit(true)}>
+                  Editar
+                </ButtonSubs>
+              </div>
+            </GroupCardContainer>
+          </GroupListContainer>
         )
       )}
       {myGroups.map(
@@ -37,7 +77,7 @@ const SubGroups = () => {
             />
           )
       )}
-    </GroupCardContainerSub>
+    </>
   );
 };
 export default SubGroups;

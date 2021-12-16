@@ -10,7 +10,9 @@ const GroupList = () => {
   return (
     <GroupListContainer>
       {groups.map((item, index) => (
-        <GroupCard key={index} group={item} />
+        <div>
+          <GroupCard key={index} group={item} />
+        </div>
       ))}
     </GroupListContainer>
   );
