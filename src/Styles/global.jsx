@@ -30,6 +30,31 @@ export const HabitsForm = styled.form`
   border-radius: 5px;
   padding: 40px 20px 26px;
 `;
+export const GroupListContainerS = styled.ul`
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #00000034;
+  margin: 0 auto;
+  list-style: none;
+  padding: 20px;
+  border: transparent;
+  border-radius: 3px;
+  h2 {
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    display: flex;
+  }
+  div {
+    display: flex;
+    background-color: #bdb491;
+    margin: 7px;
+    padding: 3px;
+    border: transparent;
+    border-radius: 5px;
+  }
+`;
 
 export const GroupListContainer = styled.ul`
   display: flex;
@@ -49,7 +74,19 @@ export const GroupListContainer = styled.ul`
     border-radius: 5px;
   }
 `;
+export const GroupsUlContainerSubs = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 400px;
+`;
 
+export const GroupListContainerSubs = styled.li`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 300px;
+`;
 export const GroupCardContainer = styled.li`
   display: flex;
   flex-direction: column;
@@ -64,6 +101,7 @@ export const GroupCardContainer = styled.li`
 
   div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: white;
 
@@ -76,7 +114,7 @@ export const GroupCardContainerSub = styled.li`
   padding: 10px;
   width: 300px;
   border: 1px solid transparent;
-  background-color: white;
+  background-color: #84ce84;
   border-radius: 6px;
   margin: 10px;
   div {
@@ -136,6 +174,7 @@ export const ButtonSubs = styled.button`
     background: red;
   }
 `;
+
 export const ButtonActives = styled.button`
   font-family: PT Serif;
   background: #03031b;
@@ -204,12 +243,19 @@ export const ContainerButton = styled.div`
       border-color: #19acdd;
     }
 `;
+export const Title = styled.div`
+  text-align: center;
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  margin: 20px;
+`;
 export const InfoGroupCont = styled.div`
   display: flex;
   justify-content: center;
 `;
 export const ContainerEdit = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
 `;
 export const ContainerRabbit = styled.div`
@@ -225,11 +271,13 @@ export const ContainerGroupCard = styled.div`
   font-size: 20px;
   margin: 0;
   h3 {
+    word-break: break-all;
     display: flex;
     flex-wrap: wrap;
     color: #361313;
     font-family: "Roboto", sans-serif;
     span {
+      display: flex;
       color: black;
       font-family: "Oswald", sans-serif;
     }

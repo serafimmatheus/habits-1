@@ -4,11 +4,17 @@ import { GroupsContext } from "../../Providers/groups";
 import { HeaderDash } from "../../Components/HeaderDash";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
-import { ContainerButton, Button, InfoGroupCont } from "../../Styles/global";
+import {
+  ContainerButton,
+  Button,
+  InfoGroupCont,
+  Title,
+} from "../../Styles/global";
 import { BiAddToQueue } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { MdOutlineSubscriptions } from "react-icons/md";
 import SubGroups from "../../Components/SubGroups";
+import SubCardList from "../../Components/SubCardList";
 const Groups = () => {
   const { groups, getUserGroups, searchGroups } = useContext(GroupsContext);
 
@@ -69,10 +75,16 @@ const Groups = () => {
             placeholder="Digite para buscar um grupo "
           ></input>
         </ContainerButton>
-        <InfoGroupCont>
-          {rendered ? groups.length > 0 ? <GroupList /> : false : null}
-        </InfoGroupCont>
-        {subRender && <SubGroups />}
+        <>
+          <Title>
+            {subRender && !rendered && <h1>Grupos Inscritos</h1>}
+            {rendered && !subRender && <h1> Página de Grupos </h1>}
+          </Title>
+          <InfoGroupCont>
+            {rendered ? groups.length > 0 ? <GroupList /> : false : null}
+          </InfoGroupCont>
+        </>
+        {subRender && <SubCardList />}
         <AddGroupsModal
           modalCreateGroup={modalCreateGroup}
           setModalCreateGroup={setModalCreateGroup}

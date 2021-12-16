@@ -12,7 +12,6 @@ import {
   ButtonActives,
   ContainerCardsG,
   ContainerGroupCard,
-  InfoGroupCont,
   ContainerRabbit,
 } from "../../Styles/global";
 import AddActivityModal from "../AddActivityModal";
@@ -20,6 +19,7 @@ import EditActivityModal from "../EditActivityModal";
 import { AiOutlineEdit } from "react-icons/ai";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiMessageSquareAdd } from "react-icons/bi";
+import EditGroupsModal from "../EditGroupsModal";
 
 const GroupCard = ({ group }) => {
   // const { searchGoals } = useContext(GoalsContext);
@@ -29,6 +29,7 @@ const GroupCard = ({ group }) => {
   const token = JSON.parse(localStorage.getItem("@Habits:token")) || "";
   const [modalAddAct, setModalAddAct] = useState(false);
   const [modalEditAct, setModalEditAct] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
 
   const handleclickSubscribe = () => {
     subscribeGroups(group.id);
@@ -65,7 +66,11 @@ const GroupCard = ({ group }) => {
             <ButtonSubs onClick={() => handleclickSubscribe()}>
               Inscrever-se
             </ButtonSubs>
+            <ButtonSubs onClick={() => setModalEdit(true)}>Editar</ButtonSubs>
           </div>
+          {modalEdit && (
+            <EditGroupsModal id={group.id} setModalEdit={setModalEdit} />
+          )}
         </GroupCardContainer>
       </>
       {/* <GroupCardContainer> */}

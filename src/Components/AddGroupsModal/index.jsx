@@ -4,10 +4,10 @@ import * as yup from "yup";
 
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
-
+import { IoMdExit } from "react-icons/io";
 import { Modal } from "@mui/material";
 import { ButtonModal, GroupsForm } from "../../Styles/global";
-
+import { BiAddToQueue } from "react-icons/bi";
 const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
   const { createGroups } = useContext(GroupsContext);
 
@@ -54,9 +54,14 @@ const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
             placeholder="Categoria"
             {...register("category")}
           />
-          <ButtonModal type="submit">Criar grupo</ButtonModal>
+          <ButtonModal type="submit">
+            Criar grupo <BiAddToQueue />
+          </ButtonModal>
+          <ButtonModal onClick={() => closeModal()}>
+            Voltar
+            <IoMdExit />
+          </ButtonModal>
         </GroupsForm>
-        <button onClick={() => closeModal()}>FECHAR</button>
       </div>
     </Modal>
   );

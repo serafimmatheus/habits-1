@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
 import { Button, ContainerEdit } from "../../Styles/global";
-import { Modal } from "@mui/material";
 
-const EditGroupsModal = ({ id, setModalEdit }) => {
-  const { editGroups } = useContext(GroupsContext);
+const EditGroupsModal = ({ setModalEdit, id }) => {
+  const { editGroups, myGroups } = useContext(GroupsContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -14,8 +13,8 @@ const EditGroupsModal = ({ id, setModalEdit }) => {
     setModalEdit(false);
   };
 
-  const onSubmit = (id) => {
-    editGroups(id, name, category, description, closeModal);
+  const onSubmit = (mId) => {
+    editGroups(mId, name, category, description, closeModal);
   };
 
   return (
@@ -32,7 +31,7 @@ const EditGroupsModal = ({ id, setModalEdit }) => {
           placeholder="Descrição"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <Button onClick={() => onSubmit(id)}>Editar</Button>
+        <Button onClick={() => onSubmit(id)}>Editar</Button>s{" "}
         <Button onClick={() => closeModal()}>Fechar</Button>
       </ContainerEdit>
     </div>
