@@ -4,17 +4,30 @@ import Login from "../Page/Login/index";
 import Register from "../Page/Register";
 import { Dashboard } from "../Page/Dashboard";
 import { Route } from "./Routes";
+import Groups from "../Pages/Groups";
+import Activities from "../Page/Activities/index";
+import Goals from "../Page/Goals";
 
 export const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
 
-      <Route path="/login" component={Login} />
+      <Route exact path="/login" component={Login} />
 
-      <Route path="/register" component={Register} />
+      <Route exact path="/register" component={Register} />
 
-      <Route isPrivate path="/dashboard" component={Dashboard} />
+      <Route isPrivate exact path="/dashboard" component={Dashboard} />
+
+      <Route isPrivate exact path="/dashboard/groups" component={Groups} />
+
+      <Route
+        isPrivate
+        exact
+        path="/dashboard/:group_id/activities"
+        component={Activities}
+      />
+      <Route isPrivate exact path="/dashboard/goal" component={Goals} />
     </Switch>
   );
 };

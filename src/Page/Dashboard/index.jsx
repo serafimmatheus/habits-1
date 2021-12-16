@@ -1,8 +1,6 @@
 import { Habitos, BoxHabits, Main } from "./style";
-
-import { FiPlusSquare } from "react-icons/fi";
-import { CardsHabits } from "../../Components/CardsHabits";
 import { HeaderDash } from "../../Components/HeaderDash";
+import Habits from "../../Pages/Habits";
 
 export const Dashboard = () => {
   return (
@@ -11,19 +9,8 @@ export const Dashboard = () => {
       <Main>
         <div>
           <Habitos>
-            <h2>Meu Hábitos</h2>
-            <span onClick={() => alert("modal")}>
-              <FiPlusSquare />
-            </span>
+            <Habits />
           </Habitos>
-
-          <BoxHabits>
-            <CardsHabits />
-            <CardsHabits />
-            <CardsHabits />
-            <CardsHabits />
-            <CardsHabits />
-          </BoxHabits>
         </div>
       </Main>
     </>

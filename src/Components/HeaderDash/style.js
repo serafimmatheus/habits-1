@@ -4,26 +4,7 @@ export const Header = styled.header`
   @media screen and (min-width: 320px) {
     display: flex;
     flex-direction: row;
-
     margin-bottom: 50px;
-  }
-`;
-
-export const NavBar = styled.div`
-  @media screen and (min-width: 320px) {
-    position: fixed;
-    width: 10px;
-    height: 100vh;
-    background-color: #03031b;
-    border-radius: 10px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 70px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 120px;
   }
 `;
 
@@ -31,9 +12,8 @@ export const HeaderDashboard = styled.section`
   @media screen and (min-width: 320px) {
     display: flex;
     justify-content: space-between;
-    position: relative;
     left: 10px;
-    width: calc(100% - 10px);
+    width: 100%;
     height: 100px;
     border-radius: 10px;
     background-color: var(--log-cabin);
@@ -42,9 +22,8 @@ export const HeaderDashboard = styled.section`
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
-    position: relative;
-    left: 70px;
-    width: calc(100% - 70px);
+
+    width: 100%;
     height: 100px;
     border-radius: 10px;
     background-color: var(--log-cabin);
@@ -53,9 +32,8 @@ export const HeaderDashboard = styled.section`
   @media screen and (min-width: 1024px) {
     display: flex;
     justify-content: space-between;
-    position: relative;
-    left: 120px;
-    width: calc(100% - 120px);
+
+    width: 100%;
     height: 100px;
     border-radius: 10px;
     background-color: var(--log-cabin);
@@ -67,12 +45,15 @@ export const BoxHeaderDashboard = styled.div`
     width: 100%;
     height: 100px;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
     .mobile {
+      width: 100%;
       display: flex;
       position: relative;
+      justify-content: space-around;
 
       .bars {
         position: relative;
@@ -82,7 +63,7 @@ export const BoxHeaderDashboard = styled.div`
 
       .modal {
         position: fixed;
-        width: calc(100% - 10px);
+        width: 100%;
         height: 100px;
         display: ${({ isTrueMobile }) => (isTrueMobile ? "flex" : "none")};
         justify-content: center;
@@ -90,8 +71,8 @@ export const BoxHeaderDashboard = styled.div`
         align-items: center;
         border-radius: 10px;
         background-color: black;
-        left: 10px;
         top: 100px;
+        left: 0;
         z-index: 1;
         ul {
           li {
@@ -100,17 +81,18 @@ export const BoxHeaderDashboard = styled.div`
             background-color: black;
             color: white;
           }
-        }
 
-        .input {
-          position: relative;
-          input {
-            position: relative;
-          }
-          button {
-            top: 0;
-            right: 0;
-            position: absolute;
+          .link {
+            li {
+              display: flex;
+              align-items: center;
+
+              p {
+                display: flex;
+                align-items: center;
+                margin: 0 2px;
+              }
+            }
           }
         }
       }
@@ -118,17 +100,11 @@ export const BoxHeaderDashboard = styled.div`
 
     .desktop {
       display: none;
-
-      ul {
-        position: absolute;
-        top: 60px;
-        left: 19%;
-      }
     }
   }
 
   @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
+    flex-direction: row;
 
     .mobile {
       display: none;
@@ -136,7 +112,10 @@ export const BoxHeaderDashboard = styled.div`
 
     .desktop {
       display: flex;
-      flex-direction: column-reverse;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
 
       ul {
         display: flex;
@@ -145,6 +124,29 @@ export const BoxHeaderDashboard = styled.div`
         li {
           margin: 0 10px;
         }
+
+        .link {
+          li {
+            display: flex;
+            align-items: center;
+
+            p {
+              display: flex;
+              align-items: center;
+              margin: 0 2px;
+            }
+          }
+        }
+      }
+    }
+
+    .link {
+      text-decoration: none;
+      color: black;
+
+      :hover {
+        color: white;
+        text-decoration: underline;
       }
     }
   }
@@ -176,20 +178,5 @@ export const BoxHabits = styled.div`
 
 export const Main = styled.main`
   @media screen and (min-width: 320px) {
-    width: calc(100% - 10px);
-    position: relative;
-    left: 10px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: calc(100% - 70px);
-    position: relative;
-    left: 70px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: calc(100% - 120px);
-    position: relative;
-    left: 120px;
   }
 `;

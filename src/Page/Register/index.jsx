@@ -45,11 +45,11 @@ const Register = () => {
   const history = useHistory();
 
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
     api
       .post("/users/", data)
       .then((response) => {
-        console.log(response.data.username)
+        console.log(response.data.username);
         history.push("/login");
       })
       .catch((err) => console.log(err));

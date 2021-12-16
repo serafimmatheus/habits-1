@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         --coriander: #bdb496;
         --dark-goldenrod: #bd9700;
         --black-russian: #03031b;
-        --log-cabin: #3c4135;
+        --log-cabin: #413e35;
         --winter-hazel: #d2c57c;
     }
     
@@ -45,7 +45,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Roboto Mono', monospace;
         line-height: 1;
         color: var(--black-russian);
-        background-color: var(--coriander);
+        background-color: var(--white);
 
     }
     ol, ul {
