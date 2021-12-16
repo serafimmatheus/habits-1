@@ -1,13 +1,16 @@
 import { FiMenu } from "react-icons/fi";
 import { HeaderDashboard, BoxHeaderDashboard, Header } from "./style";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { ImExit } from "react-icons/im";
+import { GroupsContext } from "../../Providers/groups";
+import jwtDecode from "jwt-decode";
 
 export const HeaderDash = () => {
+  const { handleUser, getUser } = useContext(GroupsContext);
   const [isTrueMobile, setIsTrueModal] = useState(false);
 
-  let token = localStorage.getItem("@Habits:token");
+  const [token] = useState(localStorage.getItem("@Habits:token"));
 
   const history = useHistory();
 
@@ -16,7 +19,14 @@ export const HeaderDash = () => {
     history.push("/login");
   };
 
-  console.log(token);
+  const decoder = jwtDecode(token);
+
+  useEffect(() => {
+    handleUser(decoder.user_id);
+  }, []);
+
+  console.log(getUser);
+
   return (
     <>
       <Header>
@@ -30,7 +40,7 @@ export const HeaderDash = () => {
                 <FiMenu />
               </div>
 
-              <h2>Usuário</h2>
+              <h2>Usuário: {getUser}</h2>
 
               <div className="modal">
                 <ul>
@@ -55,7 +65,7 @@ export const HeaderDash = () => {
             </nav>
 
             <nav className="desktop">
-              <h2>Usuário</h2>
+              <h2>Usuário: {getUser}</h2>
               <ul>
                 <Link className="link" to="/dashboard">
                   <li>Hábitos</li>
