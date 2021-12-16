@@ -1,10 +1,12 @@
 import { FiMenu } from "react-icons/fi";
 import { HeaderDashboard, BoxHeaderDashboard, Header } from "./style";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { ImExit } from "react-icons/im";
+import { GroupsContext } from "../../Providers/groups";
 
 export const HeaderDash = () => {
+  const { handleUser, getUser } = useContext(GroupsContext);
   const [isTrueMobile, setIsTrueModal] = useState(false);
 
   let token = localStorage.getItem("@Habits:token");
@@ -16,7 +18,11 @@ export const HeaderDash = () => {
     history.push("/login");
   };
 
-  console.log(token);
+  useEffect(() => {
+    handleUser();
+  }, []);
+
+  console.log(getUser);
   return (
     <>
       <Header>
@@ -30,7 +36,7 @@ export const HeaderDash = () => {
                 <FiMenu />
               </div>
 
-              <h2>Usuário</h2>
+              <h2>{getUser.username}</h2>
 
               <div className="modal">
                 <ul>
