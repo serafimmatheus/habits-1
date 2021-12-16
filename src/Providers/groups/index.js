@@ -10,9 +10,7 @@ export const GroupsProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [grouT, setGroupT] = useState(true);
   const [getUser, setGetUser] = useState("");
-  const [token] = useState(
-    JSON.parse(localStorage.getItem("@Habits:token")) || ""
-  );
+  const [token] = useState(localStorage.getItem("@Habits:token") || "");
 
   const handleUser = (id) => {
     api.get(`/users/${id}/`).then((response) => {

@@ -36,7 +36,9 @@ export const GoalsProvider = ({ children }) => {
       .post("/goals/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => searchGoals(groupId))
+      .then((_) => {
+        searchGoals(groupId);
+      })
       .catch((err) => console.log(err));
   };
 

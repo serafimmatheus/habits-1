@@ -24,12 +24,7 @@ const AddHabitsModal = ({ modalHabits, setModalHabits, token }) => {
     how_much_achieved: yup.string().required("Campo obrigatório"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(schema),
   });
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
 
 import GroupCard from "../GroupCard";
