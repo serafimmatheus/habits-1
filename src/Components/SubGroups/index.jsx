@@ -50,6 +50,7 @@ const SubGroups = () => {
                     />{" "}
                     Descrição :<span> {group.description}</span>
                   </h3>
+                  <h3>{group.id}</h3>
                 </ContainerGroupCard>{" "}
               </ContainerCardsG>
               <div>
@@ -68,12 +69,7 @@ const SubGroups = () => {
         (group, ind) =>
           modalEdit &&
           ind === 0 && (
-            <EditGroupsModal
-              id={group.id}
-              token={token}
-              setModalEdit={setModalEdit}
-              modalEdit={modalEdit}
-            />
+            <EditGroupsModal id={group.id} setModalEdit={setModalEdit} />
           )
       )}
     </>

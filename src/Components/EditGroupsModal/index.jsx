@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
 import { Button, ContainerEdit } from "../../Styles/global";
-const EditGroupsModal = ({ id, setModalEdit, modal, token }) => {
+import { Modal } from "@mui/material";
+
+const EditGroupsModal = ({ id, setModalEdit }) => {
   const { editGroups } = useContext(GroupsContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
