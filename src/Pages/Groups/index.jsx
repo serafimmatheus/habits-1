@@ -2,10 +2,18 @@ import { useState, useEffect, useContext } from "react";
 
 import { GroupsContext } from "../../Providers/groups";
 import { HeaderDash } from "../../Components/HeaderDash";
-import MyGroups from "../../Components/MyGroups";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
-
+import {
+  ContainerButton,
+  Button,
+  ButtonSearch,
+  InfoGroupCont,
+} from "../../Styles/global";
+import { BiAddToQueue } from "react-icons/bi";
+import { FiSearch } from "react-icons/fi";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import SubGroups from "../../Components/SubGroups";
 const Groups = () => {
   const { groups, getUserGroups, searchGroups } = useContext(GroupsContext);
 
@@ -15,10 +23,10 @@ const Groups = () => {
   const [rendered, setRendered] = useState(false);
   const [modalCreateGroup, setModalCreateGroup] = useState(false);
   const [searchInput, setSearchInput] = useState("");
+  const [subRender, setSubRender] = useState(false);
 
   useEffect(() => {
     setRendered(true);
-    getUserGroups(token);
   }, [token]);
 
   const handleClickCreate = () => {
@@ -28,6 +36,10 @@ const Groups = () => {
   const handleClickSearch = () => {
     searchGroups(searchInput, token);
   };
+  const subRequest = () => {
+    getUserGroups();
+    setSubRender(!subRender);
+  };
 
   return (
     <>
@@ -35,33 +47,46 @@ const Groups = () => {
 
       <div>
         <h3>GROUPS</h3>
-        <button onClick={() => handleClickCreate()}>Crie um novo grupo</button>
-        <div>
+        <ContainerButton>
+          <Button onClick={() => subRequest()}>
+            <MdOutlineSubscriptions size={30} />
+            Grupos incritos
+          </Button>{" "}
+          <Button onClick={() => handleClickCreate()}>
+            <BiAddToQueue size={30} />
+            Criar Grupos
+          </Button>
+        </ContainerButton>
+        <ButtonSearch>
           {searchInput === "" ? (
-            <button onClick={() => handleClickSearch()}>
-              Buscar por todos grupos
-            </button>
+            <Button onClick={() => handleClickSearch()}>
+              <FiSearch size={30} /> Buscar todos
+            </Button>
           ) : (
-            <button onClick={() => handleClickSearch()}>
-              Buscar grupo específico
-            </button>
+            <Button onClick={() => handleClickSearch()}>
+              <FiSearch size={30} />
+              Buscar específico
+            </Button>
           )}
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Busca"
-          />
-        </div>
-        <div>
+            placeholder="Digite para buscar"
+          ></input>
+        </ButtonSearch>
+        <InfoGroupCont>
           <h3>Seus grupos:</h3>
           {rendered ? (
             groups.length > 0 ? (
               <GroupList />
             ) : (
-              <h2>Adicione grupos!</h2>
+              <div>
+                <h1>Adicione grupo</h1>
+              </div>
             )
           ) : null}
-        </div>
+        </InfoGroupCont>
+        {subRender && <SubGroups />}
         <AddGroupsModal
           modalCreateGroup={modalCreateGroup}
           setModalCreateGroup={setModalCreateGroup}

@@ -32,26 +32,51 @@ export const HabitsForm = styled.form`
 `;
 
 export const GroupListContainer = styled.ul`
-  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
   list-style: none;
   padding: 20px;
-  background-color: black;
   border: transparent;
   border-radius: 3px;
 `;
 
 export const GroupCardContainer = styled.li`
   padding: 10px;
-  background-color: green;
+  width: 300px;
   border: 1px solid transparent;
+  background-color: #bdb491;
+  border-radius: 6px;
+  margin: 10px;
+  p {
+    strong {
+      font-weigth: 700;
+      font-family: sans-serif;
+    }
+    font-size: 18px;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+  }
+`;
+export const GroupCardContainerSub = styled.li`
+  padding: 10px;
+  width: 300px;
+  border: 1px solid transparent;
+  background-color: #bdb491;
   border-radius: 6px;
   margin: 10px;
   p {
     strong {
       font-weigth: 200;
     }
-    font-size: 25px;
+    font-size: 18px;
+  }
+  div {
+    display: flex;
+    justify-content: center;
   }
 `;
 export const Button = styled.button`
@@ -64,6 +89,49 @@ export const Button = styled.button`
   border: none;
   border-radius: 10px;
   padding: 15px 40px;
+  :hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #03031b;
+  }
+`;
+export const ButtonSearch = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    height: 64px;
+    border: 1px solid #03031b;
+    border-radius: 5px;
+    outline: none;
+    margin-left: 5px;
+  }
+`;
+export const ButtonSubs = styled.button`
+  font-family: PT Serif;
+  background: #03031b;
+  color: #ffffff;
+  transition: 0.3s;
+  width: 180px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 40px;
+  :hover {
+    cursor: pointer;
+    background: #ffffff;
+    color: #03031b;
+  }
+`;
+export const ButtonActives = styled.button`
+  font-family: PT Serif;
+  background: #03031b;
+  color: #ffffff;
+  transition: 0.3s;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
   :hover {
     cursor: pointer;
     background: #ffffff;
@@ -83,4 +151,18 @@ export const GroupsForm = styled.form`
   box-sizing: border-box;
   border-radius: 5px;
   padding: 40px 20px 26px;
+n`;
+
+export const ContainerButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const InfoGroupCont = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const ContainerEdit = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

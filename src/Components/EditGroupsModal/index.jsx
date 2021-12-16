@@ -1,44 +1,25 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import { useState } from "react";
-
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
-
-const EditGroupsModal = ({ group_id, setModalEdit, modalEdit }) => {
+import { Button, ContainerEdit } from "../../Styles/global";
+const EditGroupsModal = ({ id, setModalEdit }) => {
   const { editGroups } = useContext(GroupsContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
-    description: yup.string().required(),
-    category: yup.string().required(),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
   const closeModal = () => {
     setModalEdit(false);
   };
 
-  const onSubmit = () => {
-    editGroups(group_id, name, category, description, reset, closeModal);
+  const onSubmit = (id) => {
+    editGroups(id, name, category, description, closeModal);
   };
 
   return (
     <div>
       <h3>Editar Grupo </h3>
-      <div>
+      <ContainerEdit>
         <h4>Novo nome:</h4>
         <input placeholder="Nome" onChange={(e) => setName(e.target.value)} />
         <input
@@ -49,8 +30,9 @@ const EditGroupsModal = ({ group_id, setModalEdit, modalEdit }) => {
           placeholder="Descrição"
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button onClick={onSubmit}>Editar</button>
-      </div>
+        <Button onClick={() => onSubmit(id)}>Editar</Button>
+        <Button onClick={() => closeModal()}>Fechar</Button>
+      </ContainerEdit>
     </div>
   );
 };
