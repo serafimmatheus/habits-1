@@ -24,7 +24,7 @@ const SubGroups = () => {
           group.length === 0 ? (
             <h1>Nada aqui </h1>
           ) : (
-            <GroupCardContainer>
+            <GroupCardContainer key={group.id}>
               <ContainerRabbit>
                 <GiRabbit size={30} color="darkbronw" />
               </ContainerRabbit>
@@ -52,17 +52,20 @@ const SubGroups = () => {
                 <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
                   Desinscrever-se
                 </ButtonSubs>
+
                 <ButtonSubs onClick={() => setModalEdit(true)}>
                   Editar
                 </ButtonSubs>
+                {modalEdit && (
+                  <>
+                    <EditGroupsModal id={group.id} setmodalEdit={setModalEdit}>
+                      <ButtonSubs onClick={() => setModalEdit(false)}>
+                        Fechar
+                      </ButtonSubs>
+                    </EditGroupsModal>
+                  </>
+                )}
               </ContainerEdit>
-              {modalEdit && (
-                <EditGroupsModal
-                  modalEdit={modalEdit}
-                  id={group.id}
-                  setmodalEdit={setModalEdit}
-                />
-              )}
             </GroupCardContainer>
           )
         )}

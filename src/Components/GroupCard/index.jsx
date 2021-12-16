@@ -12,13 +12,11 @@ import {
   ContainerRabbit,
 } from "../../Styles/global";
 
-import EditGroupsModal from "../EditGroupsModal";
 import { useHistory } from "react-router-dom";
 import { Button } from "../../Styles/global";
 import { GoalsContext } from "../../Providers/Goals";
 
 const GroupCard = ({ group }) => {
-  const [modalEdit, setModalEdit] = useState(false);
   const { subscribeGroups } = useContext(GroupsContext);
   const { searchGoals } = useContext(GoalsContext);
   const history = useHistory();

@@ -284,12 +284,50 @@ export const GroupsForm = styled.form`
     justify-content: center;
   }
 `;
+export const GroupsDivForm = styled.div`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 182px auto 0;
+  background: #ffffff;
+  border: transparent;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 40px 20px 26px;
+  font-family:"Roboto",sans-serif;
+  input {
+    outline: none;
+    border: 1px solid black;
+    border-left: none;
+    border-top: none;
+    border-right: none
+    border-radius:6px;
+    :hover {
+      border-color: #15b5eb;
+    }
+  }
+  button {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 
 export const ContainerButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 320px) and (max-width: 763px) {
+    flex-wrap:wrap;
+  }
   input {
+    @media (min-width:320px) and (max-width:763px) {
+      width:179px;
+    }
     height: 34px;
     border: 1px solid #03031b;
     border-left: none;
@@ -344,10 +382,14 @@ export const ContainerGroupCard = styled.div`
   }
 `;
 export const ContainerCardsG = styled.div`
+  @media (min-width: 320px) and(max-width:380px) {
+    width: 200px;
+  }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin: 0;
+  padding: 0;
 `;
 export const ButtonModal = styled.button`
   border: 1px solid black;
@@ -359,4 +401,7 @@ export const ButtonModal = styled.button`
     border-color: #22acda;
     color: #22acda;
   }
+`;
+export const BackGround = styled.div`
+  background-color: white;
 `;
