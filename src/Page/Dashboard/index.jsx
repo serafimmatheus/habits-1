@@ -1,7 +1,4 @@
 import { Habitos, BoxHabits, Main } from "./style";
-
-import { FiPlusSquare } from "react-icons/fi";
-import { CardsHabits } from "../../Components/CardsHabits";
 import { HeaderDash } from "../../Components/HeaderDash";
 import Habits from "../../Pages/Habits";
 

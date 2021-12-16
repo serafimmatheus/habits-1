@@ -130,55 +130,6 @@ export const GroupsProvider = ({ children }) => {
       });
   };
 
-  const addActivity = (data, reset, closeModal) => {
-    api
-      .post(`/activities/`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        getUserGroups(token);
-        reset();
-      })
-      .then(closeModal())
-      .catch((err) => console.log(err));
-  };
-
-  const searchActivity = () => {};
-
-  const editActivity = (id, data, token, reset, closeModal) => {
-    api
-      .patch(`/activities/${id}/`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        getUserGroups(token);
-        reset();
-      })
-      .then(closeModal())
-      .catch((err) => console.log(err));
-  };
-
-  const removeActivity = (id) => {
-    api
-      .delete(
-        `/activities/${id}/`,
-        { null: null },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {
-        getUserGroups();
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
     <GroupsContext.Provider
       value={{
@@ -194,10 +145,6 @@ export const GroupsProvider = ({ children }) => {
         setUseSub,
         grouT,
         setGroupT,
-        addActivity,
-        searchActivity,
-        editActivity,
-        removeActivity,
         handleUser,
         getUser,
       }}
