@@ -1,16 +1,16 @@
 import {
-  Modal,
-  Box,
-  TextField,
   Button,
-  Typography,
   FormControl,
-  FormLabel,
-  RadioGroup,
   FormControlLabel,
+  FormLabel,
+  Modal,
   Radio,
+  RadioGroup,
   Slider,
-} from "@material-ui/core";
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -25,7 +25,7 @@ const EditGoal = () => {
     title: yup.string(),
   });
 
-  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState("Fácil");
+  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState(0);
   const [statusDifficulty, setStatusDifficulty] = useState("Fácil");
   const [statusAchieved, setStatusAchieved] = useState(false);
   const [statusTitle, setStatusTitle] = useState("");
@@ -150,7 +150,7 @@ const EditGoal = () => {
             marks
             min={0}
             max={100}
-            onChangeCommitted={(e, value) => setStatusHowMuchAchieved(value)}
+            onChangeCommitted={(_, value) => setStatusHowMuchAchieved(value)}
           />
         </Box>
         <Box>
@@ -171,6 +171,7 @@ const EditGoal = () => {
           type="submit"
           fullWidth
           variant="contained"
+          color="neutral"
           sx={{ mt: 3, mb: 2 }}
         >
           SALVAR

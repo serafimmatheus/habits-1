@@ -3,13 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useContext } from "react";
-import { GroupsContext } from "../../Providers/groups";
+import { ActivitiesContext } from "../../Providers/activities";
 
 import { Modal } from "@mui/material";
 import { GroupsForm } from "../../Styles/global";
 
-const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
-  const { addActivity } = useContext(GroupsContext);
+const AddActivityModal = ({ modalAddAct, setModalAddAct, id }) => {
+  const { addActivity } = useContext(ActivitiesContext);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -24,9 +24,9 @@ const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
     setModalAddAct(false);
   };
 
-  const onSubmit = ({ title, realization_time }) => {
-    const data = { title, realization_time, group: id };
-    addActivity(data, token, reset, closeModal);
+  const onSubmit = (data) => {
+    data = { ...data, group: id };
+    addActivity(data, reset, closeModal, id);
   };
 
   return (
@@ -39,12 +39,11 @@ const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
             placeholder="Nome da atividade"
             {...register("title")}
           />
-
-          <selected {...register("realization_time")}>
-            <option type="date" placeholder="Data" />
-            <option type="time" placeholder="time" />
-          </selected>
-
+          <input
+            type="datetime-local"
+            placeholder="Data"
+            {...register("realization_time")}
+          />
           <button type="submit">Adicionar atividade</button>
         </GroupsForm>
         <button onClick={() => closeModal()}>FECHAR</button>

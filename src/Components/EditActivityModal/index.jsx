@@ -3,13 +3,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useContext } from "react";
-import { HabitsContext } from "../../Providers/habits";
+import { ActivitiesContext } from "../../Providers/activities";
 
 import { Modal } from "@mui/material";
 import { GroupsForm } from "../../Styles/global";
 
-const EditActivityModal = ({ id, token, setModalEditAct, modalEditAct }) => {
-  const { editActivity } = useContext(HabitsContext);
+const EditActivityModal = ({
+  id,
+  token,
+  setModalEditAct,
+  modalEditAct,
+  group_id,
+}) => {
+  const { editActivity } = useContext(ActivitiesContext);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -24,7 +30,7 @@ const EditActivityModal = ({ id, token, setModalEditAct, modalEditAct }) => {
   };
 
   const onSubmit = (data) => {
-    editActivity(id, data, token, reset, closeModal);
+    editActivity(id, data, reset, closeModal, group_id);
   };
 
   return (
@@ -33,7 +39,7 @@ const EditActivityModal = ({ id, token, setModalEditAct, modalEditAct }) => {
         <h3>Editar Atividade</h3>
         <GroupsForm onSubmit={handleSubmit(onSubmit)}>
           <input
-            type="number"
+            type="text"
             placeholder="Nome da atividade"
             {...register("title")}
           />

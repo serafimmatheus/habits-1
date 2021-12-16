@@ -13,19 +13,21 @@ import {
 } from "../../Styles/global";
 
 import EditGroupsModal from "../EditGroupsModal";
+import { useHistory } from "react-router-dom";
+import { Button } from "../../Styles/global";
+import { GoalsContext } from "../../Providers/Goals";
 
 const GroupCard = ({ group }) => {
-  // const { searchGoals } = useContext(GoalsContext);
-  // const history = useHistory();
-
-  const { subscribeGroups } = useContext(GroupsContext);
-  const token = JSON.parse(localStorage.getItem("@Habits:token")) || "";
   const [modalEdit, setModalEdit] = useState(false);
-
+  const { subscribeGroups } = useContext(GroupsContext);
+  const { searchGoals } = useContext(GoalsContext);
+  const history = useHistory();
+  const goToActivities = () => {
+    history.push(`/dashboard/${group.id}/activities`);
+  };
   const handleclickSubscribe = () => {
     subscribeGroups(group.id);
   };
-
   return (
     <>
       <>
@@ -57,15 +59,19 @@ const GroupCard = ({ group }) => {
             <ButtonSubs onClick={() => handleclickSubscribe()}>
               Inscrever-se
             </ButtonSubs>
-            <ButtonSubs onClick={() => setModalEdit(true)}>Editar</ButtonSubs>
+            <Button
+              onClick={() => {
+                searchGoals(group.id);
+                history.push("/dashboard/goal");
+              }}
+            >
+              Metas
+            </Button>
+            <Button onClick={() => goToActivities()}>Ver atividades</Button>
           </div>
-          {modalEdit && (
-            <EditGroupsModal id={group.id} setModalEdit={setModalEdit} />
-          )}
         </GroupCardContainer>
       </>
     </>
   );
 };
-
 export default GroupCard;

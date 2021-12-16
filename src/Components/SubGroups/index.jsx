@@ -13,7 +13,9 @@ import {
   GroupCardContainer,
   GroupListContainerS,
 } from "../../Styles/global";
+import EditGroupsModal from "../EditGroupsModal";
 const SubGroups = () => {
+  const [modalEdit, setModalEdit] = useState(false);
   const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
   return (
     <>
@@ -50,7 +52,17 @@ const SubGroups = () => {
                 <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
                   Desinscrever-se
                 </ButtonSubs>
+                <ButtonSubs onClick={() => setModalEdit(true)}>
+                  Editar
+                </ButtonSubs>
               </ContainerEdit>
+              {modalEdit && (
+                <EditGroupsModal
+                  modalEdit={modalEdit}
+                  id={group.id}
+                  setmodalEdit={setModalEdit}
+                />
+              )}
             </GroupCardContainer>
           )
         )}

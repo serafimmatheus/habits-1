@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import api from "../../Services";
 import { toast } from "react-toastify";
+
 export const GroupsContext = createContext([]);
 
 export const GroupsProvider = ({ children }) => {
@@ -8,9 +9,16 @@ export const GroupsProvider = ({ children }) => {
   const [useSub, setUseSub] = useState(false);
   const [myGroups, setMyGroups] = useState([]);
   const [grouT, setGroupT] = useState(true);
+  const [getUser, setGetUser] = useState("");
   const [token] = useState(
     JSON.parse(localStorage.getItem("@Habits:token")) || ""
   );
+
+  const handleUser = (id) => {
+    api.get(`/users/${id}/`).then((response) => {
+      setGetUser(response.data.username);
+    });
+  };
 
   const getUserGroups = () => {
     api
@@ -122,55 +130,6 @@ export const GroupsProvider = ({ children }) => {
       });
   };
 
-  const addActivity = (data, reset, closeModal) => {
-    api
-      .post(`/activities/`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        getUserGroups(token);
-        reset();
-      })
-      .then(closeModal())
-      .catch((err) => console.log(err));
-  };
-
-  const searchActivity = () => {};
-
-  const editActivity = (id, data, token, reset, closeModal) => {
-    api
-      .patch(`/activities/${id}/`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        getUserGroups(token);
-        reset();
-      })
-      .then(closeModal())
-      .catch((err) => console.log(err));
-  };
-
-  const removeActivity = (id) => {
-    api
-      .delete(
-        `/activities/${id}/`,
-        { null: null },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => {
-        getUserGroups();
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
     <GroupsContext.Provider
       value={{
@@ -186,10 +145,8 @@ export const GroupsProvider = ({ children }) => {
         setUseSub,
         grouT,
         setGroupT,
-        addActivity,
-        searchActivity,
-        editActivity,
-        removeActivity,
+        handleUser,
+        getUser,
       }}
     >
       {children}
