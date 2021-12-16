@@ -6,6 +6,8 @@ import { ActivitiesContext } from "../../Providers/activities";
 
 import ActivityCard from "../../Components/ActivityCard";
 
+import { HeaderDash } from "../../Components/HeaderDash";
+
 import {
   Button,
   GroupListContainer,
@@ -32,29 +34,34 @@ const Activities = () => {
   const [modalEditAct, setModalEditAct] = useState(false);
 
   return (
-    <GroupCardContainer>
-      <h3>Atividades:</h3>
-      <Button onClick={() => setModalAddAct(true)}>Adicionar atividade</Button>
-      <Button onClick={() => goToGroups()}>Voltar</Button>
-      <AddActivityModal
-        setModalAddAct={setModalAddAct}
-        modalAddAct={modalAddAct}
-        token={token}
-        id={groupId}
-      />
-      {activities.length > 0 ? (
-        <GroupListContainer>
-          {activities.map((act) => (
-            <ActivityCard
-              act={act}
-              modalEditAct={modalEditAct}
-              setModalEditAct={setModalEditAct}
-              token={token}
-            />
-          ))}
-        </GroupListContainer>
-      ) : null}
-    </GroupCardContainer>
+    <>
+      <HeaderDash />
+      <GroupCardContainer>
+        <h3>Atividades:</h3>
+        <Button onClick={() => setModalAddAct(true)}>
+          Adicionar atividade
+        </Button>
+        <Button onClick={() => goToGroups()}>Voltar</Button>
+        <AddActivityModal
+          setModalAddAct={setModalAddAct}
+          modalAddAct={modalAddAct}
+          token={token}
+          id={groupId}
+        />
+        {activities.length > 0 ? (
+          <GroupListContainer>
+            {activities.map((act) => (
+              <ActivityCard
+                act={act}
+                modalEditAct={modalEditAct}
+                setModalEditAct={setModalEditAct}
+                token={token}
+              />
+            ))}
+          </GroupListContainer>
+        ) : null}
+      </GroupCardContainer>
+    </>
   );
 };
 

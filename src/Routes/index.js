@@ -5,7 +5,7 @@ import Register from "../Page/Register";
 import { Dashboard } from "../Page/Dashboard";
 import { Route } from "./Routes";
 import Groups from "../Pages/Groups";
-import Activities from "../Page/Activities";
+import Activities from "../Page/Activities/index";
 import Goals from "../Page/Goals";
 
 export const Routes = () => {
