@@ -67,6 +67,51 @@ export const theme = createTheme({
             backgroundColor: "transparent",
           },
         },
+        {
+          props: { variant: "post-it" },
+          style: {
+            padding: "1.5em",
+            background: "#4fc3f7",
+            position: "relative",
+            minHeight: "10em",
+            marginBottom: "2em",
+            borderRadius: 0,
+            overflow: "inherit",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              bottom: "-2em",
+              right: 0,
+              borderWidth: "2em 2em 0 0",
+              borderStyle: "solid",
+              borderColor: "#4fc3f7 transparent",
+              filter: "brightness(90%)",
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              bottom: "-2em",
+              left: 0,
+              right: "2em",
+              borderWidth: "1em",
+              borderStyle: "solid",
+              borderColor: "#4fc3f7",
+            },
+          },
+        },
+        {
+          props: { variant: "post-it", color: "secondary" },
+          style: {
+            background: "#81c784",
+
+            "&::before": {
+              borderColor: "#81c784 transparent",
+            },
+            "&::after": {
+              borderColor: "#81c784",
+            },
+          },
+        },
       ],
     },
   },

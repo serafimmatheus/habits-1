@@ -17,7 +17,6 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import EditGoal from "../EditGoal";
-import "./style.css";
 
 const SearchGoals = () => {
   const {
@@ -65,9 +64,8 @@ const SearchGoals = () => {
           goals.sort(ordem).map((item) => (
             <Grid item key={item.id} xs={12} sm={6} md={4}>
               <Card
-                class={
-                  item.achieved ? "post-it-note-completed" : "post-it-note"
-                }
+                variant="post-it"
+                color={item.achieved ? "secondary" : "primary"}
               >
                 <Card variant="centerCard">
                   {item.achieved ? (
