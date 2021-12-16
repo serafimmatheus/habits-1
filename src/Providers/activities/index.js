@@ -4,7 +4,10 @@ export const ActivitiesContext = createContext([]);
 
 export const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
-  const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
+
+  const [token] = useState(
+    JSON.parse(localStorage.getItem("@Habits:token")) || ""
+  );
 
   const getActivities = (group_id) => {
     api
@@ -21,6 +24,7 @@ export const ActivitiesProvider = ({ children }) => {
   };
 
   const addActivity = (data, reset, closeModal) => {
+    console.log(data);
     api
       .post(`/activities/`, data, {
         headers: {
@@ -28,7 +32,7 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        getActivities(token);
+        getActivities(2);
         reset();
       })
       .then(closeModal())
@@ -43,7 +47,7 @@ export const ActivitiesProvider = ({ children }) => {
         },
       })
       .then((response) => {
-        getActivities(token);
+        getActivities(2);
         reset();
       })
       .then(closeModal())
@@ -62,7 +66,7 @@ export const ActivitiesProvider = ({ children }) => {
         }
       )
       .then((response) => {
-        getActivities(token);
+        getActivities(2);
       })
       .catch((err) => console.log(err));
   };

@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ActivitiesContext } from "../../Providers/activities";
 
 import EditActivityModal from "../EditActivityModal";
 
 import { Button, GroupCardContainer } from "../../Styles/global";
 
-const ActivityCard = (act, modalEditAct, setModalEditAct, token) => {
-  const { removeActivity } = useContext(ActivitiesContext);
+const ActivityCard = ({ act }) => {
+  const { token, removeActivity } = useContext(ActivitiesContext);
+
+  const [modalEditAct, setModalEditAct] = useState(false);
 
   return (
     <GroupCardContainer>

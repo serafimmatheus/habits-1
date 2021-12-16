@@ -1,7 +1,7 @@
 import { FiMenu } from "react-icons/fi";
 import { HeaderDashboard, BoxHeaderDashboard, Header } from "./style";
 import { useContext, useEffect, useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { ImExit } from "react-icons/im";
 import { GroupsContext } from "../../Providers/groups";
 import jwtDecode from "jwt-decode";
@@ -23,7 +23,7 @@ export const HeaderDash = () => {
 
   useEffect(() => {
     handleUser(decoder.user_id);
-  }, []);
+  }, [handleUser, decoder.user_id]);
 
   console.log(getUser);
 

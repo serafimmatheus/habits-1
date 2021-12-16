@@ -1,4 +1,4 @@
-import { Habitos, BoxHabits, Main } from "./style";
+import { Habitos, Main } from "./style";
 import { HeaderDash } from "../../Components/HeaderDash";
 import Habits from "../../Pages/Habits";
 
