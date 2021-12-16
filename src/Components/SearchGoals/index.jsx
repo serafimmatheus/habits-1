@@ -1,22 +1,22 @@
-import {
-  Box,
-  IconButton,
-  Container,
-  Grid,
-  Typography,
-  Fab,
-} from "@material-ui/core";
 import { useContext } from "react";
 import { GoalsContext } from "../../Providers/Goals";
 import {
-  MdAddchart,
+  MdAdd,
   MdCheckCircleOutline,
   MdDangerous,
   MdEditNote,
   MdOutlineDelete,
 } from "react-icons/md";
+import {
+  Card,
+  Container,
+  Fab,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 import EditGoal from "../EditGoal";
-import { Card } from "@mui/material";
 import "./style.css";
 
 const SearchGoals = () => {
@@ -46,13 +46,18 @@ const SearchGoals = () => {
           justifyContent: "space-between",
           marginBottom: "20px",
           alignItems: "center",
+          marginTop: "20px",
+          border: "solid 4px #413e35",
+          borderRadius: "30px",
+          padding: "10px",
+          boxShadow: "0px 4px 40px -10px rgba(0, 0, 0, 0.5)",
         }}
       >
         <Typography component="h1" variant="h5">
           Metas do Grupo
         </Typography>
         <Fab size="small" color="secondary" onClick={handleOpenGoalModal}>
-          <MdAddchart />
+          <MdAdd />
         </Fab>
       </Box>
       <Grid container spacing={4}>
