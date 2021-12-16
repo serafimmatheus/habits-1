@@ -43,22 +43,23 @@ export const GroupListContainer = styled.ul`
 `;
 
 export const GroupCardContainer = styled.li`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   width: 300px;
   border: 1px solid transparent;
   background-color: #bdb491;
   border-radius: 6px;
   margin: 10px;
-  p {
-    strong {
-      font-weigth: 700;
-      font-family: sans-serif;
-    }
-    font-size: 18px;
-  }
+  align-items: end;
+
   div {
     display: flex;
     justify-content: center;
+    button {
+      margin: 20px 0 0 46px;
+    }
   }
 `;
 export const GroupCardContainerSub = styled.li`
@@ -68,15 +69,10 @@ export const GroupCardContainerSub = styled.li`
   background-color: #bdb491;
   border-radius: 6px;
   margin: 10px;
-  p {
-    strong {
-      font-weigth: 200;
-    }
-    font-size: 18px;
-  }
   div {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
   }
 `;
 export const Button = styled.button`
@@ -88,23 +84,32 @@ export const Button = styled.button`
   margin: 2px;
   border: none;
   border-radius: 10px;
+  font-size: 15px;
   padding: 15px 40px;
   :hover {
     cursor: pointer;
-    background: #ffffff;
+    background: #03031b11;
     color: #03031b;
   }
 `;
 export const ButtonSearch = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   input {
-    height: 64px;
+    height: 34px;
     border: 1px solid #03031b;
-    border-radius: 5px;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
     outline: none;
     margin-left: 5px;
+    :hover {
+      border-color: #19acdd;
+    }
   }
 `;
 export const ButtonSubs = styled.button`
@@ -113,14 +118,12 @@ export const ButtonSubs = styled.button`
   color: #ffffff;
   transition: 0.3s;
   width: 180px;
-  margin: 10px;
   border: none;
   border-radius: 10px;
   padding: 15px 40px;
   :hover {
     cursor: pointer;
-    background: #ffffff;
-    color: #03031b;
+    background: red;
   }
 `;
 export const ButtonActives = styled.button`
@@ -142,16 +145,36 @@ export const GroupsForm = styled.form`
   background-color: white;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
   margin: 182px auto 0;
   min-width: 394px;
   max-width: min(90%, 500px);
   background: #ffffff;
-  border: 2px solid #f5f5f5;
+  border: transparent;
   box-sizing: border-box;
   border-radius: 5px;
   padding: 40px 20px 26px;
-n`;
+  h1 {
+    font-family: "Roboto", sans-serif;
+  }
+  input {
+    outline: none;
+    border: 1px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    border-right: transparent;
+    :hover {
+      border-color: #15b5eb;
+    }
+  }
+  button {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 
 export const ContainerButton = styled.div`
   display: flex;
@@ -165,4 +188,42 @@ export const InfoGroupCont = styled.div`
 export const ContainerEdit = styled.div`
   display: flex;
   flex-direction: column;
+`;
+export const ContainerRabbit = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+`;
+
+export const ContainerGroupCard = styled.div`
+  display: flex;
+  align-items: flex-start;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  margin: 0;
+  h3 {
+    color: #361313;
+    font-family: "Roboto", sans-serif;
+    span {
+      color: black;
+      font-family: "Oswald", sans-serif;
+    }
+  }
+`;
+export const ContainerCardsG = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+`;
+export const ButtonModal = styled.button`
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: white;
+  height: 30px;
+  font-family: "Roboto", sans-serif;
+  :hover {
+    border-color: #22acda;
+    color: #22acda;
+  }
 `;

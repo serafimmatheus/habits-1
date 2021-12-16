@@ -35,10 +35,13 @@ const Groups = () => {
 
   const handleClickSearch = () => {
     searchGroups(searchInput, token);
+    setRendered(true);
+    setSubRender(false);
   };
   const subRequest = () => {
     getUserGroups();
-    setSubRender(!subRender);
+    setSubRender(true);
+    setRendered(false);
   };
 
   return (
@@ -46,7 +49,6 @@ const Groups = () => {
       <HeaderDash />
 
       <div>
-        <h3>GROUPS</h3>
         <ContainerButton>
           <Button onClick={() => subRequest()}>
             <MdOutlineSubscriptions size={30} />
@@ -71,20 +73,11 @@ const Groups = () => {
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Digite para buscar"
+            placeholder="Digite para buscar um grupo "
           ></input>
         </ButtonSearch>
         <InfoGroupCont>
-          <h3>Seus grupos:</h3>
-          {rendered ? (
-            groups.length > 0 ? (
-              <GroupList />
-            ) : (
-              <div>
-                <h1>Adicione grupo</h1>
-              </div>
-            )
-          ) : null}
+          {rendered ? groups.length > 0 ? <GroupList /> : false : null}
         </InfoGroupCont>
         {subRender && <SubGroups />}
         <AddGroupsModal

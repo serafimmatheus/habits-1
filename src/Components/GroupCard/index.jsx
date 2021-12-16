@@ -2,11 +2,18 @@ import { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { GoalsContext } from "../../Providers/Goals";
 import { GroupsContext } from "../../Providers/groups";
-
+import { GoDiffRenamed } from "react-icons/go";
+import { MdOutlineCategory } from "react-icons/md";
+import { MdOutlineDescription } from "react-icons/md";
+import { GiRabbit } from "react-icons/gi";
 import {
   ButtonSubs,
   GroupCardContainer,
   ButtonActives,
+  ContainerCardsG,
+  ContainerGroupCard,
+  InfoGroupCont,
+  ContainerRabbit,
 } from "../../Styles/global";
 import AddActivityModal from "../AddActivityModal";
 import EditActivityModal from "../EditActivityModal";
@@ -31,15 +38,29 @@ const GroupCard = ({ group }) => {
     <>
       <>
         <GroupCardContainer>
-          <p>
-            <strong>Nome do grupo: </strong> {group.name}
-          </p>
-          <p>
-            <strong>Categoria: </strong> {group.category}
-          </p>
-          <p>
-            <strong>Descrição: </strong> {group.description}
-          </p>
+          <ContainerRabbit>
+            <GiRabbit size={30} color="darkbronw" />
+          </ContainerRabbit>
+          <ContainerCardsG>
+            <ContainerGroupCard>
+              <h3>
+                <GoDiffRenamed color="red" /> Nome do grupo :
+                <span>{group.name}</span>
+              </h3>
+            </ContainerGroupCard>
+            <ContainerGroupCard>
+              <h3>
+                <MdOutlineCategory color="blue" />
+                Categoria :<span>{group.category}</span>
+              </h3>{" "}
+            </ContainerGroupCard>{" "}
+            <ContainerGroupCard>
+              <h3>
+                <MdOutlineDescription color="white" overlinePosition={10} />{" "}
+                Descrição :<span> {group.description}</span>
+              </h3>
+            </ContainerGroupCard>{" "}
+          </ContainerCardsG>
           <div>
             <ButtonSubs onClick={() => handleclickSubscribe()}>
               Inscrever-se

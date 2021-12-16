@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
 
 import { Modal } from "@mui/material";
-import { GroupsForm } from "../../Styles/global";
+import { ButtonModal, GroupsForm } from "../../Styles/global";
 
 const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
   const { createGroups } = useContext(GroupsContext);
@@ -37,8 +37,8 @@ const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
   return (
     <Modal open={modalCreateGroup}>
       <div>
-        <h3>ADICIONAR GRUPO</h3>
         <GroupsForm onSubmit={handleSubmit(onSubmit)}>
+          <h1>Crie seu grupo</h1>
           <input
             type="text"
             placeholder="Nome do grupo"
@@ -54,7 +54,7 @@ const AddGroupsModal = ({ modalCreateGroup, setModalCreateGroup, token }) => {
             placeholder="Categoria"
             {...register("category")}
           />
-          <button type="submit">Registrar novo grupo</button>
+          <ButtonModal type="submit">Criar grupo</ButtonModal>
         </GroupsForm>
         <button onClick={() => closeModal()}>FECHAR</button>
       </div>
