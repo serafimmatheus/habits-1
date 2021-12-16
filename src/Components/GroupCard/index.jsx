@@ -1,27 +1,19 @@
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/groups";
-
 import { useHistory } from "react-router-dom";
-
 import { Button, GroupCardContainer } from "../../Styles/global";
-
 import EditGroupsModal from "../EditGroupsModal";
-
 const GroupCard = ({ group }) => {
   const { subscribeGroups, unsubscribeGroups } = useContext(GroupsContext);
   const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
   const [modalEditGroup, setModalEditGroup] = useState(false);
-
   const history = useHistory();
-
   const goToActivities = () => {
     history.push(`/dashboard/${group.id}/activities`);
   };
-
   const handleclickSubscribe = () => {
     subscribeGroups(group.id);
   };
-
   return (
     <GroupCardContainer>
       <p>
@@ -33,9 +25,7 @@ const GroupCard = ({ group }) => {
       <p>
         <strong>Descrição :</strong> {group.description}
       </p>
-
       <Button onClick={() => goToActivities()}>Ver atividades</Button>
-
       <Button onClick={() => handleclickSubscribe()}>Inscrever-se</Button>
       <Button onClick={() => setModalEditGroup(true)}>Editar grupo</Button>
       <Button onClick={() => unsubscribeGroups(group.id)}>
@@ -54,5 +44,4 @@ const GroupCard = ({ group }) => {
     </GroupCardContainer>
   );
 };
-
 export default GroupCard;

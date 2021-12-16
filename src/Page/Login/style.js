@@ -1,10 +1,23 @@
 import styled, { keyframes } from "styled-components";
-
+import registerImage from "../../Assets/undraw_programming_re_kg9v.svg";
 export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
   justify-content: center;
+`;
+export const Image = styled.div`
+  @media (min-width: 1100px) {
+    width: 50%;
+    flex: 1;
+    /* border-right: 1px solid var(--black); */
+    background: url(${registerImage}) no-repeat center, var(--log-cabin);
+    background-size: contain;
+    /* background-size: contain (acima) para diminuir conforme altura diminui */
+  }
+`;
+export const Spam = styled.span`
+  color: var(--red);
 `;
 
 export const Content = styled.div`
@@ -12,14 +25,14 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 700px;
+  width: 50%;
+  /* max-width: 700px; */
 `;
 
-const appearFromRight = keyframes`
+const appearFromLeft = keyframes`
     from {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateX(-50px);
     }
     to {
         opacity: 1;
@@ -32,7 +45,7 @@ export const AnimationContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: ${appearFromRight} 1s;
+  animation: ${appearFromLeft} 1s;
   form {
     margin: 80px 0;
     width: 340px;

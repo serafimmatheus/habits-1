@@ -6,6 +6,7 @@ import { Dashboard } from "../Page/Dashboard";
 import { Route } from "./Routes";
 import Groups from "../Pages/Groups";
 import Activities from "../Page/Activities";
+import Goals from "../Page/Goals";
 
 export const Routes = () => {
   return (
@@ -26,6 +27,7 @@ export const Routes = () => {
         path="/dashboard/:group_id/activities"
         component={Activities}
       />
+      <Route isPrivate exact path="/dashboard/goal" component={Goals} />
     </Switch>
   );
 };

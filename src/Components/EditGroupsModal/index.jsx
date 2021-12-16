@@ -1,52 +1,39 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
+import { useState } from "react";
 import { useContext } from "react";
 import { GroupsContext } from "../../Providers/groups";
-
-import { Modal } from "@mui/material";
-import { GroupsForm } from "../../Styles/global";
-
-const EditGroupsModal = ({
-  group_id,
-  token,
-  setModalEditGroup,
-  modalEditGroup,
-}) => {
+import { Button, ContainerEdit } from "../../Styles/global";
+const EditGroupsModal = ({ id, setModalEdit }) => {
   const { editGroups } = useContext(GroupsContext);
-
-  const schema = yup.object().shape({
-    name: yup.string().required("Campo obrigatório"),
-  });
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
 
   const closeModal = () => {
-    setModalEditGroup(false);
+    setModalEdit(false);
   };
 
-  const onSubmit = (data) => {
-    editGroups(group_id, data, token, reset, closeModal);
+  const onSubmit = (id) => {
+    editGroups(id, name, category, description, closeModal);
   };
 
   return (
-    <Modal open={modalEditGroup}>
+    <div>
       <h3>Editar Grupo </h3>
-      <GroupsForm onSubmit={handleSubmit(onSubmit)}>
+      <ContainerEdit>
         <h4>Novo nome:</h4>
-        <input type="text" placeholder="Nome" {...register("name")} />
-        <input type="text" placeholder="Categoria" {...register("category")} />
-        <button type="submit">Editar</button>
-      </GroupsForm>
-    </Modal>
+        <input placeholder="Nome" onChange={(e) => setName(e.target.value)} />
+        <input
+          placeholder="Categoria"
+          onChange={(e) => setCategory(e.target.value)}
+        />
+        <input
+          placeholder="Descrição"
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <Button onClick={() => onSubmit(id)}>Editar</Button>
+        <Button onClick={() => closeModal()}>Fechar</Button>
+      </ContainerEdit>
+    </div>
   );
 };
 
