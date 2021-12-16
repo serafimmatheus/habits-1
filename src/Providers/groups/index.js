@@ -69,7 +69,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Você não é o criador do grupo!");
       });
   };
 

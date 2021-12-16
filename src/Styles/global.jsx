@@ -169,10 +169,10 @@ export const GroupCardContainer = styled.li`
     flex-direction: column;
     justify-content: center;
     background-color: white;
-
-    button {
-      margin: 20px 0 0 46px;
-    }
+  }
+  button {
+    display: flex;
+    align-self: center;
   }
 `;
 export const GroupCardContainerSub = styled.li`
@@ -301,7 +301,7 @@ export const GroupsDivForm = styled.div`
   border: transparent;
   box-sizing: border-box;
   border-radius: 5px;
-  padding: 40px 20px 26px;
+ 
   font-family:"Roboto",sans-serif;
   input {
     outline: none;
@@ -355,6 +355,9 @@ export const Title = styled.div`
 export const InfoGroupCont = styled.div`
   display: flex;
   justify-content: center;
+  button {
+    margin-bottom: 10px;
+  }
 `;
 export const ContainerEdit = styled.div`
   display: flex;
@@ -399,6 +402,7 @@ export const ContainerCardsG = styled.div`
 export const ButtonModal = styled.button`
   border: 1px solid black;
   border-radius: 4px;
+  margin: 0;
   background-color: white;
   height: 30px;
   font-family: "Roboto", sans-serif;

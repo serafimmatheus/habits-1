@@ -5,6 +5,7 @@ import { GiRabbit } from "react-icons/gi";
 import { GoDiffRenamed } from "react-icons/go";
 import { MdOutlineDescription } from "react-icons/md";
 import {
+  ButtonModal,
   ButtonSubs,
   ContainerCardsG,
   ContainerEdit,
@@ -12,6 +13,7 @@ import {
   ContainerRabbit,
   GroupCardContainer,
   GroupListContainerS,
+  InfoGroupCont,
 } from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
 const SubGroups = () => {
@@ -19,6 +21,11 @@ const SubGroups = () => {
   const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
   return (
     <>
+      <InfoGroupCont>
+        <ButtonModal onClick={() => setModalEdit(true)}>
+          Editar Grupos
+        </ButtonModal>
+      </InfoGroupCont>
       <GroupListContainerS>
         {myGroups.map((group) =>
           group.length === 0 ? (
@@ -52,18 +59,13 @@ const SubGroups = () => {
                 <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
                   Desinscrever-se
                 </ButtonSubs>
-
-                <ButtonSubs onClick={() => setModalEdit(true)}>
-                  Editar
-                </ButtonSubs>
                 {modalEdit && (
-                  <>
-                    <EditGroupsModal id={group.id} setmodalEdit={setModalEdit}>
-                      <ButtonSubs onClick={() => setModalEdit(false)}>
-                        Fechar
-                      </ButtonSubs>
-                    </EditGroupsModal>
-                  </>
+                  <InfoGroupCont>
+                    <EditGroupsModal
+                      id={group.id}
+                      setmodalEdit={setModalEdit}
+                    ></EditGroupsModal>
+                  </InfoGroupCont>
                 )}
               </ContainerEdit>
             </GroupCardContainer>
