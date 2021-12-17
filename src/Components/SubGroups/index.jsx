@@ -4,6 +4,7 @@ import { MdOutlineCategory } from "react-icons/md";
 import { GiRabbit } from "react-icons/gi";
 import { GoDiffRenamed } from "react-icons/go";
 import { MdOutlineDescription } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 import {
   ButtonModal,
   ButtonSubs,
@@ -16,9 +17,12 @@ import {
   InfoGroupCont,
 } from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
+import { GoalsContext } from "../../Providers/Goals";
 const SubGroups = () => {
+  const history = useHistory();
   const [modalEdit, setModalEdit] = useState(false);
   const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
+  const { searchGoals } = useContext(GoalsContext);
   return (
     <>
       <InfoGroupCont>
@@ -58,6 +62,21 @@ const SubGroups = () => {
               <ContainerEdit>
                 <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
                   Desinscrever-se
+                </ButtonSubs>
+                <ButtonSubs
+                  onClick={() => {
+                    searchGoals(group.id);
+                    history.push("/dashboard/goal");
+                  }}
+                >
+                  Metas
+                </ButtonSubs>
+                <ButtonSubs
+                  onClick={() =>
+                    history.push(`/dashboard/${group.id}/activities`)
+                  }
+                >
+                  Ver atividades
                 </ButtonSubs>
                 {modalEdit && (
                   <InfoGroupCont>

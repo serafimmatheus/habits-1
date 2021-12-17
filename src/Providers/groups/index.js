@@ -62,7 +62,7 @@ export const GroupsProvider = ({ children }) => {
         }
       )
       .then((response) => {
-        getUserGroups(token);
+        getUserGroups();
         toast.success("Grupo editado");
         console.log(response.data);
         reset();
@@ -103,7 +103,7 @@ export const GroupsProvider = ({ children }) => {
       .then((response) => {
         toast.success("Inscrição concluída!");
         console.log(response);
-        getUserGroups(token);
+        getUserGroups();
       })
       .catch((err) => {
         toast.error("Você já é inscrito!");
@@ -120,7 +120,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         toast.success("Desinscrição concluída!");
-        getUserGroups(token);
+        getUserGroups();
         setUseSub(false);
       })
       .catch((err) => {

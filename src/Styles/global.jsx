@@ -230,6 +230,7 @@ export const ButtonSubs = styled.button`
   background: #03031b;
   color: #ffffff;
   transition: 0.3s;
+  margin-bottom: 5px;
   width: 180px;
   border: none;
   border-radius: 10px;
