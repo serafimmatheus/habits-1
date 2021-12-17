@@ -9,12 +9,14 @@ export const Home = () => {
     <MainHome>
       <Container>
         <div className="main-home__title">
-          <h1>habits</h1>
-          <h1>change</h1>
+          <h1>Good</h1>
+          <h1>Habits</h1>
         </div>
 
         <div className="main-home__buttons">
-          <Button onClick={() => history.push("/register")} whiteSchema>Cadastre-se</Button>
+          <Button onClick={() => history.push("/register")} whiteSchema>
+            Cadastre-se
+          </Button>
           <Button onClick={() => history.push("/login")}>Login</Button>
         </div>
 

@@ -20,7 +20,7 @@ export const GroupsProvider = ({ children }) => {
     });
   };
 
-  const getUserGroups = () => {
+  const getUserGroups = (token) => {
     api
       .get("/groups/subscriptions/", {
         headers: {
@@ -46,6 +46,7 @@ export const GroupsProvider = ({ children }) => {
         }
       )
       .then((response) => {
+        getUserGroups(token);
         setGroups(response.data.results);
       });
   };
@@ -62,7 +63,7 @@ export const GroupsProvider = ({ children }) => {
         }
       )
       .then((response) => {
-        getUserGroups();
+        getUserGroups(token);
         toast.success("Grupo editado");
         console.log(response.data);
         reset();
@@ -103,7 +104,7 @@ export const GroupsProvider = ({ children }) => {
       .then((response) => {
         toast.success("Inscrição concluída!");
         console.log(response);
-        getUserGroups();
+        getUserGroups(token);
       })
       .catch((err) => {
         toast.error("Você já é inscrito!");
@@ -120,7 +121,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         toast.success("Desinscrição concluída!");
-        getUserGroups();
+        getUserGroups(token);
         setUseSub(false);
       })
       .catch((err) => {
