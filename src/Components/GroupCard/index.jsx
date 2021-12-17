@@ -4,6 +4,9 @@ import { GoDiffRenamed } from "react-icons/go";
 import { MdOutlineCategory } from "react-icons/md";
 import { MdOutlineDescription } from "react-icons/md";
 import { GiRabbit } from "react-icons/gi";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import { GiStairsGoal } from "react-icons/gi";
+import { BsCardChecklist } from "react-icons/bs";
 import {
   ButtonSubs,
   GroupCardContainer,
@@ -56,6 +59,7 @@ const GroupCard = ({ group }) => {
           <div>
             <ButtonSubs onClick={() => handleclickSubscribe()}>
               Inscrever-se
+              <MdOutlineSubscriptions size={20} color="red" />
             </ButtonSubs>
             <Button
               onClick={() => {
@@ -64,8 +68,12 @@ const GroupCard = ({ group }) => {
               }}
             >
               Metas
+              <GiStairsGoal size={20} color="green" />
             </Button>
-            <Button onClick={() => goToActivities()}>Ver atividades</Button>
+            <Button onClick={() => goToActivities()}>
+              Atividades
+              <BsCardChecklist size={20} />
+            </Button>
           </div>
         </GroupCardContainer>
       </>
