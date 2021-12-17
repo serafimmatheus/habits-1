@@ -37,7 +37,7 @@ export const MainHome = styled.main`
         margin: 0 10px;
         height: 50px;
         &:hover {
-          transition: 1s; 
+          transition: 1s;
         }
       }
     }
@@ -57,6 +57,68 @@ export const MainHome = styled.main`
         top: 44px;
         font-style: italic;
       }
+    }
+  }
+`;
+
+export const FooterHome = styled.footer`
+  @media screen and (min-width: 320px) {
+    > h2 {
+      font-size: 55px;
+      margin: 0 0 20px 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto 80px auto;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+      li {
+        display: flex;
+        width: 250px;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 10px 10px;
+        padding: 10px;
+        border: 5px solid var(--black-russian);
+        border-radius: 20px;
+
+        h2 {
+          margin: 10px 0;
+        }
+
+        figure {
+          display: flex;
+          justify-content: center;
+          width: 200px;
+          height: 200px;
+          border-radius: 100%;
+
+          img {
+            display: flex;
+            justify-content: center;
+            border: 5px solid var(--black-russian);
+            width: 100%;
+            object-fit: fill;
+            border-radius: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    ul {
+      justify-content: center;
     }
   }
 `;
