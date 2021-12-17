@@ -1,6 +1,6 @@
 import { Switch } from "react-router-dom";
-import { Home } from "../Page/Home/index";
-import Login from "../Page/Login/index";
+import { Home } from "../Page/Home";
+import Login from "../Page/Login";
 import Register from "../Page/Register";
 import { Route } from "./Routes";
 import Groups from "../Pages/Groups";

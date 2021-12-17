@@ -11,8 +11,7 @@ export const Container = styled.div`
 export const Background = styled.div`
   @media (min-width: 1100px) {
     flex: 1;
-    width: 50%;
-    border-right: 1px solid var(--black);
+    border-right: 1px solid var(--black-russian);
     background: url(${registerImage}) no-repeat center, var(--log-cabin);
     background-size: contain;
     /* background-size: contain (acima) para diminuir conforme altura diminui */
@@ -61,13 +60,25 @@ export const AnimationContainer = styled.div`
       margin-top: 16px;
     }
 
-    p {
+    .paragraph {
       margin-top: 8px;
+
+      @media screen and (max-width: 400px) {
+        font-size: 0.8rem;
+      }
 
       a {
         font-weight: bold;
         color: var(--red);
       }
+    }
+
+    @media screen and (max-width: 410px) {
+      width: 320px;
+    }
+
+    @media screen and (max-width: 360px) {
+      width: 280px;
     }
   }
 `;

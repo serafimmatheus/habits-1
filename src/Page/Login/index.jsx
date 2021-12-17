@@ -93,6 +93,6 @@ function Login() {
       <Image />
     </Container>
   );
-}
+};
 
 export default Login;
