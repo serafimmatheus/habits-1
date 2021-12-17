@@ -1,43 +1,97 @@
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/groups";
-import { Button, GroupCardContainerSub } from "../../Styles/global";
+import { MdOutlineCategory } from "react-icons/md";
+import { GiRabbit } from "react-icons/gi";
+import { GoDiffRenamed } from "react-icons/go";
+import { MdOutlineDescription } from "react-icons/md";
+import { useHistory } from "react-router-dom";
+import {
+  ButtonModal,
+  ButtonSubs,
+  ContainerCardsG,
+  ContainerEdit,
+  ContainerGroupCard,
+  ContainerRabbit,
+  GroupCardContainer,
+  GroupListContainerS,
+  InfoGroupCont,
+} from "../../Styles/global";
 import EditGroupsModal from "../EditGroupsModal";
+import { GoalsContext } from "../../Providers/Goals";
 const SubGroups = () => {
-  const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
+  const history = useHistory();
   const [modalEdit, setModalEdit] = useState(false);
-  const token = JSON.parse(localStorage.getItem("@Habits:token") || "");
-
+  const { myGroups, unsubscribeGroups } = useContext(GroupsContext);
+  const { searchGoals } = useContext(GoalsContext);
   return (
-    <GroupCardContainerSub>
-      {myGroups.map((group) =>
-        group.length === 0 ? (
-          <div>Sem inscrições de grupos</div>
-        ) : (
-          <ul>
-            <li>{group.name}</li>
-            <li>{group.category}</li>
-            <li>{group.description}</li>
-            <li>{group.id}</li>
-            <Button onClick={() => setModalEdit(true)}>Editar grupo</Button>
-            <Button onClick={() => unsubscribeGroups(group.id)}>
-              Desinscrever-se
-            </Button>
-          </ul>
-        )
-      )}
-      {myGroups.map(
-        (group, ind) =>
-          modalEdit &&
-          ind === 0 && (
-            <EditGroupsModal
-              id={group.id}
-              token={token}
-              setModalEdit={setModalEdit}
-              modalEdit={modalEdit}
-            />
+    <>
+      <InfoGroupCont>
+        <ButtonModal onClick={() => setModalEdit(true)}>
+          Editar Grupos
+        </ButtonModal>
+      </InfoGroupCont>
+      <GroupListContainerS>
+        {myGroups.map((group) =>
+          group.length === 0 ? (
+            false
+          ) : (
+            <GroupCardContainer key={group.id}>
+              <ContainerRabbit>
+                <GiRabbit size={30} color="darkbronw" />
+              </ContainerRabbit>
+              <ContainerCardsG>
+                <ContainerGroupCard>
+                  <h3>
+                    <GoDiffRenamed color="red" />
+                    Nome do grupo: <span>{group.name}</span>
+                  </h3>
+                </ContainerGroupCard>
+                <ContainerGroupCard>
+                  <h3>
+                    <MdOutlineCategory color="blue" />
+                    Categoria: <span>{group.category}</span>
+                  </h3>{" "}
+                </ContainerGroupCard>{" "}
+                <ContainerGroupCard>
+                  <h3>
+                    <MdOutlineDescription color="green" overlinePosition={10} />
+                    Descrição: <span> {group.description}</span>
+                  </h3>
+                </ContainerGroupCard>{" "}
+              </ContainerCardsG>
+              <ContainerEdit>
+                <ButtonSubs onClick={() => unsubscribeGroups(group.id)}>
+                  Desinscrever-se
+                </ButtonSubs>
+                <ButtonSubs
+                  onClick={() => {
+                    searchGoals(group.id);
+                    history.push("/dashboard/goal");
+                  }}
+                >
+                  Metas
+                </ButtonSubs>
+                <ButtonSubs
+                  onClick={() =>
+                    history.push(`/dashboard/${group.id}/activities`)
+                  }
+                >
+                  Ver atividades
+                </ButtonSubs>
+                {modalEdit && (
+                  <InfoGroupCont>
+                    <EditGroupsModal
+                      id={group.id}
+                      setmodalEdit={setModalEdit}
+                    ></EditGroupsModal>
+                  </InfoGroupCont>
+                )}
+              </ContainerEdit>
+            </GroupCardContainer>
           )
-      )}
-    </GroupCardContainerSub>
+        )}
+      </GroupListContainerS>
+    </>
   );
 };
 export default SubGroups;

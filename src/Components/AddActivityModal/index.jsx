@@ -3,13 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useContext } from "react";
-import { GroupsContext } from "../../Providers/groups";
+import { ActivitiesContext } from "../../Providers/activities";
 
 import { Modal } from "@mui/material";
 import { GroupsForm } from "../../Styles/global";
 
-const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
-  const { addActivity } = useContext(GroupsContext);
+const AddActivityModal = ({ modalAddAct, setModalAddAct, id }) => {
+  const { addActivity } = useContext(ActivitiesContext);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -26,7 +26,7 @@ const AddActivityModal = ({ modalAddAct, setModalAddAct, token, id }) => {
 
   const onSubmit = (data) => {
     data = { ...data, group: id };
-    addActivity(data, reset, closeModal);
+    addActivity(data, reset, closeModal, id);
   };
 
   return (

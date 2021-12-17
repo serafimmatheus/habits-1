@@ -20,7 +20,7 @@ export const GroupsProvider = ({ children }) => {
     });
   };
 
-  const getUserGroups = () => {
+  const getUserGroups = (token) => {
     api
       .get("/groups/subscriptions/", {
         headers: {
@@ -46,6 +46,7 @@ export const GroupsProvider = ({ children }) => {
         }
       )
       .then((response) => {
+        getUserGroups(token);
         setGroups(response.data.results);
       });
   };
@@ -69,7 +70,6 @@ export const GroupsProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error("Você não é o criador do grupo!");
       });
   };
 

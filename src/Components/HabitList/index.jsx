@@ -3,17 +3,17 @@ import { HabitsContext } from "../../Providers/habits";
 
 import HabitCard from "../HabitCard";
 
-import { HabitListContainer } from "../../Styles/global";
+import { Grid } from "@mui/material";
 
-const HabitList = () => {
+const HabitList = ({ isAchieved }) => {
   const { habits } = useContext(HabitsContext);
 
   return (
-    <HabitListContainer>
+    <Grid container spacing={4}>
       {habits.map((item, index) => (
         <HabitCard key={index} habit={item} />
       ))}
-    </HabitListContainer>
+    </Grid>
   );
 };
 

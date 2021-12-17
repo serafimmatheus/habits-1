@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { useParams, useHistory } from "react-router-dom";
 
@@ -6,19 +6,16 @@ import { ActivitiesContext } from "../../Providers/activities";
 
 import ActivityCard from "../../Components/ActivityCard";
 
-import { HeaderDash } from "../../Components/HeaderDash";
+import Header from "../../Components/Header";
 
-import {
-  Button,
-  GroupListContainer,
-  GroupCardContainer,
-} from "../../Styles/global";
+import { Button, GroupListContainer } from "../../Styles/global";
 
 import AddActivityModal from "../../Components/AddActivityModal";
 
 const Activities = () => {
-  const { getActivities } = useContext(ActivitiesContext);
-  const [token] = useState(localStorage.getItem("@Habits:token"));
+  const { activities, getActivities, token } = useContext(ActivitiesContext);
+
+  const [rendered, setRendered] = useState(false);
 
   const history = useHistory();
   const goToGroups = () => {
@@ -26,41 +23,33 @@ const Activities = () => {
   };
 
   const params = useParams();
-  const groupId = params.group_id;
+  const group_id = params.group_id;
 
-  const activities = getActivities(groupId);
+  useEffect(() => {
+    getActivities(group_id);
+    setRendered(true); // eslint-disable-next-line
+  }, [token]);
 
   const [modalAddAct, setModalAddAct] = useState(false);
-  const [modalEditAct, setModalEditAct] = useState(false);
 
   return (
     <>
-      <HeaderDash />
-      <GroupCardContainer>
-        <h3>Atividades:</h3>
-        <Button onClick={() => setModalAddAct(true)}>
-          Adicionar atividade
-        </Button>
-        <Button onClick={() => goToGroups()}>Voltar</Button>
-        <AddActivityModal
-          setModalAddAct={setModalAddAct}
-          modalAddAct={modalAddAct}
-          token={token}
-          id={groupId}
-        />
-        {activities.length > 0 ? (
-          <GroupListContainer>
-            {activities.map((act) => (
-              <ActivityCard
-                act={act}
-                modalEditAct={modalEditAct}
-                setModalEditAct={setModalEditAct}
-                token={token}
-              />
-            ))}
-          </GroupListContainer>
-        ) : null}
-      </GroupCardContainer>
+      <Header />
+      <h3>Atividades:</h3>
+      <Button onClick={() => setModalAddAct(true)}>Adicionar atividade</Button>
+      <Button onClick={() => goToGroups()}>Voltar</Button>
+      <AddActivityModal
+        setModalAddAct={setModalAddAct}
+        modalAddAct={modalAddAct}
+        id={group_id}
+      />
+      {rendered && activities.length > 0 ? (
+        <GroupListContainer>
+          {activities.map((act, index) => (
+            <ActivityCard act={act} key={index} group_id={group_id} />
+          ))}
+        </GroupListContainer>
+      ) : null}
     </>
   );
 };

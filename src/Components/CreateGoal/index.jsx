@@ -1,21 +1,21 @@
-import {
-  Modal,
-  Box,
-  TextField,
-  Button,
-  Typography,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  Slider,
-} from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useContext, useState } from "react";
 import { GoalsContext } from "../../Providers/Goals";
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Modal,
+  Radio,
+  RadioGroup,
+  Slider,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 
 const CreateGoal = () => {
   const { addGoal, open, handleCloseGoalModal, groupId } =
@@ -150,6 +150,7 @@ const CreateGoal = () => {
           type="submit"
           fullWidth
           variant="contained"
+          color="neutral"
           sx={{ mt: 3, mb: 2 }}
         >
           CRIAR

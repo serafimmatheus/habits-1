@@ -4,11 +4,18 @@ import * as yup from "yup";
 
 import jwt_decode from "jwt-decode";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { HabitsContext } from "../../Providers/habits";
 
-import { Modal } from "@mui/material";
-import { HabitsForm } from "../../Styles/global";
+import {
+  FormLabel,
+  Modal,
+  TextField,
+  Typography,
+  Slider,
+  Button,
+} from "@mui/material";
+import { Box } from "@mui/system";
 
 const AddHabitsModal = ({ modalHabits, setModalHabits, token }) => {
   const decoded = jwt_decode(token);
@@ -21,15 +28,10 @@ const AddHabitsModal = ({ modalHabits, setModalHabits, token }) => {
     difficulty: yup.string().required("Campo obrigatório"),
     frequency: yup.string().required("Campo obrigatório"),
     achieved: yup.string().required("Campo obrigatório"),
-    how_much_achieved: yup.string().required("Campo obrigatório"),
+    //how_much_achieved: yup.string().required("Campo obrigatório"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -38,25 +40,56 @@ const AddHabitsModal = ({ modalHabits, setModalHabits, token }) => {
   };
 
   const onSubmit = (data) => {
-    data = { ...data, user: decoded.user_id };
+    data = {
+      ...data,
+      user: decoded.user_id,
+      how_much_achieved: statusHowMuchAchieved,
+    };
     addHabits(data, token, reset, closeModal);
+    closeModal();
   };
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "1px solid #F5F5F5",
+    boxShadow: 24,
+    p: 4,
+    borderRadius: "5px",
+  };
+
+  const [statusHowMuchAchieved, setStatusHowMuchAchieved] = useState(0);
+
   return (
-    <Modal open={modalHabits}>
-      <div>
-        <h3>ADICIONAR HÁBITO</h3>
-        <HabitsForm onSubmit={handleSubmit(onSubmit)}>
-          <input
-            type="text"
-            placeholder="Nome do hábito"
-            {...register("title")}
-          />
-          <input
-            type="text"
-            placeholder="Categoria"
-            {...register("category")}
-          />
+    <Modal open={modalHabits} onClose={closeModal}>
+      <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={style}>
+        <Typography component="h1" sx={{ fontSize: "18px", fontWeight: "700" }}>
+          ADICIONAR HÁBITO
+        </Typography>
+
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          autoFocus
+          placeholder="Qual é seu hábito?"
+          type="text"
+          {...register("title")}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          autoFocus
+          placeholder="Qual é a Categoria?"
+          type="text"
+          {...register("category")}
+        />
+        <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <select {...register("difficulty")}>
             <option value="">Selecionar dificuldade</option>
             <option value="Muito fácil">1 - Muito fácil</option>
@@ -77,16 +110,44 @@ const AddHabitsModal = ({ modalHabits, setModalHabits, token }) => {
             <option value={false}>Não</option>
             <option value={true}>Sim</option>
           </select>
-          <h4>Progresso atual:</h4>
-          <input
-            type="number"
-            placeholder="Progresso"
-            {...register("how_much_achieved")}
+        </Box>
+
+        <Box>
+          <FormLabel component="legend">Progresso atual:</FormLabel>
+
+          <Slider
+            name="how_much_achieved"
+            aria-label="how_much_achieved"
+            defaultValue={0}
+            valueLabelDisplay="auto"
+            step={10}
+            marks
+            min={0}
+            max={100}
+            onChangeCommitted={(_, value) => setStatusHowMuchAchieved(value)}
           />
-          <button type="submit">Registrar novo hábito</button>
-        </HabitsForm>
-        <button onClick={() => closeModal()}>FECHAR</button>
-      </div>
+        </Box>
+        <Box display="flex" sx={{ gap: "10px" }}>
+          <Button
+            fullWidth
+            type="submit"
+            variant="contained"
+            color="neutral"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            CRIAR
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            color="neutral"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={closeModal}
+          >
+            FECHAR
+          </Button>
+        </Box>
+      </Box>
     </Modal>
   );
 };

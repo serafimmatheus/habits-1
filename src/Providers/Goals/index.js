@@ -23,12 +23,14 @@ export const GoalsProvider = ({ children }) => {
 
   //Salvar as metas dentro de um state
   const [goals, setGoals] = useState([]);
-  const [groupId, setGroupId] = useState(0);
+  const [groupId, setGroupId] = useState(
+    localStorage.getItem("@Habits:groupId") || 0
+  );
 
   const [itemEdit, setItemEdit] = useState({});
 
   const [token] = useState(
-    JSON.parse(localStorage.getItem("@Habits:token")) || ""
+    JSON.parse(localStorage.getItem("@Habits:token")) || 0
   );
 
   const addGoal = (data, groupId) => {
@@ -36,7 +38,9 @@ export const GoalsProvider = ({ children }) => {
       .post("/goals/", data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((_) => searchGoals(groupId))
+      .then((_) => {
+        searchGoals(groupId);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -46,6 +50,7 @@ export const GoalsProvider = ({ children }) => {
       .then((response) => {
         setGoals(response.data.results);
         setGroupId(groupId);
+        localStorage.setItem("@Habits:groupId", JSON.stringify(groupId));
       })
       .catch((err) => console.log(err));
   };

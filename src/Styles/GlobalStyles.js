@@ -71,6 +71,14 @@ export const GlobalStyles = createGlobalStyle`
     a {
         text-decoration: none;
     }
+
+    .MuiButtonBase-root {
+        gap: 10px;
+    }
+
+    button{
+        cursor: pointer;
+    }
 `;
 
 // Tipografia do Projeto

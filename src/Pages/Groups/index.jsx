@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 
 import { GroupsContext } from "../../Providers/groups";
-import { HeaderDash } from "../../Components/HeaderDash";
+import Header from "../../Components/Header";
 import GroupList from "../../Components/GroupList";
 import AddGroupsModal from "../../Components/AddGroupsModal";
 import {
   ContainerButton,
   Button,
-  ButtonSearch,
   InfoGroupCont,
+  Title,
 } from "../../Styles/global";
 import { BiAddToQueue } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
@@ -27,6 +27,7 @@ const Groups = () => {
 
   useEffect(() => {
     setRendered(true);
+    getUserGroups(token);
   }, [token]);
 
   const handleClickCreate = () => {
@@ -35,18 +36,20 @@ const Groups = () => {
 
   const handleClickSearch = () => {
     searchGroups(searchInput, token);
+    setRendered(true);
+    setSubRender(false);
   };
   const subRequest = () => {
     getUserGroups();
-    setSubRender(!subRender);
+    setSubRender(true);
+    setRendered(false);
   };
 
   return (
     <>
-      <HeaderDash />
+      <Header />
 
       <div>
-        <h3>GROUPS</h3>
         <ContainerButton>
           <Button onClick={() => subRequest()}>
             <MdOutlineSubscriptions size={30} />
@@ -56,8 +59,6 @@ const Groups = () => {
             <BiAddToQueue size={30} />
             Criar Grupos
           </Button>
-        </ContainerButton>
-        <ButtonSearch>
           {searchInput === "" ? (
             <Button onClick={() => handleClickSearch()}>
               <FiSearch size={30} /> Buscar todos
@@ -71,21 +72,18 @@ const Groups = () => {
           <input
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Digite para buscar"
+            placeholder="Digite para buscar um grupo "
           ></input>
-        </ButtonSearch>
-        <InfoGroupCont>
-          <h3>Seus grupos:</h3>
-          {rendered ? (
-            groups.length > 0 ? (
-              <GroupList />
-            ) : (
-              <div>
-                <h1>Adicione grupo</h1>
-              </div>
-            )
-          ) : null}
-        </InfoGroupCont>
+        </ContainerButton>
+        <>
+          <Title>
+            {subRender && !rendered && <h1>Grupos Inscritos</h1>}
+            {rendered && !subRender && <h1> Página de Grupos </h1>}
+          </Title>
+          <InfoGroupCont>
+            {rendered ? groups.length > 0 ? <GroupList /> : false : null}
+          </InfoGroupCont>
+        </>
         {subRender && <SubGroups />}
         <AddGroupsModal
           modalCreateGroup={modalCreateGroup}

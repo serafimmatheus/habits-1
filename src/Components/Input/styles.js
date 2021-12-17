@@ -33,7 +33,6 @@ export const InputContainer = styled.div`
         align-items: center;
         flex: 1;
         border: 0;
-        /* color: var(--log-cabin); */
         outline-color: var(--coriander);
         outline-offset: 0.1em;
         &::placeholder {
