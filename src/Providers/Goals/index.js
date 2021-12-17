@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createContext } from "react/cjs/react.development";
+import { createContext } from "react";
 import api from "../../Services";
 
 export const GoalsContext = createContext();
