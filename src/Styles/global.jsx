@@ -216,7 +216,7 @@ export const GroupsForm = styled.form`
   box-sizing: border-box;
   border-radius: 5px;
   padding: 40px 20px 26px;
-n`;
+`;
 
 export const ContainerButton = styled.div`
   display: flex;
