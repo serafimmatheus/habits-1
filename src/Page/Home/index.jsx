@@ -91,10 +91,10 @@ export const Home = () => {
             <figure>
               <img
                 src="https://ca.slack-edge.com/TQZR39SET-U027W2FL4UE-862744f4f701-512"
-                alt="Davi e Raquel"
+                alt="Davi Raquel"
               />
             </figure>
-            <h2>Davi e Raquel</h2>
+            <h2>Davi Raquel</h2>
             <p>Quality Assurance</p>
           </li>
         </ul>
