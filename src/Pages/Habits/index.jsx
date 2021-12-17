@@ -18,9 +18,9 @@ const Habits = () => {
   const [modalHabits, setModalHabits] = useState(false);
 
   useEffect(() => {
-    getHabits(token);
+    getHabits();
     setRendered(true); // eslint-disable-next-line
-  }, [token]);
+  }, []);
 
   const handleClickAdd = () => {
     setModalHabits(true);
