@@ -33,7 +33,7 @@ const SubGroups = () => {
       <GroupListContainerS>
         {myGroups.map((group) =>
           group.length === 0 ? (
-            <h1>Nada aqui </h1>
+            false
           ) : (
             <GroupCardContainer key={group.id}>
               <ContainerRabbit>

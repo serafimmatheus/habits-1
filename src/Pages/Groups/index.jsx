@@ -27,6 +27,7 @@ const Groups = () => {
 
   useEffect(() => {
     setRendered(true);
+    getUserGroups(token);
   }, [token]);
 
   const handleClickCreate = () => {
