@@ -35,8 +35,8 @@ export const HabitsProvider = ({ children }) => {
         setIsAchieved(response.data.achieved);
         getHabits();
         reset();
+      closeModal()
       })
-      .then(closeModal())
       .catch((err) => console.log(err));
   };
 
