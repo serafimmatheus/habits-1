@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Background = styled.div`
   @media (min-width: 1100px) {
     flex: 1;
+    border-right: 1px solid var(--black-russian);
     background: url(${registerImage}) no-repeat center, var(--log-cabin);
     background-size: contain;
     /* background-size: contain (acima) para diminuir conforme altura diminui */
